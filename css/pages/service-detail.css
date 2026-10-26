@@ -1,0 +1,645 @@
+/**
+ * Digital Crazy Hub - Service Detail Page Stylesheet
+ * Governs all 11 individual service detail pages
+ * Conforms strictly to css/root.css design tokens and PROJECT_RULES.md
+ * NOTE: All responsive media queries reside exclusively in css/responsive.css
+ */
+
+/* ==========================================
+   1. SECTION 2: MAIN SERVICE HERO WITH IMAGE
+   ========================================== */
+.service-hero-section {
+  padding-top: 60px;
+  padding-bottom: 72px;
+  background-color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.service-hero-content {
+  text-align: left;
+}
+
+.service-hero-eyebrow-wrap {
+  margin-bottom: 14px;
+}
+
+.service-hero-heading {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  color: var(--color-navy);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.service-hero-lead {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.service-hero-body {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.service-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.service-hero-visual {
+  position: relative;
+}
+
+.service-hero-img-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(11, 23, 48, 0.12);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-soft);
+  aspect-ratio: 4 / 3;
+}
+
+.service-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.service-hero-img-wrap:hover .service-hero-img {
+  transform: scale(1.03);
+}
+
+.service-hero-decor-glow {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(101, 71, 245, 0.18) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==========================================
+   2. SECTION 3: ABOUT THIS SERVICE
+   ========================================== */
+.service-about-section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.service-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.service-about-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-about-heading {
+  font-size: clamp(1.5rem, 2.6vw, 1.85rem);
+  color: var(--color-navy);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+
+.service-about-text {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.service-about-text:last-child {
+  margin-bottom: 0;
+}
+
+.service-fit-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-fit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.service-fit-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(7, 85, 201, 0.1);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ==========================================
+   3. SECTION 4: BENEFITS OF THIS SERVICE
+   ========================================== */
+.service-benefits-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #FFFFFF;
+}
+
+.service-section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 52px auto;
+}
+
+.service-section-title {
+  font-size: clamp(1.85rem, 3.4vw, 2.5rem);
+  color: var(--color-navy);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.service-section-desc {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.service-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.service-benefit-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--transition-fast);
+  will-change: transform;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.service-benefit-card:hover {
+  border-color: rgba(7, 85, 201, 0.3);
+  box-shadow: 0 16px 36px rgba(11, 23, 48, 0.08);
+}
+
+.service-benefit-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(7, 85, 201, 0.1) 0%, rgba(101, 71, 245, 0.1) 100%);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.service-benefit-card:hover .service-benefit-icon-wrap {
+  background: var(--gradient-primary);
+  color: #FFFFFF;
+}
+
+.service-benefit-title {
+  font-size: 1.2rem;
+  color: var(--color-navy);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.service-benefit-desc {
+  font-size: 0.925rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ==========================================
+   4. SECTION 5: OUR PROCESS
+   ========================================== */
+.service-process-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #F8F9FD;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.service-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.service-process-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.service-process-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(7, 85, 201, 0.25);
+}
+
+.service-process-step-num {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.service-process-title {
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.service-process-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================
+   5. SECTION 6: TOOLS AND PLATFORMS
+   ========================================== */
+.service-tools-section {
+  padding-top: 76px;
+  padding-bottom: 76px;
+  background-color: #FFFFFF;
+}
+
+.service-tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.service-tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background-color: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  box-shadow: 0 1px 3px rgba(11, 23, 48, 0.03);
+  transition: all var(--transition-fast);
+}
+
+.service-tool-chip:hover {
+  background-color: #FFFFFF;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.service-tool-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   6. SECTION 7: FAQS ACCORDION
+   ========================================== */
+.service-faq-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.service-faq-wrapper {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service-faq-item {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-faq-item.is-active {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.service-faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  transition: color var(--transition-fast);
+}
+
+.service-faq-trigger:hover,
+.service-faq-item.is-active .service-faq-trigger {
+  color: var(--color-primary);
+}
+
+.service-faq-chevron {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.service-faq-item.is-active .service-faq-chevron {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.service-faq-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+
+.service-faq-item.is-active .service-faq-content {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.service-faq-body {
+  padding: 0 24px 22px 24px;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.service-faq-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   7. SECTION 8: EXPLORE MORE SERVICES
+   ========================================== */
+.service-related-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #FFFFFF;
+}
+
+.service-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.related-service-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--transition-fast);
+  will-change: transform;
+}
+
+.related-service-card:hover {
+  border-color: rgba(7, 85, 201, 0.3);
+  box-shadow: 0 16px 36px rgba(11, 23, 48, 0.08);
+}
+
+.related-card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(7, 85, 201, 0.08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.related-service-card:hover .related-card-icon-wrap {
+  background: var(--gradient-primary);
+  color: #FFFFFF;
+}
+
+.related-card-title {
+  font-size: 1.2rem;
+  color: var(--color-navy);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.related-card-desc {
+  font-size: 0.925rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.related-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.related-card-link:hover {
+  color: var(--color-secondary);
+  gap: 12px;
+}
+
+/* ==========================================
+   8. SECTION 9: FINAL CONVERSION CTA
+   ========================================== */
+.service-cta-section {
+  padding-top: 40px;
+  padding-bottom: 84px;
+  background-color: #FFFFFF;
+}
+
+.service-cta-box {
+  background: linear-gradient(135deg, #0755C9 0%, #6547F5 100%);
+  border-radius: var(--radius-xl);
+  padding: 60px 48px;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(11, 23, 48, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.service-cta-glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(101, 71, 245, 0.45) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.service-cta-content {
+  max-width: 620px;
+  position: relative;
+  z-index: 2;
+}
+
+.service-cta-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #93C5FD;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.service-cta-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.service-cta-desc {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.service-cta-contact-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.service-cta-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-size: 0.925rem;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.service-cta-contact-item:hover {
+  color: #93C5FD;
+}
+
+.service-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  min-width: 240px;
+}

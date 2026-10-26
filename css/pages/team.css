@@ -1,0 +1,515 @@
+/* ==========================================================================
+   DIGITAL CRAZY HUB — OUR TEAM PAGE STYLES
+   File: css/pages/team.css
+   Architecture: HTML5, CSS3, root.css design tokens, BEM-inspired modular classes
+   MANDATORY GOVERNANCE: ZERO media queries in this file.
+   All responsive media queries are maintained exclusively in css/responsive.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Section 1: Team Introduction Section
+   -------------------------------------------------------------------------- */
+.team-intro-section {
+  padding-top: 5rem;
+  padding-bottom: 3.5rem;
+  background-color: var(--color-bg, #FFFFFF);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-intro-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.team-eyebrow-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.team-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill, 999px);
+  background: var(--color-primary-soft, #F3F6FF);
+  border: 1px solid rgba(7, 85, 201, 0.14);
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary, #0755C9);
+}
+
+.team-intro-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-navy, #0B1730);
+  margin-bottom: 1.125rem;
+  letter-spacing: -0.025em;
+}
+
+.team-intro-desc {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary, #5E687C);
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Team Cards Grid (2-Column Desktop Grid)
+   -------------------------------------------------------------------------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Team Card Component
+   -------------------------------------------------------------------------- */
+.team-card {
+  position: relative;
+  background-color: var(--color-bg, #FFFFFF);
+  border: 1px solid var(--color-border, #E5E8F0);
+  border-radius: var(--radius-lg, 20px);
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(11, 23, 48, 0.06));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg, 0 16px 40px rgba(11, 23, 48, 0.12));
+  border-color: rgba(7, 85, 201, 0.22);
+}
+
+/* --------------------------------------------------------------------------
+   Team Card Media & Photograph Container
+   -------------------------------------------------------------------------- */
+.team-card-media {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #F0F4FF 0%, #F5F6FA 50%, #ECE9FF 100%);
+  overflow: hidden;
+  border-top-left-radius: calc(var(--radius-lg, 20px) - 1px);
+  border-top-right-radius: calc(var(--radius-lg, 20px) - 1px);
+}
+
+/* Subtle decorative ambient glowing aura behind image */
+.team-media-aura {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(101, 71, 245, 0.22) 0%, rgba(7, 85, 201, 0.08) 50%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Decorative index badge pill */
+.team-badge-pill {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: rgba(11, 23, 48, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-fast, 0.2s ease), background var(--transition-fast, 0.2s ease);
+}
+
+.team-card:hover .team-badge-pill {
+  transform: translateY(-2px);
+  background: rgba(7, 85, 201, 0.88);
+}
+
+.team-badge-num {
+  color: var(--color-secondary-light, #EEE9FF);
+}
+
+.team-badge-sep {
+  opacity: 0.45;
+}
+
+.team-badge-tag {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.7rem;
+}
+
+/* Image Wrapper with consistent aspect ratio */
+.team-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 630px;
+  overflow: hidden;
+  background-color: #EBF0FA;
+}
+
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease;
+}
+
+/* Subtle image scale on card hover */
+.team-card:hover .team-img {
+  transform: scale(1.045);
+}
+
+/* Bottom vignette gradient to blend seamlessly into card body */
+.team-img-vignette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(to top, rgba(11, 23, 48, 0.28) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Team Card Content & Details
+   -------------------------------------------------------------------------- */
+.team-card-body {
+  padding: 2.25rem 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Professional Role Badge */
+.team-role-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.team-role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.875rem;
+  border-radius: var(--radius-pill, 999px);
+  background-color: var(--color-primary-soft, #F3F6FF);
+  border: 1px solid rgba(7, 85, 201, 0.16);
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-primary, #0755C9);
+  transition: background-color var(--transition-fast, 0.2s ease),
+    border-color var(--transition-fast, 0.2s ease),
+    color var(--transition-fast, 0.2s ease);
+}
+
+.team-card:hover .team-role-badge {
+  background-color: var(--color-secondary-soft, #F7F4FF);
+  border-color: rgba(101, 71, 245, 0.24);
+  color: var(--color-secondary, #6547F5);
+}
+
+/* Team Member Name */
+.team-member-name {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--color-navy, #0B1730);
+  margin: 0 0 0.875rem 0;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.team-card:hover .team-member-name {
+  color: var(--color-primary, #0755C9);
+}
+
+/* Short Role Description */
+.team-member-bio {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.9625rem;
+  line-height: 1.68;
+  color: var(--color-text-secondary, #5E687C);
+  margin: 0 0 1.75rem 0;
+  flex-grow: 1;
+}
+
+/* Card Divider */
+.team-card-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--color-border, #E5E8F0) 0%, rgba(229, 232, 240, 0.4) 100%);
+  margin-bottom: 1.25rem;
+}
+
+/* Card Footer: "Connect with me" + Social Links */
+.team-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.team-connect-label {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy, #0B1730);
+  letter-spacing: 0.01em;
+}
+
+/* Social Media Buttons Container */
+.team-social-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Social Icon Link Buttons (rendered when genuine URLs exist) */
+.team-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-alt, #F5F6FA);
+  border: 1px solid var(--color-border, #E5E8F0);
+  color: var(--color-navy, #0B1730);
+  transition: background-color var(--transition-fast, 0.2s ease),
+    border-color var(--transition-fast, 0.2s ease),
+    color var(--transition-fast, 0.2s ease),
+    transform var(--transition-fast, 0.2s ease),
+    box-shadow var(--transition-fast, 0.2s ease);
+}
+
+.team-social-btn:hover {
+  background-color: var(--color-primary, #0755C9);
+  border-color: var(--color-primary, #0755C9);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(7, 85, 201, 0.28);
+}
+
+.team-social-btn:focus-visible {
+  outline: 2px solid var(--color-primary, #0755C9);
+  outline-offset: 2px;
+}
+
+.team-social-icon {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+/* Pending client verification status pill */
+.team-social-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted, #8992A5);
+  background: var(--color-bg-alt, #F5F6FA);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill, 999px);
+  border: 1px dashed var(--color-border, #E5E8F0);
+  cursor: default;
+}
+
+.team-social-pending .pending-icon {
+  color: var(--color-secondary, #6547F5);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Scroll Reveal Animation Transitions
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-card-stagger {
+  transition-delay: 0.15s;
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Compact Closing CTA Section
+   -------------------------------------------------------------------------- */
+.team-cta-section {
+  padding-top: 4.5rem;
+  padding-bottom: 6rem;
+  background-color: var(--color-bg, #FFFFFF);
+  position: relative;
+}
+
+.team-cta-box {
+  background: linear-gradient(135deg, #0B1730 0%, #121F3D 55%, #181938 100%);
+  border-radius: var(--radius-lg, 20px);
+  padding: 3.75rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg, 0 16px 40px rgba(11, 23, 48, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.team-cta-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(50px);
+}
+
+.team-cta-glow-1 {
+  top: -60px;
+  left: -40px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(7, 85, 201, 0.35) 0%, transparent 70%);
+}
+
+.team-cta-glow-2 {
+  bottom: -60px;
+  right: -40px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(101, 71, 245, 0.32) 0%, transparent 70%);
+}
+
+.team-cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.team-cta-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-secondary-light, #EEE9FF);
+}
+
+.team-cta-heading {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 2.375rem;
+  font-weight: 800;
+  line-height: 1.24;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.team-cta-heading .text-gradient {
+  background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #F472B6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.team-cta-desc {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 auto 2.25rem;
+}
+
+.team-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.team-cta-btn {
+  padding: 0.875rem 2rem;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 24px rgba(101, 71, 245, 0.35);
+}
+
+.team-cta-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-pill, 999px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.team-cta-phone:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.team-cta-phone:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+.team-cta-phone .phone-icon {
+  color: var(--color-secondary-light, #EEE9FF);
+  flex-shrink: 0;
+}

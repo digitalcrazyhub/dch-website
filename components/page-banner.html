@@ -1,0 +1,145 @@
+<!--
+  Digital Crazy Hub - Reusable Global Inner Page Banner Component
+  Source: components/page-banner.html
+  Features: Left-aligned layout, high-res background image, ambient lightbox aura, micro-animations, and interactive video modal
+-->
+<section class="page-banner" aria-label="Page Introduction Banner">
+  <!-- Dynamic Background Image & Lighting Overlays -->
+  <div class="page-banner-bg" aria-hidden="true">
+    <img src="assets/images/hero/page-banner-bg.jpg" alt="" class="page-banner-bg-img" loading="eager" width="1920" height="1080">
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-glow page-banner-glow-1"></div>
+    <div class="page-banner-glow page-banner-glow-2"></div>
+    <div class="page-banner-grid-pattern"></div>
+  </div>
+
+  <div class="container page-banner-container">
+    <div class="page-banner-grid" id="page-banner-grid">
+
+      <!-- Left Column: Left-aligned Content -->
+      <div class="page-banner-content">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb Navigation">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="index.html" class="breadcrumb-link">
+                <svg class="breadcrumb-home-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L1.5 7.293a1 1 0 0 0 .707 1.707H3v5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3h2v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-5h.793a1 1 0 0 0 .707-1.707L8.707 1.5z"/>
+                </svg>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                <path d="M4.5 2.5L8 6L4.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <span id="page-banner-breadcrumb">About Us</span>
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Left-aligned Eyebrow with Pulsing Live Dot -->
+        <div class="page-banner-eyebrow-wrap">
+          <span class="eyebrow page-banner-eyebrow" id="page-banner-eyebrow">
+            <span class="eyebrow-pulse-dot" aria-hidden="true"></span>
+            <span id="page-banner-eyebrow-text">ABOUT DIGITAL CRAZY HUB</span>
+          </span>
+        </div>
+
+        <!-- Left-aligned Main Heading with Gradient Accent -->
+        <h1 class="page-banner-title" id="page-banner-heading">
+          Get to Know <span class="text-gradient">Digital Crazy Hub</span>
+        </h1>
+
+        <!-- Left-aligned Description -->
+        <p class="page-banner-desc" id="page-banner-description">
+          Discover our approach to digital marketing, creative solutions, and business growth that compounds quarter over quarter.
+        </p>
+
+        <!-- Left-aligned Trust Badges -->
+        <div class="page-banner-badges" id="page-banner-badges" aria-label="Key highlights">
+          <div class="banner-badge-item">
+            <svg class="badge-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Top-Rated Agency</span>
+          </div>
+          <div class="banner-badge-item">
+            <svg class="badge-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>Audited Results</span>
+          </div>
+          <div class="banner-badge-item">
+            <svg class="badge-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Chennai, India</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Lightbox Showcase Card -->
+      <div class="page-banner-aside" id="page-banner-aside">
+        <div class="banner-lightbox-card" id="banner-lightbox-trigger" role="button" tabindex="0" aria-label="Open company showreel video lightbox">
+          <div class="lightbox-card-glow" aria-hidden="true"></div>
+          <div class="lightbox-card-inner">
+            <div class="lightbox-thumb-wrap">
+              <img src="assets/images/company/about-agency.jpg" alt="Digital Crazy Hub Agency Showcase" class="lightbox-thumb-img" width="400" height="240" loading="lazy">
+              <div class="lightbox-thumb-overlay"></div>
+              
+              <!-- Animated Glowing Play Button with Concentric Rings -->
+              <div class="lightbox-play-btn" aria-hidden="true">
+                <span class="play-pulse-ring play-pulse-ring-1"></span>
+                <span class="play-pulse-ring play-pulse-ring-2"></span>
+                <div class="play-btn-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="lightbox-card-caption">
+              <div class="lightbox-caption-tag">
+                <span class="tag-live-dot" aria-hidden="true"></span>
+                <span id="lightbox-card-tag">AGENCY SPOTLIGHT</span>
+              </div>
+              <h3 class="lightbox-caption-title" id="lightbox-card-title">Digital Experiences That Drive Results</h3>
+              <p class="lightbox-caption-sub" id="lightbox-card-sub">Tap to play company showcase (1:30 min)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Reusable Video / Media Lightbox Modal -->
+  <div class="banner-lightbox-modal" id="banner-lightbox-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightbox-modal-title">
+    <div class="lightbox-modal-backdrop" id="lightbox-modal-backdrop"></div>
+    <div class="lightbox-modal-dialog">
+      <div class="lightbox-modal-header">
+        <h3 class="lightbox-modal-title" id="lightbox-modal-title">Digital Crazy Hub — Agency Showcase</h3>
+        <button type="button" class="lightbox-modal-close" id="lightbox-modal-close" aria-label="Close video showcase">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="lightbox-modal-body">
+        <div class="lightbox-video-frame">
+          <iframe id="lightbox-video-player" src="" title="Digital Crazy Hub Agency Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>

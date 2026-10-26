@@ -1,0 +1,4 @@
+# Protect backend directory from direct browser listing and direct script execution
+# Allow API endpoints if needed via specific configuration in api/
+Order Deny,Allow
+Deny from all

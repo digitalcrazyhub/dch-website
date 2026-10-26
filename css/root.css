@@ -1,0 +1,85 @@
+/**
+ * Digital Crazy Hub - Official Brand Design System
+ * Source of Truth: PROJECT_RULES.md
+ */
+
+:root {
+  /* PRIMARY BRAND */
+  --color-primary: #0755C9;
+  --color-primary-hover: #0645A8;
+  --color-primary-light: #E5ECFF;
+  --color-primary-soft: #F3F6FF;
+  --color-primary-dark: #063A91;
+
+  /* SECONDARY BRAND */
+  --color-secondary: #6547F5;
+  --color-secondary-hover: #5135D9;
+  --color-secondary-light: #EEE9FF;
+  --color-secondary-soft: #F7F4FF;
+
+  /* DARK BRAND */
+  --color-navy: #0B1730;
+  --color-navy-light: #142442;
+  --color-black: #05070D;
+
+  /* BACKGROUNDS */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F5F6FA;
+  --color-bg-soft: #F8F9FD;
+  --color-bg-blue: #F0F4FF;
+  --color-bg-dark: #0B1730;
+
+  /* TEXT */
+  --color-text: #18233B;
+  --color-text-secondary: #5E687C;
+  --color-text-muted: #8992A5;
+  --color-text-light: #FFFFFF;
+  --color-text-on-primary: #FFFFFF;
+
+  /* BORDERS */
+  --color-border: #E5E8F0;
+  --color-border-light: #F0F2F7;
+  --color-border-dark: #26334D;
+
+  /* BUTTONS */
+  --color-btn-primary: #6547F5;
+  --color-btn-primary-hover: #5135D9;
+  --color-btn-secondary: #0755C9;
+  --color-btn-secondary-hover: #0645A8;
+
+  /* GRADIENTS */
+  --gradient-brand: linear-gradient(135deg,
+      #0755C9 0%,
+      #6547F5 100%);
+  --gradient-brand-hover: linear-gradient(135deg,
+      #0645A8 0%,
+      #5135D9 100%);
+  --gradient-hero: linear-gradient(135deg,
+      #F5F8FF 0%,
+      #FFFFFF 55%,
+      #F7F4FF 100%);
+  --gradient-dark: linear-gradient(135deg,
+      #0B1730 0%,
+      #111C3D 100%);
+
+  /* SHADOWS */
+  --shadow-sm: 0 2px 8px rgba(11, 23, 48, 0.06);
+  --shadow-md: 0 8px 24px rgba(11, 23, 48, 0.09);
+  --shadow-lg: 0 16px 40px rgba(11, 23, 48, 0.12);
+  --shadow-brand: 0 8px 24px rgba(101, 71, 245, 0.22);
+
+  /* LAYOUT */
+  --container-max: 1240px;
+  --container-padding: 24px;
+
+  /* BORDER RADII */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* TRANSITIONS */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-smooth: 0.5s ease;
+}
