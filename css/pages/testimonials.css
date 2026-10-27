@@ -124,7 +124,7 @@
   outline-offset: 4px;
 }
 
-/* Video Preview Layer */
+/* Video Thumbnail Layer */
 .testimonial-video-wrap {
   position: absolute;
   top: 0;
@@ -135,7 +135,7 @@
   background-color: #05070D;
 }
 
-.testimonial-video-preview {
+.testimonial-thumb-img {
   display: block;
   width: 100%;
   height: 100%;
@@ -144,14 +144,8 @@
   transition: transform var(--transition-smooth, 0.5s ease);
 }
 
-.testimonial-video-card:hover .testimonial-video-preview {
-  transform: scale(1.04);
-}
-
-/* Hide native controls strictly across preview and popup */
-.testimonial-video-preview::-webkit-media-controls,
-.testimonial-lightbox-video::-webkit-media-controls {
-  display: none !important;
+.testimonial-video-card:hover .testimonial-thumb-img {
+  transform: scale(1.05);
 }
 
 /* Ambient Gradient Overlay */
@@ -342,12 +336,13 @@
 }
 
 /* Main Modal Container */
+/* Main Modal Container */
 .testimonial-lightbox-container {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 540px;
-  max-height: 94vh;
+  max-width: 580px;
+  max-height: 96vh;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -368,15 +363,15 @@
 
 .testimonial-lightbox-badge {
   font-family: var(--font-heading, 'Outfit', sans-serif);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   background: rgba(255, 255, 255, 0.12);
   padding: 6px 16px;
   border-radius: var(--radius-pill, 999px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -406,8 +401,8 @@
   outline-offset: 2px;
 }
 
-/* Lightbox Stage */
-.testimonial-lightbox-stage {
+/* Stage Wrapper with Desktop Nav Controls */
+.testimonial-lightbox-stage-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -416,100 +411,186 @@
   pointer-events: auto;
 }
 
-.testimonial-lightbox-video-wrap {
+/* Floating Desktop Previous & Next Buttons */
+.testimonial-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base, 0.25s ease);
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.testimonial-lightbox-nav.prev {
+  left: -70px;
+}
+
+.testimonial-lightbox-nav.next {
+  right: -70px;
+}
+
+.testimonial-lightbox-nav:hover,
+.testimonial-lightbox-nav:focus-visible {
+  background: var(--gradient-brand, linear-gradient(135deg, #0755C9 0%, #6547F5 100%));
+  border-color: rgba(255, 255, 255, 0.85);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 28px rgba(101, 71, 245, 0.55);
+  outline: none;
+}
+
+/* Lightbox Video Stage (Constrained to 9:16 Shorts Portrait Ratio) */
+.testimonial-lightbox-stage {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-height: 82vh;
+  max-width: 420px;
+  touch-action: pan-y; /* Allows horizontal swipe detection without blocking vertical page gestures */
+}
+
+.testimonial-lightbox-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 78vh;
   border-radius: var(--radius-md, 16px);
   overflow: hidden;
-  background-color: #000000;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  cursor: pointer;
+  background-color: #05070D;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
 }
 
-.testimonial-lightbox-video {
-  display: block;
+/* Dynamic Iframe Container */
+.testimonial-iframe-container {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 100%;
-  max-height: 82vh;
-  object-fit: contain;
-  aspect-ratio: 9 / 16;
-  border-radius: var(--radius-md, 16px);
+  height: 100%;
+  z-index: 1;
 }
 
-/* Play/Pause Status Toast */
-.testimonial-video-play-status {
+.testimonial-iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Loading Spinner */
+.testimonial-lightbox-loader {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.7);
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(11, 23, 48, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  color: #FFFFFF;
+  transform: translate(-50%, -50%);
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 5;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.testimonial-video-play-status.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+.testimonial-lightbox-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
-.testimonial-video-play-status .status-icon {
-  display: none;
+.testimonial-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3.5px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-primary-light, #4D8BFF);
+  border-radius: 50%;
+  animation: testimonialSpin 0.8s linear infinite;
 }
 
-.testimonial-video-play-status.is-paused .status-play {
-  display: block;
-  margin-left: 3px;
+@keyframes testimonialSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.testimonial-video-play-status.is-playing .status-pause {
-  display: block;
-}
-
-/* Unmute Button Helper */
-.testimonial-unmute-prompt {
+/* Fallback Container if embed is blocked */
+.testimonial-embed-fallback {
   position: absolute;
-  bottom: 24px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  width: 85%;
+  text-align: center;
+  color: #FFFFFF;
+  z-index: 3;
+  padding: 24px 20px;
+  background: rgba(11, 23, 48, 0.96);
+  border-radius: var(--radius-md, 16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.testimonial-embed-fallback p {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 16px 0;
+}
+
+/* Mobile Controls Bar (Underneath video on small screens) */
+.testimonial-lightbox-mobile-controls {
   display: none;
   align-items: center;
-  gap: 8px;
-  background: var(--gradient-brand, linear-gradient(135deg, #0755C9 0%, #6547F5 100%));
-  color: #FFFFFF;
-  padding: 10px 20px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 420px;
+  margin: 14px auto 0 auto;
+  pointer-events: auto;
+}
+
+.testimonial-mobile-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
   border-radius: var(--radius-pill, 999px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: var(--shadow-brand, 0 8px 24px rgba(101, 71, 245, 0.35));
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.testimonial-mobile-nav-btn:hover,
+.testimonial-mobile-nav-btn:focus-visible {
+  background: var(--gradient-brand, linear-gradient(135deg, #0755C9 0%, #6547F5 100%));
+  border-color: rgba(255, 255, 255, 0.8);
+  outline: none;
+}
+
+.testimonial-mobile-counter {
   font-family: var(--font-heading, 'Outfit', sans-serif);
   font-size: 0.875rem;
   font-weight: 700;
-  cursor: pointer;
-  z-index: 10;
-  transition: transform var(--transition-fast, 0.2s ease);
-}
-
-.testimonial-unmute-prompt.visible {
-  display: inline-flex;
-}
-
-.testimonial-unmute-prompt:hover {
-  transform: translateX(-50%) scale(1.06);
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Body Scroll Lock */

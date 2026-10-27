@@ -1,0 +1,689 @@
+/**
+ * Digital Crazy Hub - Global Navbar Stylesheet
+ * Clean-Room Rebuild - Desktop Nav, Dropdowns, Mobile Header & Drawer Accordions
+ * Vanilla CSS3
+ */
+
+/* ==========================================
+   1. FIXED HEADER & OUTER SHELL
+   ========================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-navy, #0B1730);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color var(--transition-base, 0.3s ease),
+              box-shadow var(--transition-base, 0.3s ease),
+              border-color var(--transition-base, 0.3s ease);
+}
+
+.site-header.scrolled {
+  background-color: rgba(11, 23, 48, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+#navbar-container {
+  display: block;
+  width: 100%;
+}
+
+/* Prevent page background scrolling when mobile navigation drawer is open */
+body.dch-drawer-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+body.dch-drawer-open .site-header,
+body.dch-drawer-open .site-header.scrolled {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ==========================================
+   2. NAVBAR CONTAINER & BRAND LOGO
+   ========================================== */
+.dch-navbar {
+  display: block;
+  width: 100%;
+}
+
+.dch-nav-container {
+  max-width: var(--container-max, 1240px);
+  margin: 0 auto;
+  padding: 12px var(--container-padding, 24px);
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.dch-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity var(--transition-fast, 0.2s ease);
+}
+
+.dch-brand:hover,
+.dch-brand:focus-visible {
+  opacity: 0.92;
+}
+
+.dch-brand-logo {
+  height: 56px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ==========================================
+   3. DESKTOP NAVIGATION
+   ========================================== */
+.dch-desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+}
+
+.dch-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dch-nav-item {
+  position: relative;
+  list-style: none;
+}
+
+.dch-nav-link {
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 8px 4px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.dch-nav-link:hover,
+.dch-nav-link:focus-visible {
+  color: var(--color-secondary-light, #EEE9FF);
+}
+
+.dch-nav-link.active {
+  color: #FFFFFF;
+}
+
+.dch-nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 4px;
+  right: 4px;
+  height: 2.5px;
+  background: var(--gradient-brand, linear-gradient(135deg, #0755C9 0%, #6547F5 100%));
+  border-radius: var(--radius-pill, 999px);
+}
+
+/* ==========================================
+   4. DESKTOP DROPDOWNS (About Us & Services)
+   ========================================== */
+.dch-dropdown-trigger-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+}
+
+.dch-dropdown-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: #FFFFFF;
+  border-radius: var(--radius-sm, 6px);
+  line-height: 1;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.dch-chevron-icon {
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.dch-has-dropdown:hover .dch-dropdown-btn,
+.dch-has-dropdown:hover .dch-nav-link,
+.dch-has-dropdown.is-open .dch-dropdown-btn,
+.dch-has-dropdown.is-open .dch-nav-link {
+  color: var(--color-secondary-light, #EEE9FF);
+}
+
+.dch-has-dropdown:hover .dch-chevron-icon,
+.dch-has-dropdown.is-open .dch-chevron-icon {
+  transform: rotate(180deg);
+}
+
+.dch-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background-color: #FFFFFF;
+  border-radius: var(--radius-md, 12px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border, #E5E8F0);
+  min-width: 250px;
+  padding: 8px 0;
+  margin: 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 1050;
+}
+
+/* Invisible hover bridge prevents premature closing */
+.dch-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
+}
+
+.dch-services-dropdown {
+  min-width: 270px;
+}
+
+.dch-has-dropdown:hover .dch-dropdown-menu,
+.dch-has-dropdown.is-open .dch-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dch-dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text, #18233B);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background-color var(--transition-fast, 0.2s ease),
+              color var(--transition-fast, 0.2s ease),
+              border-color var(--transition-fast, 0.2s ease),
+              padding-left var(--transition-fast, 0.2s ease);
+}
+
+.dch-dropdown-link:hover,
+.dch-dropdown-link:focus-visible,
+.dch-dropdown-link.active {
+  background-color: var(--color-primary-soft, #F3F6FF);
+  color: var(--color-primary, #0755C9);
+  border-left-color: var(--color-primary, #0755C9);
+  padding-left: 24px;
+}
+
+/* ==========================================
+   5. DESKTOP CTA BUTTON
+   ========================================== */
+.dch-nav-cta-wrapper {
+  flex-shrink: 0;
+}
+
+.dch-nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gradient-brand, linear-gradient(135deg, #0755C9 0%, #6547F5 100%));
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 11px 22px;
+  border-radius: var(--radius-pill, 999px);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(101, 71, 245, 0.35);
+  white-space: nowrap;
+  transition: transform var(--transition-fast, 0.2s ease),
+              box-shadow var(--transition-fast, 0.2s ease),
+              background var(--transition-fast, 0.2s ease);
+}
+
+.dch-nav-cta-btn:hover,
+.dch-nav-cta-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(101, 71, 245, 0.45);
+  color: #FFFFFF;
+}
+
+.dch-nav-cta-btn .dch-btn-arrow {
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.dch-nav-cta-btn:hover .dch-btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================
+   6. MOBILE TOGGLE (HAMBURGER BUTTON)
+   ========================================== */
+.dch-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm, 6px);
+  color: #FFFFFF;
+  z-index: 1010;
+  transition: background-color var(--transition-fast, 0.2s ease);
+}
+
+.dch-mobile-toggle:focus-visible {
+  outline: 2px solid var(--color-primary-light, #E5ECFF);
+  outline-offset: 2px;
+}
+
+.dch-hamburger-icon {
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.dch-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  transition: transform 0.28s ease, opacity 0.24s ease;
+}
+
+.dch-mobile-toggle.is-active .dch-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.dch-mobile-toggle.is-active .dch-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.dch-mobile-toggle.is-active .dch-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==========================================
+   7. MOBILE DRAWER BACKDROP OVERLAY
+   ========================================== */
+.dch-drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(5, 7, 13, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dch-drawer-backdrop.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ==========================================
+   8. MOBILE SLIDE-IN DRAWER
+   ========================================== */
+.dch-mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 380px;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #FFFFFF;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.22);
+}
+
+.dch-mobile-drawer.is-open {
+  transform: translateX(0);
+}
+
+.dch-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border-light, #F0F2F7);
+  background-color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.dch-drawer-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.dch-drawer-logo {
+  height: 44px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+}
+
+.dch-drawer-close {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border, #E5E8F0);
+  background-color: var(--color-bg-alt, #F5F6FA);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--color-text, #18233B);
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.dch-drawer-close:hover,
+.dch-drawer-close:focus-visible {
+  background-color: var(--color-primary-soft, #F3F6FF);
+  color: var(--color-primary, #0755C9);
+  border-color: var(--color-primary-light, #E5ECFF);
+}
+
+.dch-drawer-body {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 18px 24px;
+}
+
+.dch-drawer-footer {
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--color-border-light, #F0F2F7);
+  background-color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.dch-drawer-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: var(--gradient-brand, linear-gradient(135deg, #0755C9 0%, #6547F5 100%));
+  border-radius: var(--radius-pill, 999px);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(101, 71, 245, 0.35);
+  text-align: center;
+  transition: transform var(--transition-fast, 0.2s ease),
+              box-shadow var(--transition-fast, 0.2s ease);
+}
+
+.dch-drawer-cta-btn:hover,
+.dch-drawer-cta-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(101, 71, 245, 0.45);
+  color: #FFFFFF;
+}
+
+/* ==========================================
+   9. MOBILE DRAWER NAVIGATION & IN-FLOW ACCORDIONS
+   ========================================== */
+.dch-drawer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dch-drawer-item {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border-light, #F0F2F7);
+}
+
+.dch-drawer-link {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 12px 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text, #18233B);
+  text-decoration: none;
+  border-radius: var(--radius-sm, 6px);
+  transition: color var(--transition-fast, 0.2s ease),
+              background-color var(--transition-fast, 0.2s ease);
+}
+
+.dch-drawer-link:hover,
+.dch-drawer-link:focus-visible,
+.dch-drawer-link.active {
+  color: var(--color-primary, #0755C9);
+}
+
+/* Accordion Header Button (Full-width touch target for expanding submenus) */
+.dch-accordion-header-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 8px;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text, #18233B);
+  cursor: pointer;
+  border-radius: var(--radius-sm, 6px);
+  text-align: left;
+  transition: color var(--transition-fast, 0.2s ease),
+              background-color var(--transition-fast, 0.2s ease);
+}
+
+.dch-accordion-header-btn:hover,
+.dch-accordion-header-btn:focus-visible,
+.dch-drawer-accordion.is-expanded .dch-accordion-header-btn {
+  color: var(--color-primary, #0755C9);
+  background-color: var(--color-primary-soft, #F3F6FF);
+}
+
+.dch-accordion-chevron {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: currentColor;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dch-drawer-accordion.is-expanded .dch-accordion-chevron {
+  transform: rotate(180deg);
+}
+
+/* In-Flow Accordion Body (pushes content downward smoothly, stays strictly in drawer) */
+.dch-accordion-collapse {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              visibility 0.35s ease;
+  background-color: var(--color-bg-soft, #F8F9FD);
+  border-radius: var(--radius-sm, 6px);
+  margin: 0;
+}
+
+.dch-drawer-accordion.is-expanded .dch-accordion-collapse {
+  max-height: 800px;
+  opacity: 1;
+  visibility: visible;
+  margin: 4px 0 12px 0;
+  border: 1px solid var(--color-border-light, #F0F2F7);
+}
+
+.dch-accordion-menu {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+}
+
+.dch-accordion-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--color-text, #18233B);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background-color var(--transition-fast, 0.2s ease),
+              color var(--transition-fast, 0.2s ease),
+              border-color var(--transition-fast, 0.2s ease),
+              padding-left var(--transition-fast, 0.2s ease);
+}
+
+.dch-accordion-link:hover,
+.dch-accordion-link:focus-visible,
+.dch-accordion-link.active {
+  background-color: var(--color-primary-soft, #F3F6FF);
+  color: var(--color-primary, #0755C9);
+  border-left-color: var(--color-primary, #0755C9);
+  padding-left: 20px;
+}
+
+/* ==========================================
+   10. RESPONSIVE LAYOUT SWITCHING
+   Switch to mobile drawer before desktop crowding (<= 1100px)
+   ========================================== */
+@media screen and (max-width: 1100px) {
+  .site-header,
+  .site-header.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .dch-desktop-nav {
+    display: none !important;
+  }
+
+  .dch-mobile-toggle {
+    display: inline-flex !important;
+    margin-left: auto;
+  }
+
+  .dch-nav-container {
+    min-height: 68px;
+    padding: 10px var(--container-padding, 20px);
+  }
+
+  .dch-brand-logo {
+    height: 48px;
+    max-width: 175px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dch-nav-container {
+    min-height: 62px;
+    padding: 8px var(--container-padding, 16px);
+  }
+
+  .dch-brand-logo {
+    height: 42px;
+    max-width: 150px;
+  }
+
+  .dch-mobile-drawer {
+    max-width: 100vw;
+  }
+
+  .dch-drawer-header {
+    padding: 14px 16px;
+  }
+
+  .dch-drawer-body {
+    padding: 10px 14px 20px;
+  }
+
+  .dch-drawer-footer {
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .dch-brand-logo {
+    height: 38px;
+    max-width: 135px;
+  }
+
+  .dch-drawer-link {
+    font-size: 0.95rem;
+  }
+
+  .dch-accordion-link {
+    font-size: 0.875rem;
+    padding: 9px 12px;
+  }
+}

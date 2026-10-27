@@ -1,73 +1,80 @@
-<nav class="navbar" aria-label="Main Navigation">
-  <div class="navbar-container">
-    <a href="index.html" class="navbar-brand" aria-label="Digital Crazy Hub Home">
+<nav class="dch-navbar" id="dch-navbar" aria-label="Main Navigation">
+  <div class="dch-nav-container">
+    <!-- Brand Logo -->
+    <a href="index.html" class="dch-brand" aria-label="Digital Crazy Hub Home">
       <img src="assets/images/logo/company-logo.png" alt="Digital Crazy Hub - Digital Marketing Agency Chennai"
-        class="brand-logo" width="180" height="52">
+        class="dch-brand-logo" width="180" height="52">
     </a>
 
-    <!-- Desktop & Mobile Navigation Links -->
-    <div class="nav-menu" id="nav-menu">
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a href="index.html" class="nav-link">Home</a>
+    <!-- Desktop Navigation -->
+    <div class="dch-desktop-nav" aria-label="Desktop Navigation Links">
+      <ul class="dch-nav-list" role="menubar">
+        <li class="dch-nav-item" role="none">
+          <a href="index.html" class="dch-nav-link" role="menuitem">Home</a>
         </li>
-        <li class="nav-item dropdown" id="about-dropdown">
-          <div class="nav-dropdown-wrapper">
-            <a href="about.html" class="nav-link">About Us</a>
-            <button type="button" class="dropdown-toggle-btn" id="about-menu-btn" aria-label="Toggle About submenu"
-              aria-expanded="false" aria-haspopup="true">
-              <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+
+        <!-- Desktop Dropdown: About Us -->
+        <li class="dch-nav-item dch-has-dropdown" role="none" data-dropdown="about">
+          <div class="dch-dropdown-trigger-group">
+            <a href="about.html" class="dch-nav-link" role="menuitem">About Us</a>
+            <button type="button" class="dch-dropdown-btn" id="dch-about-dropdown-btn"
+              aria-label="Toggle About Us submenu" aria-expanded="false" aria-haspopup="true" aria-controls="dch-desktop-about-menu">
+              <svg class="dch-chevron-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </button>
           </div>
-          <ul class="dropdown-menu" aria-labelledby="about-menu-btn">
-            <li><a href="team.html" class="dropdown-item">Our Team</a></li>
-            <li><a href="achievements.html" class="dropdown-item">Our Achievements</a></li>
-            <li><a href="clients.html" class="dropdown-item">Coffee with Clients</a></li>
+          <ul class="dch-dropdown-menu" id="dch-desktop-about-menu" role="menu" aria-label="About Us Submenu">
+            <li role="none"><a href="team.html" class="dch-dropdown-link" role="menuitem">Our Team</a></li>
+            <li role="none"><a href="achievements.html" class="dch-dropdown-link" role="menuitem">Our Achievements</a></li>
+            <li role="none"><a href="clients.html" class="dch-dropdown-link" role="menuitem">Coffee with Clients</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown" id="services-dropdown">
-          <div class="nav-dropdown-wrapper">
-            <a href="services.html" class="nav-link">Services</a>
-            <button type="button" class="dropdown-toggle-btn" id="services-menu-btn"
-              aria-label="Toggle Services submenu" aria-expanded="false" aria-haspopup="true">
-              <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+
+        <!-- Desktop Dropdown: Services -->
+        <li class="dch-nav-item dch-has-dropdown" role="none" data-dropdown="services">
+          <div class="dch-dropdown-trigger-group">
+            <a href="services.html" class="dch-nav-link" role="menuitem">Services</a>
+            <button type="button" class="dch-dropdown-btn" id="dch-services-dropdown-btn"
+              aria-label="Toggle Services submenu" aria-expanded="false" aria-haspopup="true" aria-controls="dch-desktop-services-menu">
+              <svg class="dch-chevron-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </button>
           </div>
-          <ul class="dropdown-menu" aria-labelledby="services-menu-btn">
-            <li><a href="services/social-media-marketing.html" class="dropdown-item">Social Media Marketing</a></li>
-            <li><a href="services/google-ads.html" class="dropdown-item">Google Ads</a></li>
-            <li><a href="services/seo-services.html" class="dropdown-item">SEO Services</a></li>
-            <li><a href="services/web-app-development.html" class="dropdown-item">Web & App Development</a></li>
-            <li><a href="services/personal-branding.html" class="dropdown-item">Personal Branding</a></li>
-            <li><a href="services/lead-generation.html" class="dropdown-item">Lead Generation</a></li>
-            <li><a href="services/content-marketing.html" class="dropdown-item">Content Marketing</a></li>
-            <li><a href="services/creative-production.html" class="dropdown-item">Ad Poster & Video Making</a></li>
+          <ul class="dch-dropdown-menu dch-services-dropdown" id="dch-desktop-services-menu" role="menu" aria-label="Services Submenu">
+            <li role="none"><a href="services/social-media-marketing.html" class="dch-dropdown-link" role="menuitem">Social Media Marketing</a></li>
+            <li role="none"><a href="services/google-ads.html" class="dch-dropdown-link" role="menuitem">Google Ads</a></li>
+            <li role="none"><a href="services/seo-services.html" class="dch-dropdown-link" role="menuitem">SEO Services</a></li>
+            <li role="none"><a href="services/web-app-development.html" class="dch-dropdown-link" role="menuitem">Web & App Development</a></li>
+            <li role="none"><a href="services/personal-branding.html" class="dch-dropdown-link" role="menuitem">Personal Branding</a></li>
+            <li role="none"><a href="services/lead-generation.html" class="dch-dropdown-link" role="menuitem">Lead Generation</a></li>
+            <li role="none"><a href="services/content-marketing.html" class="dch-dropdown-link" role="menuitem">Content Marketing</a></li>
+            <li role="none"><a href="services/creative-production.html" class="dch-dropdown-link" role="menuitem">Ad Poster & Video Making</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="projects.html" class="nav-link">Projects</a>
+
+        <li class="dch-nav-item" role="none">
+          <a href="projects.html" class="dch-nav-link" role="menuitem">Projects</a>
         </li>
-        <li class="nav-item">
-          <a href="testimonials.html" class="nav-link">Testimonials</a>
+        <li class="dch-nav-item" role="none">
+          <a href="testimonials.html" class="dch-nav-link" role="menuitem">Testimonials</a>
         </li>
-        <li class="nav-item">
-          <a href="blog.html" class="nav-link">Blog</a>
+        <li class="dch-nav-item" role="none">
+          <a href="blog.html" class="dch-nav-link" role="menuitem">Blog</a>
         </li>
-        <li class="nav-item">
-          <a href="contact.html" class="nav-link">Contact Us</a>
+        <li class="dch-nav-item" role="none">
+          <a href="contact.html" class="dch-nav-link" role="menuitem">Contact Us</a>
         </li>
       </ul>
 
-      <div class="nav-cta-wrapper">
-        <a href="contact.html" class="btn btn-primary btn-pill nav-cta">
+      <!-- Desktop Primary CTA -->
+      <div class="dch-nav-cta-wrapper">
+        <a href="contact.html" class="dch-nav-cta-btn">
           <span>Book a Free Consultation</span>
-          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <svg class="dch-btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
@@ -75,12 +82,108 @@
       </div>
     </div>
 
-    <!-- Mobile Hamburger Toggle -->
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-menu"
-      aria-expanded="false">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
+    <!-- Mobile Hamburger Toggle Button -->
+    <button type="button" class="dch-mobile-toggle" id="dch-mobile-toggle"
+      aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="dch-mobile-drawer">
+      <span class="dch-hamburger-icon">
+        <span class="dch-bar"></span>
+        <span class="dch-bar"></span>
+        <span class="dch-bar"></span>
+      </span>
     </button>
   </div>
+
+  <!-- Mobile Drawer Backdrop Overlay -->
+  <div class="dch-drawer-backdrop" id="dch-drawer-backdrop" aria-hidden="true"></div>
+
+  <!-- Mobile Slide-In Navigation Drawer -->
+  <aside class="dch-mobile-drawer" id="dch-mobile-drawer" aria-label="Mobile Navigation" aria-hidden="true" inert>
+    <div class="dch-drawer-header">
+      <a href="index.html" class="dch-drawer-brand" aria-label="Digital Crazy Hub Home">
+        <img src="assets/images/logo/company-logo.png" alt="Digital Crazy Hub" class="dch-drawer-logo" width="150" height="44">
+      </a>
+      <button type="button" class="dch-drawer-close" id="dch-drawer-close" aria-label="Close mobile navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="dch-drawer-body">
+      <nav class="dch-drawer-nav" aria-label="Mobile Navigation Links">
+        <ul class="dch-drawer-list">
+          <li class="dch-drawer-item">
+            <a href="index.html" class="dch-drawer-link">Home</a>
+          </li>
+
+          <!-- Mobile In-Flow Accordion: About Us -->
+          <li class="dch-drawer-item dch-drawer-accordion" data-accordion="about">
+            <button type="button" class="dch-accordion-header-btn" id="dch-mobile-about-btn"
+              aria-expanded="false" aria-controls="dch-mobile-about-menu" aria-label="Toggle About Us submenu">
+              <span class="dch-accordion-title">About Us</span>
+              <svg class="dch-accordion-chevron" width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="dch-accordion-collapse" id="dch-mobile-about-menu" role="region" aria-labelledby="dch-mobile-about-btn">
+              <ul class="dch-accordion-menu">
+                <li><a href="about.html" class="dch-accordion-link">About Overview</a></li>
+                <li><a href="team.html" class="dch-accordion-link">Our Team</a></li>
+                <li><a href="achievements.html" class="dch-accordion-link">Our Achievements</a></li>
+                <li><a href="clients.html" class="dch-accordion-link">Coffee with Clients</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Mobile In-Flow Accordion: Services -->
+          <li class="dch-drawer-item dch-drawer-accordion" data-accordion="services">
+            <button type="button" class="dch-accordion-header-btn" id="dch-mobile-services-btn"
+              aria-expanded="false" aria-controls="dch-mobile-services-menu" aria-label="Toggle Services submenu">
+              <span class="dch-accordion-title">Services</span>
+              <svg class="dch-accordion-chevron" width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="dch-accordion-collapse" id="dch-mobile-services-menu" role="region" aria-labelledby="dch-mobile-services-btn">
+              <ul class="dch-accordion-menu">
+                <li><a href="services.html" class="dch-accordion-link">All Services</a></li>
+                <li><a href="services/social-media-marketing.html" class="dch-accordion-link">Social Media Marketing</a></li>
+                <li><a href="services/google-ads.html" class="dch-accordion-link">Google Ads</a></li>
+                <li><a href="services/seo-services.html" class="dch-accordion-link">SEO Services</a></li>
+                <li><a href="services/web-app-development.html" class="dch-accordion-link">Web & App Development</a></li>
+                <li><a href="services/personal-branding.html" class="dch-accordion-link">Personal Branding</a></li>
+                <li><a href="services/lead-generation.html" class="dch-accordion-link">Lead Generation</a></li>
+                <li><a href="services/content-marketing.html" class="dch-accordion-link">Content Marketing</a></li>
+                <li><a href="services/creative-production.html" class="dch-accordion-link">Ad Poster & Video Making</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="dch-drawer-item">
+            <a href="projects.html" class="dch-drawer-link">Projects</a>
+          </li>
+          <li class="dch-drawer-item">
+            <a href="testimonials.html" class="dch-drawer-link">Testimonials</a>
+          </li>
+          <li class="dch-drawer-item">
+            <a href="blog.html" class="dch-drawer-link">Blog</a>
+          </li>
+          <li class="dch-drawer-item">
+            <a href="contact.html" class="dch-drawer-link">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Drawer Footer CTA -->
+    <div class="dch-drawer-footer">
+      <a href="contact.html" class="dch-drawer-cta-btn">
+        <span>Book a Free Consultation</span>
+        <svg class="dch-btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </aside>
 </nav>

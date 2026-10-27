@@ -4,62 +4,79 @@
  * Vanilla JavaScript ES6+
  *
  * Responsibilities:
- * 1. Verified Video Manifest: 5 authentic client testimonial video files.
- * 2. Background Preview Controller: Autoplay muted in loop with IntersectionObserver optimization.
- * 3. Interactive Video Lightbox Modal:
- *    - Opens on card click or keyboard activation.
- *    - Autoplays with sound enabled.
- *    - Graceful fallback with "Tap for Sound" if browser policy blocks unmuted autoplay.
- *    - Native controls remain hidden; click inside video toggles play/pause with subtle status feedback.
+ * 1. Centralized YouTube Shorts Manifest: 6 unique client testimonial videos.
+ * 2. On-demand Embedded Player: Instantiates official YouTube iframe only when requested.
+ * 3. Video Modal Lightbox:
+ *    - Opens on card click or keyboard activation (Enter / Space).
+ *    - Centered portrait (9:16) presentation.
+ *    - Desktop & mobile Previous / Next buttons with circular navigation (1 -> 6, 6 -> 1).
  *    - Dismiss via close button, backdrop click, or Escape key.
- *    - Full focus management (focus trapped inside dialog, focus restored to triggering card).
- *    - Background body scroll locking (overflow: hidden).
+ *    - ArrowLeft / ArrowRight keyboard navigation.
+ *    - Horizontal touch swipe gestures with velocity & angle filters.
+ *    - Full focus trap & restoration to triggering card.
+ *    - Clean destruction of iframe on close/switch to immediately terminate playback.
+ *    - Loading indicator and graceful fallback link to YouTube.
  */
 
 export const TESTIMONIAL_VIDEOS = [
   {
-    id: 1,
-    src: 'assets/videos/testimonial/testimonial-1.mp4',
-    client: 'Client Story #1',
-    tag: 'Verified Client',
-    title: 'Driving High-Value Growth & Customer Acquisition',
-    meta: 'Digital Marketing Success',
+    index: 0,
+    youtubeId: 'QF5Cw0pFvtM',
+    embedUrl: 'https://www.youtube.com/embed/QF5Cw0pFvtM',
+    youtubeUrl: 'https://youtube.com/shorts/QF5Cw0pFvtM',
+    thumbnailUrl: 'https://img.youtube.com/vi/QF5Cw0pFvtM/hqdefault.jpg',
+    tag: 'Story #1',
+    title: 'Digital Marketing Training Feedback & Growth',
     rating: 5
   },
   {
-    id: 2,
-    src: 'assets/videos/testimonial/testimonial-2.mp4',
-    client: 'Client Story #2',
-    tag: 'Verified Client',
-    title: 'Scaling Brand Reach with Targeted Social & Ads',
-    meta: 'Performance Campaign',
+    index: 1,
+    youtubeId: '6kOk99bZVU8',
+    embedUrl: 'https://www.youtube.com/embed/6kOk99bZVU8',
+    youtubeUrl: 'https://youtube.com/shorts/6kOk99bZVU8',
+    thumbnailUrl: 'https://img.youtube.com/vi/6kOk99bZVU8/hqdefault.jpg',
+    tag: 'Story #2',
+    title: 'Student Success Story & Measurable Results',
     rating: 5
   },
   {
-    id: 3,
-    src: 'assets/videos/testimonial/testimonial-3.mp4',
-    client: 'Client Story #3',
-    tag: 'Verified Client',
-    title: 'Measurable SEO & Qualified Lead Generation',
-    meta: 'Organic Growth Strategy',
+    index: 2,
+    youtubeId: '8C3peuzmF9M',
+    embedUrl: 'https://www.youtube.com/embed/8C3peuzmF9M',
+    youtubeUrl: 'https://youtube.com/shorts/8C3peuzmF9M',
+    thumbnailUrl: 'https://img.youtube.com/vi/8C3peuzmF9M/hqdefault.jpg',
+    tag: 'Story #3',
+    title: 'Why Learners Choose Digital Crazy Hub',
     rating: 5
   },
   {
-    id: 4,
-    src: 'assets/videos/testimonial/testimonial-4.mp4',
-    client: 'Client Story #4',
-    tag: 'Verified Client',
-    title: 'Accelerated Business Inquiries & Sales Pipeline',
-    meta: 'Comprehensive Digital Funnel',
+    index: 3,
+    youtubeId: 'oAPa7foomvc',
+    embedUrl: 'https://www.youtube.com/embed/oAPa7foomvc',
+    youtubeUrl: 'https://youtube.com/shorts/oAPa7foomvc',
+    thumbnailUrl: 'https://img.youtube.com/vi/oAPa7foomvc/hqdefault.jpg',
+    tag: 'Story #4',
+    title: 'Digital Marketing Course Review & Practical Skills',
     rating: 5
   },
   {
-    id: 5,
-    src: 'assets/videos/testimonial/testimonial-5.mp4',
-    client: 'Client Story #5',
-    tag: 'Verified Client',
-    title: 'Strategic Partnership & Compounding Returns',
-    meta: 'Long-term Growth Partner',
+    index: 4,
+    youtubeId: 'diEbe2G2PQM',
+    embedUrl: 'https://www.youtube.com/embed/diEbe2G2PQM',
+    youtubeUrl: 'https://youtube.com/shorts/diEbe2G2PQM',
+    thumbnailUrl: 'https://img.youtube.com/vi/diEbe2G2PQM/hqdefault.jpg',
+    tag: 'Story #5',
+    title: 'From Beginner to Professional Marketer',
+    rating: 5
+  },
+  {
+    index: 5,
+    youtubeId: 'Ysf-as3Eo5s',
+    embedUrl: 'https://www.youtube.com/embed/Ysf-as3Eo5s',
+    youtubeUrl: 'https://youtube.com/shorts/Ysf-as3Eo5s',
+    thumbnailUrl: 'https://img.youtube.com/vi/Ysf-as3Eo5s/hqdefault.jpg',
+    tag: 'Story #6',
+    title: 'Career Transformation & Strategic Marketing',
     rating: 5
   }
 ];
@@ -75,153 +92,198 @@ export function initTestimonials() {
   if (grid.dataset.initialized === 'true') return;
   grid.dataset.initialized = 'true';
 
+  // Lightbox DOM references
   const lightboxBackdrop = document.getElementById('testimonial-lightbox-backdrop');
   const lightboxClose = document.getElementById('testimonial-lightbox-close');
-  const lightboxVideo = document.getElementById('testimonial-lightbox-video');
-  const videoWrap = document.querySelector('.testimonial-lightbox-video-wrap');
-  const playStatus = document.getElementById('video-play-status');
-  const unmutePrompt = document.getElementById('testimonial-unmute-prompt');
-  const badgeText = lightbox.querySelector('.testimonial-lightbox-badge');
+  const prevBtn = document.getElementById('testimonial-lightbox-prev');
+  const nextBtn = document.getElementById('testimonial-lightbox-next');
+  const mobilePrevBtn = document.getElementById('testimonial-mobile-prev');
+  const mobileNextBtn = document.getElementById('testimonial-mobile-next');
+  const mobileCounter = document.getElementById('testimonial-mobile-counter');
+  const badgeText = document.getElementById('testimonial-lightbox-badge');
+  const stage = document.getElementById('testimonial-lightbox-stage');
+  const iframeContainer = document.getElementById('testimonial-iframe-container');
+  const loader = document.getElementById('testimonial-lightbox-loader');
+  const fallbackBox = document.getElementById('testimonial-embed-fallback');
+  const fallbackLink = document.getElementById('testimonial-fallback-link');
 
+  const totalVideos = TESTIMONIAL_VIDEOS.length;
+  let currentIndex = 0;
   let lastFocusedCard = null;
-  let statusTimeout = null;
+  let loadSafetyTimer = null;
 
   /* --------------------------------------------------------------------------
-     1. Performance-Conscious Intersection Observer for Grid Previews
+     1. Video Player Loader & Switcher
      -------------------------------------------------------------------------- */
-  const previewVideos = grid.querySelectorAll('.testimonial-video-preview');
-  if ('IntersectionObserver' in window && previewVideos.length > 0) {
-    const previewObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            if (video.paused) {
-              const playPromise = video.play();
-              if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                  // Autoplay policy prevented playback; will retry on interaction
-                });
-              }
-            }
-          } else {
-            if (!video.paused) {
-              video.pause();
-            }
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    previewVideos.forEach((video) => previewObserver.observe(video));
-  }
-
-  /* --------------------------------------------------------------------------
-     2. Lightbox Play / Pause Status Indicator
-     -------------------------------------------------------------------------- */
-  const showPlayStatus = (isPaused) => {
-    if (!playStatus) return;
-    clearTimeout(statusTimeout);
-    playStatus.classList.remove('is-playing', 'is-paused', 'show');
-
-    if (isPaused) {
-      playStatus.classList.add('is-paused');
+  const loadVideoByIndex = (index) => {
+    // Implement circular navigation bounds
+    if (index < 0) {
+      currentIndex = totalVideos - 1;
+    } else if (index >= totalVideos) {
+      currentIndex = 0;
     } else {
-      playStatus.classList.add('is-playing');
+      currentIndex = index;
     }
 
-    // Trigger reflow to restart transition
-    void playStatus.offsetWidth;
-    playStatus.classList.add('show');
+    const video = TESTIMONIAL_VIDEOS[currentIndex];
+    if (!video) return;
 
-    statusTimeout = setTimeout(() => {
-      playStatus.classList.remove('show');
-    }, 600);
+    // Immediately stop and destroy any existing player to prevent background audio
+    if (iframeContainer) {
+      iframeContainer.innerHTML = '';
+    }
+
+    // Reset fallback and display loading indicator
+    if (fallbackBox) {
+      fallbackBox.style.display = 'none';
+    }
+    if (loader) {
+      loader.classList.remove('hidden');
+      loader.setAttribute('aria-hidden', 'false');
+    }
+    if (loadSafetyTimer) {
+      clearTimeout(loadSafetyTimer);
+    }
+
+    // Update UI Indicators
+    if (badgeText) {
+      badgeText.textContent = `Client Story #${currentIndex + 1} of ${totalVideos}`;
+    }
+    if (mobileCounter) {
+      mobileCounter.textContent = `${currentIndex + 1} / ${totalVideos}`;
+    }
+    if (fallbackLink) {
+      fallbackLink.href = video.youtubeUrl;
+    }
+
+    // Construct official YouTube embed iframe
+    const iframe = document.createElement('iframe');
+    const embedUrl = `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&playsinline=1&rel=0&enablejsapi=1`;
+
+    iframe.setAttribute('src', embedUrl);
+    iframe.setAttribute('title', `${video.title} - Digital Crazy Hub Client Testimonial`);
+    iframe.setAttribute(
+      'allow',
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+    );
+    iframe.setAttribute('allowfullscreen', 'true');
+    iframe.setAttribute('loading', 'eager');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+
+    // Hide loader once the iframe document loads
+    iframe.addEventListener('load', () => {
+      if (loader) {
+        loader.classList.add('hidden');
+        loader.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // In case embed fails or error occurs
+    iframe.addEventListener('error', () => {
+      if (loader) {
+        loader.classList.add('hidden');
+        loader.setAttribute('aria-hidden', 'true');
+      }
+      if (fallbackBox) {
+        fallbackBox.style.display = 'block';
+      }
+    });
+
+    // Safety timeout: remove loader after 6s regardless of network conditions
+    loadSafetyTimer = setTimeout(() => {
+      if (loader) {
+        loader.classList.add('hidden');
+        loader.setAttribute('aria-hidden', 'true');
+      }
+    }, 6000);
+
+    if (iframeContainer) {
+      iframeContainer.appendChild(iframe);
+    }
   };
 
   /* --------------------------------------------------------------------------
-     3. Lightbox Open and Play Logic
+     2. Lightbox Open and Close Handlers
      -------------------------------------------------------------------------- */
-  const openLightbox = (videoSrc, clientLabel) => {
-    if (!lightboxVideo) return;
-
-    if (badgeText && clientLabel) {
-      badgeText.textContent = clientLabel;
-    }
-
-    // Set video source
-    lightboxVideo.src = videoSrc;
-    lightboxVideo.currentTime = 0;
-    lightboxVideo.muted = false;
+  const openLightbox = (index, triggerElement) => {
+    lastFocusedCard = triggerElement || null;
 
     // Show modal & lock background scroll
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lightbox-open');
 
-    // Hide any previous unmute prompt
-    if (unmutePrompt) unmutePrompt.classList.remove('visible');
+    // Load requested video
+    loadVideoByIndex(index);
 
-    // Attempt playback with sound enabled
-    const playPromise = lightboxVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((err) => {
-        console.warn('Direct unmuted playback restricted by browser policy:', err);
-        // Fallback: Start muted and present prominent un-mute prompt
-        lightboxVideo.muted = true;
-        lightboxVideo.play().catch(() => {});
-        if (unmutePrompt) {
-          unmutePrompt.classList.add('visible');
-        }
-      });
-    }
-
-    // Shift focus into modal for keyboard navigation
-    if (lightboxClose) {
-      setTimeout(() => lightboxClose.focus(), 50);
-    }
+    // Shift keyboard focus into modal for accessible navigation
+    requestAnimationFrame(() => {
+      if (lightboxClose) {
+        lightboxClose.focus();
+      }
+    });
   };
 
-  /* --------------------------------------------------------------------------
-     4. Lightbox Close Logic
-     -------------------------------------------------------------------------- */
   const closeLightbox = () => {
     if (!lightbox.classList.contains('is-open')) return;
 
-    if (lightboxVideo) {
-      lightboxVideo.pause();
-      lightboxVideo.currentTime = 0;
-      lightboxVideo.src = '';
+    if (loadSafetyTimer) {
+      clearTimeout(loadSafetyTimer);
     }
 
+    // Completely remove iframe to kill YouTube player and playback audio immediately
+    if (iframeContainer) {
+      iframeContainer.innerHTML = '';
+    }
+    if (fallbackBox) {
+      fallbackBox.style.display = 'none';
+    }
+    if (loader) {
+      loader.classList.add('hidden');
+      loader.setAttribute('aria-hidden', 'true');
+    }
+
+    // Close modal & unlock background scrolling
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-open');
 
-    if (unmutePrompt) {
-      unmutePrompt.classList.remove('visible');
-    }
-
-    // Restore focus to clicked card
-    if (lastFocusedCard) {
+    // Restore focus to triggering card
+    if (lastFocusedCard && typeof lastFocusedCard.focus === 'function') {
       lastFocusedCard.focus();
     }
   };
 
   /* --------------------------------------------------------------------------
-     5. Card Click & Keyboard Activation Listeners
+     3. Navigation Helpers (Circular: 1->6, 6->1)
+     -------------------------------------------------------------------------- */
+  const goToPrevVideo = () => {
+    loadVideoByIndex(currentIndex - 1);
+  };
+
+  const goToNextVideo = () => {
+    loadVideoByIndex(currentIndex + 1);
+  };
+
+  /* --------------------------------------------------------------------------
+     4. Card Click & Keyboard Activation Listeners
      -------------------------------------------------------------------------- */
   const cards = grid.querySelectorAll('.testimonial-video-card');
   cards.forEach((card) => {
+    const cardIndexAttr = card.dataset.index;
+    const cardVideoId = card.dataset.videoId;
+
+    let targetIndex = 0;
+    if (cardIndexAttr !== undefined && !isNaN(parseInt(cardIndexAttr, 10))) {
+      targetIndex = parseInt(cardIndexAttr, 10);
+    } else if (cardVideoId) {
+      const foundIdx = TESTIMONIAL_VIDEOS.findIndex((v) => v.youtubeId === cardVideoId);
+      if (foundIdx !== -1) targetIndex = foundIdx;
+    }
+
     const handleCardActivate = (e) => {
       e.preventDefault();
-      lastFocusedCard = card;
-      const videoSrc = card.dataset.videoSrc;
-      const clientLabel = card.dataset.clientLabel || 'Client Testimonial';
-      if (videoSrc) {
-        openLightbox(videoSrc, clientLabel);
-      }
+      openLightbox(targetIndex, card);
     };
 
     card.addEventListener('click', handleCardActivate);
@@ -234,60 +296,87 @@ export function initTestimonials() {
   });
 
   /* --------------------------------------------------------------------------
-     6. Video Tap to Toggle Play / Pause Inside Lightbox
+     5. Lightbox Button Controls (Desktop & Mobile)
      -------------------------------------------------------------------------- */
-  if (videoWrap && lightboxVideo) {
-    videoWrap.addEventListener('click', (e) => {
-      // Don't toggle play/pause if user tapped the unmute prompt button
-      if (unmutePrompt && unmutePrompt.contains(e.target)) return;
-
-      if (lightboxVideo.paused) {
-        lightboxVideo.play();
-        showPlayStatus(false);
-      } else {
-        lightboxVideo.pause();
-        showPlayStatus(true);
-      }
-    });
-  }
-
-  // Handle Unmute Prompt Tap
-  if (unmutePrompt && lightboxVideo) {
-    unmutePrompt.addEventListener('click', (e) => {
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      lightboxVideo.muted = false;
-      unmutePrompt.classList.remove('visible');
+      goToPrevVideo();
     });
   }
 
-  /* --------------------------------------------------------------------------
-     7. Lightbox Dismiss Listeners
-     -------------------------------------------------------------------------- */
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToNextVideo();
+    });
+  }
+
+  if (mobilePrevBtn) {
+    mobilePrevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToPrevVideo();
+    });
+  }
+
+  if (mobileNextBtn) {
+    mobileNextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToNextVideo();
+    });
+  }
+
   if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
   }
 
   if (lightboxBackdrop) {
     lightboxBackdrop.addEventListener('click', closeLightbox);
   }
 
-  // Keyboard navigation & accessibility
+  // Dismiss if user clicks empty backdrop area of modal container
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  /* --------------------------------------------------------------------------
+     6. Keyboard Shortcuts & Accessible Focus Trap
+     -------------------------------------------------------------------------- */
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('is-open')) return;
 
+    // Escape closes modal
     if (e.key === 'Escape') {
       e.preventDefault();
       closeLightbox();
       return;
     }
 
-    // Modal focus trap
+    // Arrow Left / Right navigation
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goToPrevVideo();
+      return;
+    }
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goToNextVideo();
+      return;
+    }
+
+    // Modal Focus Trap for Tab key
     if (e.key === 'Tab') {
       const focusableElements = lightbox.querySelectorAll(
-        'button:not([disabled]), video, [tabindex="0"]'
+        'button:not([disabled]), a[href]:not([disabled]), [tabindex="0"]'
       );
       const focusable = Array.from(focusableElements).filter(
-        (el) => el.offsetParent !== null
+        (el) => el.offsetParent !== null && !el.classList.contains('hidden')
       );
 
       if (focusable.length === 0) return;
@@ -308,9 +397,57 @@ export function initTestimonials() {
       }
     }
   });
+
+  /* --------------------------------------------------------------------------
+     7. Touch Horizontal Swipe Gestures (Mobile Support)
+     -------------------------------------------------------------------------- */
+  if (stage) {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    stage.addEventListener(
+      'touchstart',
+      (e) => {
+        if (e.touches.length === 1) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          touchStartTime = Date.now();
+        }
+      },
+      { passive: true }
+    );
+
+    stage.addEventListener(
+      'touchend',
+      (e) => {
+        if (e.changedTouches.length === 1) {
+          const deltaX = e.changedTouches[0].clientX - touchStartX;
+          const deltaY = e.changedTouches[0].clientY - touchStartY;
+          const deltaTime = Date.now() - touchStartTime;
+
+          // Check if swipe is predominantly horizontal, exceeds threshold, and happened within reasonable time
+          const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY) * 1.5;
+          const exceedsDistance = Math.abs(deltaX) >= 45;
+          const isQuickSwipe = deltaTime < 800;
+
+          if (isHorizontal && exceedsDistance && isQuickSwipe) {
+            if (deltaX < 0) {
+              // Swiped left -> Next video
+              goToNextVideo();
+            } else {
+              // Swiped right -> Previous video
+              goToPrevVideo();
+            }
+          }
+        }
+      },
+      { passive: true }
+    );
+  }
 }
 
-// Auto-run if DOM is ready or wait for event
+// Auto-run if DOM is ready or wait for DOMContentLoaded event
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initTestimonials);
 } else {

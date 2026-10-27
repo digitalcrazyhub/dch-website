@@ -9,37 +9,6 @@
    ========================================== */
 @media screen and (max-width: 1200px) {
 
-  /* Navbar compact layout to prevent link wrapping */
-  .brand-logo {
-    height: 52px;
-    width: auto;
-  }
-
-  .nav-menu {
-    gap: 16px;
-  }
-
-  .nav-list {
-    gap: 12px;
-    flex-wrap: nowrap;
-  }
-
-  .nav-link {
-    font-size: 0.875rem;
-    padding: 6px 2px;
-    white-space: nowrap;
-  }
-
-  .dropdown-toggle-btn {
-    padding: 6px 2px;
-  }
-
-  .nav-cta {
-    font-size: 0.825rem;
-    padding: 8px 14px;
-    white-space: nowrap;
-  }
-
   .hero-grid {
     gap: 40px;
   }
@@ -117,224 +86,7 @@
    ========================================== */
 @media screen and (max-width: 1024px) {
 
-  /* Mobile Header Sizing and Layout */
-  :root {
-    --mobile-header-height: 72px;
-  }
 
-  .site-header {
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--color-border-light);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .site-header .nav-link {
-    color: var(--color-text);
-  }
-
-  .site-header .hamburger-bar {
-    background-color: var(--color-navy);
-  }
-
-  .navbar-container {
-    padding: 12px var(--container-padding);
-    min-height: var(--mobile-header-height);
-  }
-
-  .brand-logo {
-    height: 48px;
-    width: auto;
-    max-width: 170px;
-    object-fit: contain;
-  }
-
-  /* Navigation Mobile Toggle Display */
-  .nav-toggle {
-    display: flex;
-    margin-left: auto;
-  }
-
-  .nav-menu {
-    position: fixed;
-    top: var(--mobile-header-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--mobile-header-height));
-    height: calc(100dvh - var(--mobile-header-height));
-    background-color: #FFFFFF;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 20px var(--container-padding) 60px;
-    gap: 16px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-16px);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
-    z-index: 999;
-  }
-
-  .nav-menu.open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .nav-list {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 2px;
-    width: 100%;
-  }
-
-  .nav-item {
-    width: 100%;
-    border-bottom: 1px solid var(--color-border-light);
-  }
-
-  .nav-link {
-    width: 100%;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text);
-    padding: 12px 6px;
-    border-radius: var(--radius-sm);
-    transition: color var(--transition-fast), background-color var(--transition-fast);
-  }
-
-  .nav-link:hover,
-  .nav-link:focus,
-  .nav-link.active {
-    color: var(--color-primary);
-  }
-
-  .nav-link.active::after {
-    display: none;
-  }
-
-  .nav-dropdown-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .nav-dropdown-wrapper .nav-link {
-    flex: 1;
-    width: auto;
-    justify-content: flex-start;
-  }
-
-  .dropdown-toggle-btn {
-    min-height: 48px;
-    min-width: 48px;
-    padding: 12px;
-    color: var(--color-text);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-sm);
-    transition: color var(--transition-fast), background-color var(--transition-fast);
-  }
-
-  .dropdown-toggle-btn:hover,
-  .dropdown-toggle-btn:focus,
-  .dropdown-toggle-btn.active {
-    color: var(--color-primary);
-    background-color: var(--color-primary-soft);
-  }
-
-  /* Inline dropdown on mobile */
-  .dropdown-menu {
-    position: static;
-    top: auto;
-    left: auto;
-    right: auto;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    transform: none;
-    box-shadow: none;
-    border: 1px solid var(--color-border-light);
-    background-color: var(--color-bg-soft);
-    border-radius: var(--radius-sm);
-    padding: 0;
-    margin-top: 4px;
-    margin-bottom: 10px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease;
-  }
-
-  /* Prevent desktop hover from opening mobile submenus */
-  .dropdown:hover .dropdown-menu {
-    opacity: 0;
-    visibility: hidden;
-    transform: none;
-    max-height: 0;
-  }
-
-  .dropdown.dropdown-open .dropdown-menu {
-    max-height: 600px;
-    opacity: 1;
-    visibility: visible;
-    transform: none !important;
-    padding: 6px 0;
-  }
-
-  .dropdown-item {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    padding: 10px 18px;
-    font-size: 0.925rem;
-    font-weight: 500;
-    color: var(--color-text);
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    transition: background-color var(--transition-fast), color var(--transition-fast);
-  }
-
-  .dropdown-item:hover,
-  .dropdown-item:focus,
-  .dropdown-item.active {
-    background-color: var(--color-primary-soft);
-    color: var(--color-primary);
-    padding-left: 18px;
-  }
-
-  .nav-cta-wrapper {
-    width: 100%;
-    padding-top: 14px;
-    margin-top: auto;
-  }
-
-  .nav-cta {
-    width: 100%;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 14px 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
 
   /* Hero Section */
   .hero-fullscreen {
@@ -604,6 +356,13 @@
   .lightbox-nav-btn {
     width: 48px;
     height: 48px;
+  }
+
+  /* Testimonials Page (<= 1024px - Tablet Landscape & Portrait) */
+  .testimonial-video-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 760px;
   }
 
   /* Clients Page (<= 1024px) */
@@ -1369,12 +1128,21 @@
   }
 
   .testimonial-video-card {
-    max-width: 100%;
+    max-width: 360px;
+    width: 100%;
   }
 
   .testimonial-lightbox-container {
     padding: 12px;
     max-width: 96vw;
+  }
+
+  .testimonial-lightbox-nav {
+    display: none !important;
+  }
+
+  .testimonial-lightbox-mobile-controls {
+    display: flex !important;
   }
 
   .client-logos-grid {
@@ -1410,19 +1178,7 @@
     padding-top: 20px;
   }
 
-  :root {
-    --mobile-header-height: 64px;
-  }
 
-  .navbar-container {
-    padding: 10px var(--container-padding);
-    min-height: var(--mobile-header-height);
-  }
-
-  .brand-logo {
-    height: 42px;
-    max-width: 150px;
-  }
 
   /* About Us Mobile (<= 640px) */
   .about-collage-main-img,
@@ -1630,49 +1386,7 @@
     --mobile-header-height: 60px;
   }
 
-  .navbar-container {
-    padding: 8px var(--container-padding);
-    min-height: var(--mobile-header-height);
-  }
 
-  .brand-logo {
-    height: 38px;
-    max-width: 140px;
-  }
-
-  .nav-menu {
-    padding: 16px var(--container-padding) 40px;
-    gap: 12px;
-  }
-
-  .nav-link {
-    font-size: 0.95rem;
-    padding: 10px 4px;
-    min-height: 44px;
-  }
-
-  .dropdown-toggle-btn {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 10px;
-  }
-
-  .dropdown-item {
-    font-size: 0.875rem;
-    padding: 9px 14px;
-    min-height: 40px;
-  }
-
-  .dropdown-item:hover,
-  .dropdown-item:focus,
-  .dropdown-item.active {
-    padding-left: 14px;
-  }
-
-  .nav-cta {
-    font-size: 0.875rem;
-    padding: 12px 16px;
-  }
 
   .hero-headline-fullscreen {
     font-size: 1.85rem;
@@ -2153,11 +1867,13 @@
     background-position: center;
   }
 
-  /* Disable transitions and animations for users with reduced motion preferences */
-  .nav-menu,
-  .hamburger-bar,
-  .dropdown-menu,
-  .dropdown-chevron,
+  .dch-navbar,
+  .dch-desktop-nav,
+  .dch-dropdown-menu,
+  .dch-mobile-drawer,
+  .dch-drawer-backdrop,
+  .dch-accordion-collapse,
+  .dch-bar,
   .site-header {
     transition: none !important;
   }
