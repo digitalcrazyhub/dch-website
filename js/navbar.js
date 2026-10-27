@@ -6,8 +6,6 @@
 export function initNavbar() {
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const dropdownToggle = document.getElementById('services-menu-btn');
-  const servicesDropdown = document.getElementById('services-dropdown');
 
   if (!navToggle || !navMenu) {
     return;
@@ -39,6 +37,7 @@ export function initNavbar() {
     // Also highlight Services link and dropdown toggle when on services overview or subpages
     const isServicesPage = currentFile === 'services.html' || window.location.pathname.includes('/services/');
     const servicesLink = navMenu.querySelector('a[href="services.html"], a[href$="/services.html"]');
+    const servicesToggle = document.getElementById('services-menu-btn');
     if (servicesLink) {
       if (isServicesPage) {
         servicesLink.classList.add('active');
@@ -46,11 +45,30 @@ export function initNavbar() {
         servicesLink.classList.remove('active');
       }
     }
-    if (dropdownToggle) {
+    if (servicesToggle) {
       if (isServicesPage) {
-        dropdownToggle.classList.add('active');
+        servicesToggle.classList.add('active');
       } else {
-        dropdownToggle.classList.remove('active');
+        servicesToggle.classList.remove('active');
+      }
+    }
+
+    // Also highlight About Us link and dropdown toggle when on about overview or subpages
+    const isAboutPage = ['about.html', 'team.html', 'achievements.html', 'clients.html'].includes(currentFile);
+    const aboutLink = navMenu.querySelector('#about-dropdown > .nav-dropdown-wrapper > a.nav-link');
+    const aboutToggle = document.getElementById('about-menu-btn');
+    if (aboutLink) {
+      if (isAboutPage) {
+        aboutLink.classList.add('active');
+      } else if (currentFile !== 'about.html') {
+        aboutLink.classList.remove('active');
+      }
+    }
+    if (aboutToggle) {
+      if (isAboutPage) {
+        aboutToggle.classList.add('active');
+      } else {
+        aboutToggle.classList.remove('active');
       }
     }
   } catch (err) {
@@ -60,6 +78,17 @@ export function initNavbar() {
   /**
    * Mobile menu state handlers
    */
+  const closeAllDropdowns = () => {
+    const openDropdowns = navMenu.querySelectorAll('.dropdown.dropdown-open');
+    openDropdowns.forEach((dd) => {
+      dd.classList.remove('dropdown-open');
+      const btn = dd.querySelector('.dropdown-toggle-btn');
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+
   const openMobileMenu = () => {
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.setAttribute('aria-label', 'Close navigation menu');
@@ -75,6 +104,7 @@ export function initNavbar() {
       navToggle.classList.remove('active');
       navMenu.classList.remove('open');
       document.body.classList.remove('nav-open');
+      closeAllDropdowns();
     }
   };
 
@@ -97,34 +127,56 @@ export function initNavbar() {
     });
   });
 
-  // Services dropdown toggle for touch & keyboard
-  if (dropdownToggle && servicesDropdown) {
-    dropdownToggle.addEventListener('click', (e) => {
+  // Generic Dropdown toggles for touch & keyboard (About Us, Services, etc.)
+  const dropdownContainers = navMenu.querySelectorAll('.dropdown');
+  dropdownContainers.forEach((dropdown) => {
+    const btn = dropdown.querySelector('.dropdown-toggle-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
-      dropdownToggle.setAttribute('aria-expanded', String(!isExpanded));
-      servicesDropdown.classList.toggle('dropdown-open', !isExpanded);
+      const isCurrentlyOpen = dropdown.classList.contains('dropdown-open');
+
+      // Close other open dropdowns for clean accordion UX on mobile
+      dropdownContainers.forEach((other) => {
+        if (other !== dropdown) {
+          other.classList.remove('dropdown-open');
+          const otherBtn = other.querySelector('.dropdown-toggle-btn');
+          if (otherBtn) {
+            otherBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+
+      btn.setAttribute('aria-expanded', String(!isCurrentlyOpen));
+      dropdown.classList.toggle('dropdown-open', !isCurrentlyOpen);
     });
 
     // Keyboard support: Escape closes dropdown
-    servicesDropdown.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-        servicesDropdown.classList.remove('dropdown-open');
-        dropdownToggle.focus();
+    dropdown.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('dropdown-open')) {
+        e.stopPropagation();
+        btn.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('dropdown-open');
+        btn.focus();
       }
     });
-  }
+
+    // Keyboard support: Close dropdown when focus leaves container
+    dropdown.addEventListener('focusout', (e) => {
+      if (dropdown.classList.contains('dropdown-open') && !dropdown.contains(e.relatedTarget)) {
+        btn.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('dropdown-open');
+      }
+    });
+  });
 
   // Close menus on click outside
   document.addEventListener('click', (e) => {
     if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
       closeMobileMenu();
-    }
-
-    if (servicesDropdown && servicesDropdown.classList.contains('dropdown-open') && !servicesDropdown.contains(e.target)) {
-      dropdownToggle.setAttribute('aria-expanded', 'false');
-      servicesDropdown.classList.remove('dropdown-open');
+    } else if (!navMenu.contains(e.target)) {
+      closeAllDropdowns();
     }
   });
 
@@ -142,10 +194,7 @@ export function initNavbar() {
     const handleViewportChange = (e) => {
       if (e.matches) {
         closeMobileMenu();
-        if (servicesDropdown) {
-          dropdownToggle.setAttribute('aria-expanded', 'false');
-          servicesDropdown.classList.remove('dropdown-open');
-        }
+        closeAllDropdowns();
       }
     };
 

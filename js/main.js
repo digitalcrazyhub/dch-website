@@ -12,6 +12,7 @@ import './pages/team.js';
 import './pages/achievements.js';
 import './pages/clients.js';
 import './pages/contact.js';
+import './pages/testimonials.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll for in-page anchor links

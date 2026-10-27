@@ -249,6 +249,17 @@ body.inner-page .site-header .dropdown:hover>.nav-dropdown-wrapper .nav-link,
   z-index: 1050;
 }
 
+/* Invisible hover bridge to prevent menu from closing when moving cursor from trigger to menu */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
+}
+
 .dropdown:hover .dropdown-menu,
 .dropdown.dropdown-open .dropdown-menu {
   opacity: 1;
