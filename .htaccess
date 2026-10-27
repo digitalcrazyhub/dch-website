@@ -1,0 +1,34 @@
+# ==============================================================================
+# Digital Crazy Hub - Production Web Server Configuration
+# Compatible with Apache, LiteSpeed, Hostinger, and cPanel Environments
+# ==============================================================================
+
+# 1. Custom 404 Error Document Directive
+# Serves the custom 404.html page for nonexistent resources with genuine HTTP 404 status.
+# Preserves the user's requested URL in the address bar without redirecting (prevents soft-404).
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Allow direct access to existing physical files and directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Preserve Backend API routing and PHP script execution
+  RewriteRule ^backend/(.*)$ backend/$1 [L]
+</IfModule>
+
+# Security Headers & Content Protection
+<IfModule mod_headers.c>
+  # Prevent MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+  # Clickjacking protection
+  Header always append X-Frame-Options "SAMEORIGIN"
+  # Referrer policy for external asset security
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Disable Directory Browsing
+Options -Indexes

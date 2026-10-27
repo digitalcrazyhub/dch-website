@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Dynamic Base Path Detection for Nested 404 URL Resolution -->
+  <script>
+    (function () {
+      var pathname = window.location.pathname;
+      var base = '/';
+      var match = pathname.match(/^(\/[^\/]+(?:\/[^\/]+)*?\/digitalcrazyhub\/)/i) || pathname.match(/^(\/digitalcrazyhub\/)/i);
+      if (match) {
+        base = match[1];
+      }
+      var baseTag = document.createElement('base');
+      baseTag.href = base;
+      document.head.insertBefore(baseTag, document.head.firstChild);
+    })();
+  </script>
+  <noscript>
+    <base href="/">
+  </noscript>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Page Not Found | Digital Crazy Hub</title>
+
+  <!-- SEO: Do not index error page -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description"
+    content="The page you are looking for may have been moved, deleted, or the URL may be incorrect. Return to Digital Crazy Hub homepage or explore our services.">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="404 Page Not Found | Digital Crazy Hub">
+  <meta property="og:description"
+    content="The page you are looking for may have been moved, deleted, or the URL may be incorrect.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo/favicon.png">
+
+  <!-- Core Global & Component Stylesheets -->
+  <link rel="stylesheet" href="css/root.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/pages/error-404.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="error-404-page">
+
+  <!-- Reusable Global Navbar (loaded via js/components.js) -->
+  <header id="navbar-container" class="site-header" role="banner"></header>
+
+  <main id="main-content">
+    <section class="error-hero-section" aria-labelledby="error-heading">
+      <!-- Ambient Glowing Backdrop Shapes -->
+      <div class="error-ambient-backdrop" aria-hidden="true">
+        <div class="error-orb error-orb-1"></div>
+        <div class="error-orb error-orb-2"></div>
+        <div class="error-grid-overlay"></div>
+      </div>
+
+      <div class="container error-container">
+        <!-- 404 Visual Art & Illustration -->
+        <div class="error-visual-wrap" aria-hidden="true">
+          <div class="error-number-graphic">
+            <span class="error-digit error-digit-first">4</span>
+            <div class="error-radar-core" title="Resource Not Found">
+              <div class="radar-pulse-ring radar-ring-1"></div>
+              <div class="radar-pulse-ring radar-ring-2"></div>
+              <div class="radar-icon-center">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" class="radar-svg" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                </svg>
+              </div>
+            </div>
+            <span class="error-digit error-digit-last">4</span>
+          </div>
+
+          <!-- Floating Micro Badges -->
+          <div class="error-floating-chip chip-left">
+            <span class="chip-dot" aria-hidden="true"></span>
+            <span>HTTP 404</span>
+          </div>
+          <div class="error-floating-chip chip-right">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>URL NOT FOUND</span>
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="error-content text-center">
+          <div class="error-badge-wrapper">
+            <span class="eyebrow error-eyebrow">
+              <span class="eyebrow-pulse-dot" aria-hidden="true"></span>
+              <span>ERROR 404</span>
+            </span>
+          </div>
+
+          <h1 class="error-title" id="error-heading">Oops! Page Not Found</h1>
+          <p class="error-desc">
+            The page you're looking for may have been moved, deleted, or the URL may be incorrect.
+          </p>
+
+          <!-- Primary & Secondary Action Buttons -->
+          <div class="error-actions">
+            <a href="index.html" class="btn btn-pill btn-brand" id="btn-back-home">
+              <span>Back to Home</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="8" x2="13" y2="8"></line>
+                <polyline points="8 3 13 8 8 13"></polyline>
+              </svg>
+            </a>
+            <a href="services.html" class="btn btn-pill btn-secondary" id="btn-explore-services">
+              <span>Explore Our Services</span>
+            </a>
+          </div>
+
+          <!-- Helpful Navigation Directory (Compact) -->
+          <div class="error-quicklinks-card">
+            <span class="quicklinks-label">Quick Links to Help You Find Your Way:</span>
+            <div class="quicklinks-grid" role="navigation" aria-label="Quick directory links">
+              <a href="index.html" class="quicklink-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+              </a>
+              <a href="about.html" class="quicklink-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>About Us</span>
+              </a>
+              <a href="services.html" class="quicklink-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span>Services</span>
+              </a>
+              <a href="projects.html" class="quicklink-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Projects</span>
+              </a>
+              <a href="blog.html" class="quicklink-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span>Blog</span>
+              </a>
+              <a href="contact.html" class="quicklink-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Contact Us</span>
+              </a>
+            </div>
+
+            <!-- Direct Contact Assistance Note -->
+            <div class="error-contact-note">
+              <span>Need immediate assistance? Call us at</span>
+              <a href="tel:+919659239187" class="contact-highlight-link">+91 9659239187</a>
+              <span>or email</span>
+              <a href="mailto:info@digitalcrazyhub.com" class="contact-highlight-link">info@digitalcrazyhub.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Reusable Global Footer (loaded via js/components.js) -->
+  <footer id="footer-container" class="site-footer" role="contentinfo"></footer>
+
+  <!-- Application JavaScript Module -->
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

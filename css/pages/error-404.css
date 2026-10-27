@@ -1,0 +1,445 @@
+/**
+ * Digital Crazy Hub - 404 Page Not Found Stylesheet
+ * File: css/pages/error-404.css
+ * Follows Digital Crazy Hub Master Design System
+ * STRICT GOVERNANCE: All responsive media queries belong exclusively in css/responsive.css
+ */
+
+/* ==============================================================================
+   1. PAGE WRAPPER & HERO SECTION
+   ============================================================================== */
+.error-404-page {
+  background-color: var(--color-bg, #FFFFFF);
+  color: var(--color-text, #18233B);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-404-page #main-content {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.error-hero-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 0 80px 0;
+  background: radial-gradient(circle at 50% 30%, rgba(7, 85, 201, 0.05) 0%, rgba(255, 255, 255, 0) 65%),
+              linear-gradient(180deg, #FFFFFF 0%, var(--color-bg-alt, #F5F6FA) 100%);
+}
+
+/* ==============================================================================
+   2. AMBIENT GLOW & GRID PATTERN
+   ============================================================================== */
+.error-ambient-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.error-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.22;
+  will-change: transform;
+}
+
+.error-orb-1 {
+  width: 440px;
+  height: 440px;
+  background: var(--color-primary, #0755C9);
+  top: -80px;
+  left: 10%;
+  animation: orbDrift 16s ease-in-out infinite alternate;
+}
+
+.error-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--color-secondary, #6547F5);
+  bottom: -40px;
+  right: 12%;
+  animation: orbDrift 20s ease-in-out infinite alternate-reverse;
+}
+
+.error-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(11, 23, 48, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+}
+
+@keyframes orbDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 30px) scale(1.08);
+  }
+  100% {
+    transform: translate(-30px, 50px) scale(0.95);
+  }
+}
+
+/* ==============================================================================
+   3. 404 GRAPHIC VISUAL & RADAR CENTER
+   ============================================================================== */
+.error-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.error-visual-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+  user-select: none;
+}
+
+.error-number-graphic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+}
+
+.error-digit {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: clamp(6.5rem, 16vw, 11.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  background: var(--gradient-brand, linear-gradient(135deg, #0755C9 0%, #6547F5 100%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 14px 28px rgba(7, 85, 201, 0.22));
+}
+
+/* Radar Centerpiece (Replacing "0") */
+.error-radar-core {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4px;
+}
+
+.radar-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(101, 71, 245, 0.4);
+  pointer-events: none;
+}
+
+.radar-ring-1 {
+  width: 130px;
+  height: 130px;
+  animation: radarPulse 3s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.radar-ring-2 {
+  width: 130px;
+  height: 130px;
+  animation: radarPulse 3s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 1.5s;
+}
+
+@keyframes radarPulse {
+  0% {
+    width: 60px;
+    height: 60px;
+    opacity: 0.9;
+  }
+  100% {
+    width: 170px;
+    height: 170px;
+    opacity: 0;
+  }
+}
+
+.radar-icon-center {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--color-navy, #0B1730);
+  border: 2px solid rgba(101, 71, 245, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 0 12px 32px rgba(11, 23, 48, 0.35),
+              0 0 24px rgba(101, 71, 245, 0.4);
+  position: relative;
+  z-index: 2;
+  transition: transform var(--transition-base, 0.3s ease);
+}
+
+.error-radar-core:hover .radar-icon-center {
+  transform: scale(1.08) rotate(15deg);
+}
+
+.radar-svg {
+  color: var(--color-primary-light, #E5ECFF);
+}
+
+/* Floating Status Chips */
+.error-floating-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill, 999px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(11, 23, 48, 0.08);
+  box-shadow: var(--shadow-sm, 0 4px 12px rgba(11, 23, 48, 0.08));
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-navy, #0B1730);
+  z-index: 3;
+}
+
+.chip-left {
+  top: 15%;
+  left: 20%;
+  animation: chipFloat 5s ease-in-out infinite alternate;
+}
+
+.chip-right {
+  bottom: 12%;
+  right: 18%;
+  animation: chipFloat 5.5s ease-in-out infinite alternate-reverse;
+}
+
+.chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-error, #E5484D);
+  box-shadow: 0 0 8px rgba(229, 72, 77, 0.7);
+}
+
+@keyframes chipFloat {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ==============================================================================
+   4. ERROR CONTENT & HEADINGS
+   ============================================================================== */
+.error-content {
+  text-align: center;
+}
+
+.error-badge-wrapper {
+  margin-bottom: 14px;
+}
+
+.error-eyebrow {
+  background-color: rgba(229, 72, 77, 0.12);
+  color: var(--color-error, #E5484D);
+  border: 1px solid rgba(229, 72, 77, 0.25);
+}
+
+.eyebrow-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-error, #E5484D);
+  box-shadow: 0 0 8px rgba(229, 72, 77, 0.8);
+  animation: eyebrowPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes eyebrowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+.error-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-navy, #0B1730);
+  letter-spacing: -0.02em;
+  margin: 0 0 14px 0;
+}
+
+.error-desc {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary, #5E687C);
+  max-width: 580px;
+  margin: 0 auto 34px auto;
+}
+
+/* Action Buttons */
+.error-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+}
+
+.error-actions .btn {
+  min-width: 180px;
+}
+
+/* ==============================================================================
+   5. QUICKLINKS DIRECTORY CARD
+   ============================================================================== */
+.error-quicklinks-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border, #E5E8F0);
+  border-radius: var(--radius-lg, 20px);
+  box-shadow: 0 10px 30px rgba(11, 23, 48, 0.05);
+  padding: 30px 32px;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quicklinks-label {
+  display: block;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-navy, #0B1730);
+  margin-bottom: 18px;
+  letter-spacing: 0.01em;
+}
+
+.quicklinks-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.quicklink-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 8px;
+  border-radius: var(--radius-md, 12px);
+  background-color: var(--color-bg-alt, #F5F6FA);
+  border: 1px solid var(--color-border-light, #F0F2F7);
+  color: var(--color-navy, #0B1730);
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-base, 0.25s ease);
+}
+
+.quicklink-pill svg {
+  color: var(--color-primary, #0755C9);
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.quicklink-pill:hover,
+.quicklink-pill:focus-visible {
+  background-color: var(--color-primary-soft, #F3F6FF);
+  border-color: var(--color-primary-light, #E5ECFF);
+  color: var(--color-primary, #0755C9);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(7, 85, 201, 0.12);
+  outline: none;
+}
+
+.quicklink-pill:hover svg,
+.quicklink-pill:focus-visible svg {
+  transform: scale(1.15);
+}
+
+/* Contact Assistance Snippet */
+.error-contact-note {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted, #8992A5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px dashed var(--color-border, #E5E8F0);
+}
+
+.contact-highlight-link {
+  color: var(--color-primary, #0755C9);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.contact-highlight-link:hover,
+.contact-highlight-link:focus-visible {
+  color: var(--color-secondary, #6547F5);
+  text-decoration: underline;
+  outline: none;
+}
+
+/* ==============================================================================
+   6. REDUCED MOTION ACCESSIBILITY
+   ============================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .error-orb-1,
+  .error-orb-2,
+  .radar-ring-1,
+  .radar-ring-2,
+  .chip-left,
+  .chip-right,
+  .eyebrow-pulse-dot {
+    animation: none !important;
+  }
+
+  .quicklink-pill,
+  .radar-icon-center,
+  .error-actions .btn {
+    transition: none !important;
+  }
+}
