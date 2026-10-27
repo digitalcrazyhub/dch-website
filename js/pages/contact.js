@@ -140,6 +140,14 @@ function initContactForm(form) {
       return;
     }
 
+    // Extract UTM parameters from current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source');
+    const utmMedium = urlParams.get('utm_medium');
+    const utmCampaign = urlParams.get('utm_campaign');
+    const utmTerm = urlParams.get('utm_term');
+    const utmContent = urlParams.get('utm_content');
+
     // Valid inputs: Proceed to submission
     const formData = {
       name: nameInput.value.trim(),
@@ -148,13 +156,33 @@ function initContactForm(form) {
       location: locationInput.value.trim(),
       service: serviceSelect.value,
       message: messageInput.value.trim(),
-      consent: consentCheckbox.checked
+      consent: consentCheckbox.checked,
+      page_url: window.location.href,
+      referrer_url: document.referrer || null,
+      submission_source: 'contact_page',
+      utm_source: utmSource || null,
+      utm_medium: utmMedium || null,
+      utm_campaign: utmCampaign || null,
+      utm_term: utmTerm || null,
+      utm_content: utmContent || null
     };
 
     // Set loading state
     setSubmitting(true, submitBtn, btnText);
 
     try {
+      // Execute Google reCAPTCHA v3 token generation if configured
+      if (typeof window.grecaptcha !== 'undefined' && window.RECAPTCHA_SITE_KEY) {
+        try {
+          await new Promise((resolve) => window.grecaptcha.ready(resolve));
+          formData.recaptcha_token = await window.grecaptcha.execute(window.RECAPTCHA_SITE_KEY, {
+            action: 'contact_form'
+          });
+        } catch (recaptchaErr) {
+          console.warn('reCAPTCHA execution error:', recaptchaErr);
+        }
+      }
+
       // Backend submission endpoint (backend/api/contact.php)
       const ENDPOINT = 'backend/api/contact.php';
 
@@ -167,27 +195,56 @@ function initContactForm(form) {
         body: JSON.stringify(formData)
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP Error: ${response.status}`);
+      let result = null;
+      try {
+        result = await response.json();
+      } catch {
+        result = null;
       }
 
-      const result = await response.json();
-
-      if (result && result.success) {
+      if (response.ok && result && result.success) {
         // Confirmed successful receipt by backend
-        showAlert(alertContainer, 'success', 'Your enquiry has been submitted successfully. Our team will contact you shortly.');
+        const refId = result.reference_id ? ` (Reference: ${result.reference_id})` : '';
+        showAlert(alertContainer, 'success', `${result.message || 'Your enquiry has been submitted successfully.'}${refId}`);
         form.reset();
         initCharCounter();
+      } else if (response.status === 422 && result && result.errors) {
+        // Server-side validation failure: map errors to specific fields
+        let firstServerInvalidEl = null;
+        Object.entries(result.errors).forEach(([fieldKey, errorMsg]) => {
+          const inputEl = document.getElementById(`contact-${fieldKey}`);
+          if (inputEl) {
+            const group = inputEl.closest('.form-group') || inputEl.closest('.form-checkbox-group');
+            showFieldError(inputEl, group, errorMsg);
+            if (!firstServerInvalidEl) {
+              firstServerInvalidEl = inputEl;
+            }
+          }
+        });
+
+        showAlert(alertContainer, 'error', result.message || 'Please correct the highlighted fields.');
+        if (firstServerInvalidEl) {
+          firstServerInvalidEl.focus();
+          firstServerInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } else if (response.status === 429) {
+        // Rate limit exceeded
+        showAlert(
+          alertContainer,
+          'error',
+          result?.message || 'Too many submissions. Please wait a few minutes before trying again.'
+        );
       } else {
-        throw new Error(result?.message || 'Submission was not accepted by the server.');
+        // Other server errors or unexpected responses
+        const serverMsg = result?.message || 'We could not process your enquiry at this moment. Please try again later or reach us directly at info@digitalcrazyhub.com.';
+        showAlert(alertContainer, 'error', serverMsg);
       }
     } catch (err) {
-      // Backend endpoint is not yet configured or returned an error
-      console.warn('Form submission notice:', err.message);
+      console.warn('Form submission network notice:', err.message);
       showAlert(
         alertContainer,
         'error',
-        'Submission unavailable: A backend endpoint (backend/api/contact.php) is required to receive enquiries. Please reach us directly at info@digitalcrazyhub.com or +91 9659239187.'
+        'Network error: Could not reach the server. Please check your internet connection or reach us directly at info@digitalcrazyhub.com or +91 9659239187.'
       );
       // Preserving entered field values as required by project governance
     } finally {

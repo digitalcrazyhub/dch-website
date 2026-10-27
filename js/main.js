@@ -13,6 +13,7 @@ import './pages/achievements.js';
 import './pages/clients.js';
 import './pages/contact.js';
 import './pages/testimonials.js';
+import './components/profile-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll for in-page anchor links

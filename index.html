@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/root.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/components/profile-modal.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/pages/home.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -70,13 +71,13 @@
           </p>
 
           <div class="hero-cta-group">
-            <a href="#services" class="btn btn-brand btn-pill">
-              <span>Explore Our Services</span>
+            <button type="button" class="btn btn-brand btn-pill" id="btn-company-profile-download" aria-haspopup="dialog" aria-expanded="false" aria-controls="modal-company-profile">
+              <span>Download Profile</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="currentColor" stroke-width="1.8"
                   stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-            </a>
+            </button>
             <a href="contact.html" class="btn btn-outline-light btn-pill">
               <span class="btn-play-icon" aria-hidden="true">
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
@@ -863,6 +864,123 @@
 
   <!-- Reusable Footer Container -->
   <footer id="footer-container" class="site-footer" role="contentinfo"></footer>
+
+  <!-- ==============================================================================
+       Company Profile Download Modal Dialog (Lead Capture & Tokenized Access)
+       ============================================================================== -->
+  <div class="profile-modal-backdrop" id="modal-company-profile" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title" aria-describedby="profile-modal-desc" aria-hidden="true">
+    <div class="profile-modal-card">
+      <!-- Close Button -->
+      <button type="button" class="profile-modal-close" id="profile-modal-close" aria-label="Close download modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="profile-modal-header">
+        <div class="profile-modal-badge" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Official Agency Deck (2026)</span>
+        </div>
+        <h2 class="profile-modal-title" id="profile-modal-title">Download Our Company Profile</h2>
+        <p class="profile-modal-desc" id="profile-modal-desc">
+          Enter your details below to access the Digital Crazy Hub company profile.
+        </p>
+      </div>
+
+      <!-- Top Alert Notification Banner -->
+      <div class="profile-modal-alert" id="profile-modal-alert" role="alert" aria-live="polite">
+        <span class="profile-alert-text"></span>
+      </div>
+
+      <!-- Modal Form -->
+      <form id="profile-download-form" class="profile-modal-form" novalidate>
+        <!-- Field 1: Name -->
+        <div class="profile-form-group" id="profile-group-name">
+          <label for="profile-name" class="profile-form-label">
+            <span>Name <span class="required-star" aria-hidden="true">*</span></span>
+          </label>
+          <div class="profile-input-wrapper">
+            <input type="text" id="profile-name" name="name" class="profile-form-input" placeholder="Enter your full name" required autocomplete="name" maxlength="100" aria-required="true" aria-invalid="false">
+          </div>
+          <div class="profile-field-error" id="profile-name-error" role="alert"></div>
+        </div>
+
+        <!-- Field 2: Phone Number (10-Digit Mobile Number, No Country Code Dropdown) -->
+        <div class="profile-form-group" id="profile-group-phone">
+          <label for="profile-phone" class="profile-form-label">
+            <span>Phone Number <span class="required-star" aria-hidden="true">*</span></span>
+          </label>
+          <div class="profile-input-wrapper">
+            <input type="tel" id="profile-phone" name="phone" class="profile-form-input" placeholder="Enter 10-digit mobile number" required autocomplete="tel" maxlength="10" inputmode="numeric" aria-required="true" aria-invalid="false">
+          </div>
+          <div class="profile-field-error" id="profile-phone-error" role="alert"></div>
+        </div>
+
+        <!-- Field 3: Email Address (Required) -->
+        <div class="profile-form-group" id="profile-group-email">
+          <label for="profile-email" class="profile-form-label">
+            <span>Email Address <span class="required-star" aria-hidden="true">*</span></span>
+          </label>
+          <div class="profile-input-wrapper">
+            <input type="email" id="profile-email" name="email" class="profile-form-input" placeholder="Enter your email address" required autocomplete="email" maxlength="150" aria-required="true" aria-invalid="false">
+          </div>
+          <div class="profile-field-error" id="profile-email-error" role="alert"></div>
+        </div>
+
+        <!-- Field 4: Location -->
+        <div class="profile-form-group" id="profile-group-location">
+          <label for="profile-location" class="profile-form-label">
+            <span>Location <span class="required-star" aria-hidden="true">*</span></span>
+          </label>
+          <div class="profile-input-wrapper">
+            <input type="text" id="profile-location" name="location" class="profile-form-input" placeholder="Enter your city, area, or country" required autocomplete="address-level2" maxlength="120" aria-required="true" aria-invalid="false">
+          </div>
+          <div class="profile-field-error" id="profile-location-error" role="alert"></div>
+        </div>
+
+        <!-- Field 5: Required Consent Checkbox (Unchecked by default) -->
+        <div class="profile-form-group profile-checkbox-group" id="profile-group-consent">
+          <label class="profile-checkbox-label" for="profile-consent">
+            <input type="checkbox" id="profile-consent" name="consent" class="profile-checkbox-input" required aria-required="true" aria-invalid="false">
+            <span class="profile-checkbox-custom" aria-hidden="true"></span>
+            <span class="profile-checkbox-text">
+              I agree to share my details with Digital Crazy Hub for company profile access and related business communication. <span class="required-star" aria-hidden="true">*</span>
+            </span>
+          </label>
+          <div class="profile-field-error" id="profile-consent-error" role="alert"></div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="profile-submit-btn" id="profile-submit-btn">
+          <span class="profile-btn-spinner" aria-hidden="true"></span>
+          <span class="profile-btn-text">Download Company Profile</span>
+          <svg class="profile-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Privacy Assurance Footer -->
+      <div class="profile-modal-footer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Your privacy is protected. We never sell or distribute your contact details.</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Application JavaScript Module -->
   <script type="module" src="js/main.js"></script>

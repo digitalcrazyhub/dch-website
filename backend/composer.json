@@ -1,0 +1,32 @@
+{
+  "name": "digitalcrazyhub/backend",
+  "description": "Digital Crazy Hub - Lead Management & Contact Form API Backend",
+  "type": "project",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Digital Crazy Hub Development Team",
+      "email": "info@digitalcrazyhub.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*",
+    "ext-curl": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "phpmailer/phpmailer": "^6.9",
+    "vlucas/phpdotenv": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "DigitalCrazyHub\\Backend\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "allow-plugins": {}
+  }
+}

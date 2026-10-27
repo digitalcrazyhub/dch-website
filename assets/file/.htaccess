@@ -1,0 +1,11 @@
+# ==============================================================================
+# Digital Crazy Hub - Protect Documents from Direct Public Access
+# All company profile downloads must pass through backend authentication.
+# ==============================================================================
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order Deny,Allow
+    Deny from all
+</IfModule>

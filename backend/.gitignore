@@ -1,0 +1,7 @@
+# Digital Crazy Hub Backend .gitignore
+.env
+vendor/
+logs/*.log
+storage/ratelimit/*.json
+!storage/ratelimit/.gitkeep
+php.ini
