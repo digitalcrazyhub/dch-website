@@ -1,6 +1,6 @@
 /**
  * Digital Crazy Hub - About Us Page Stylesheet
- * Strict Architecture: Scoped exclusively to about.html elements
+ * Strict Architecture: Scoped exclusively to about-us.html elements
  * STRICT GOVERNANCE: No media queries allowed here. All responsive overrides live in css/responsive.css.
  */
 
@@ -31,22 +31,26 @@
 }
 
 .about-intro-paragraphs {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
+  display: block;
+  margin-bottom: 28px;
 }
 
 .about-intro-paragraphs p {
   font-size: 1.025rem;
   line-height: 1.72;
   color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.about-intro-paragraphs p:last-child {
+  margin-bottom: 0;
 }
 
 .about-intro-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .about-location-pill {
@@ -852,7 +856,7 @@
   background-color: var(--color-bg);
 }
 
-.client-logos-section .client-logos-grid {
+.client-logos-section .client-works-badge {
   display: grid;
   grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 24px 20px;

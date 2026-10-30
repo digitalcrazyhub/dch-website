@@ -314,20 +314,20 @@ For a new project using the approved HTML, CSS, JavaScript, and PHP stack, use t
 digital-crazy-hub/
 │
 ├── index.html
-├── about.html
-├── services.html
+├── about-us.html
+├── digital-marketing-services.html
 ├── projects.html
 ├── contact.html
 │
 ├── services/
-│   ├── social-media-marketing.html
+│   ├── social-media-marketing-in-chennai.html
 │   ├── google-ads.html
-│   ├── seo-services.html
+│   ├── seo-digital-marketing-services.html
 │   ├── web-app-development.html
 │   ├── personal-branding.html
 │   ├── lead-generation.html
 │   ├── content-marketing.html
-│   └── creative-production.html
+│   └── ad-poster-video-making.html
 │
 ├── components/
 │   ├── navbar.html

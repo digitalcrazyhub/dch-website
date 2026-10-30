@@ -151,29 +151,59 @@ final class ContactController
 
         // 7. Asynchronous/Non-blocking External Dispatches
         // A. Admin notification email
-        $adminEmailSent = $this->emailService->sendAdminNotification($savedLead);
-        if ($adminEmailSent) {
-            $repository->updateEmailStatus($leadId, true);
-            $repository->markOutboxItemCompleted($leadId, 'email_admin');
-        } else {
-            $repository->recordOutboxItemFailure($leadId, 'email_admin', 'SMTP dispatch failed or service not configured');
+        $adminEmailSent = false;
+        try {
+            $adminEmailSent = $this->emailService->sendAdminNotification($savedLead);
+            if ($adminEmailSent) {
+                $repository->updateEmailStatus($leadId, true);
+                $repository->markOutboxItemCompleted($leadId, 'email_admin');
+            } else {
+                $repository->recordOutboxItemFailure($leadId, 'email_admin', 'SMTP dispatch failed or service not configured');
+            }
+        } catch (Throwable $e) {
+            Logger::error('Admin email dispatch exception: ' . $e->getMessage(), [
+                'lead_id' => $leadId,
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+            $repository->recordOutboxItemFailure($leadId, 'email_admin', 'Exception: ' . $e->getMessage());
         }
 
-        // B. Customer acknowledgement email
-        $custEmailSent = $this->emailService->sendCustomerAcknowledgement($savedLead);
-        if ($custEmailSent) {
-            $repository->markOutboxItemCompleted($leadId, 'email_customer');
-        } else {
-            $repository->recordOutboxItemFailure($leadId, 'email_customer', 'Customer acknowledgement email failed');
+        // B. Customer acknowledgement email (isolated: failure of admin email must not block customer confirmation)
+        $custEmailSent = false;
+        try {
+            $custEmailSent = $this->emailService->sendCustomerAcknowledgement($savedLead);
+            if ($custEmailSent) {
+                $repository->markOutboxItemCompleted($leadId, 'email_customer');
+            } else {
+                $repository->recordOutboxItemFailure($leadId, 'email_customer', 'Customer acknowledgement email failed or service not configured');
+            }
+        } catch (Throwable $e) {
+            Logger::error('Customer acknowledgement email dispatch exception: ' . $e->getMessage(), [
+                'lead_id' => $leadId,
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+            $repository->recordOutboxItemFailure($leadId, 'email_customer', 'Exception: ' . $e->getMessage());
         }
 
-        // C. Google Sheets sync
-        $sheetsSynced = $this->googleSheetsService->syncLead($savedLead);
-        if ($sheetsSynced) {
-            $repository->updateSheetsStatus($leadId, true);
-            $repository->markOutboxItemCompleted($leadId, 'google_sheets');
-        } else {
-            $repository->recordOutboxItemFailure($leadId, 'google_sheets', 'Google Sheets sync failed or webhook not configured');
+        // C. Google Sheets sync (isolated: email status must not block spreadsheet logging)
+        $sheetsSynced = false;
+        try {
+            $sheetsSynced = $this->googleSheetsService->syncLead($savedLead);
+            if ($sheetsSynced) {
+                $repository->updateSheetsStatus($leadId, true);
+                $repository->markOutboxItemCompleted($leadId, 'google_sheets');
+            } else {
+                $repository->recordOutboxItemFailure($leadId, 'google_sheets', 'Google Sheets sync failed or webhook not configured');
+            }
+        } catch (Throwable $e) {
+            Logger::error('Google Sheets sync exception: ' . $e->getMessage(), [
+                'lead_id' => $leadId,
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+            $repository->recordOutboxItemFailure($leadId, 'google_sheets', 'Exception: ' . $e->getMessage());
         }
 
         // 8. Return standardized clean JSON response
@@ -223,6 +253,10 @@ final class ContactController
      */
     private function sendSecurityAndCorsHeaders(): void
     {
+        if (headers_sent()) {
+            return;
+        }
+
         // Security headers
         header('Content-Type: application/json; charset=UTF-8');
         header('X-Content-Type-Options: nosniff');

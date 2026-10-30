@@ -243,9 +243,17 @@ $buildAdminHtml = $refClass->getMethod('buildAdminHtmlTemplate');
 $buildAdminHtml->setAccessible(true);
 $adminHtml = $buildAdminHtml->invoke($emailService, $testLead);
 
+$buildAdminText = $refClass->getMethod('buildAdminPlainTextTemplate');
+$buildAdminText->setAccessible(true);
+$adminText = $buildAdminText->invoke($emailService, $testLead);
+
 $suite->assert(str_contains($adminHtml, 'Vikram Seth'), 'Admin HTML email contains customer name');
 $suite->assert(str_contains($adminHtml, 'SEO Services'), 'Admin HTML email contains selected service');
-$suite->assert(str_contains($adminHtml, '#E50914'), 'Admin HTML email contains brand primary color');
+$suite->assert(str_contains($adminHtml, '#0078f8'), 'Admin HTML email contains brand primary blue (#0078f8)');
+$suite->assert(!str_contains($adminHtml, '#E50914'), 'Admin HTML email does NOT use old red accent theme');
+$suite->assert(!str_contains($adminHtml, 'Reference ID') && !str_contains($adminHtml, '550e8400'), 'Admin HTML email strictly excludes Reference ID and UUID');
+$suite->assert(!str_contains($adminText, 'Reference ID') && !str_contains($adminText, '550e8400'), 'Admin Plain Text email strictly excludes Reference ID and UUID');
+$suite->assert(str_contains($adminHtml, 'mailto:vikram@example.com'), 'Admin HTML email contains functional Reply to Customer button');
 $suite->assert(str_contains($adminHtml, 'seo_services_chennai'), 'Admin HTML email contains UTM campaign');
 
 $buildCustomerHtml = $refClass->getMethod('buildCustomerHtmlTemplate');
@@ -253,8 +261,11 @@ $buildCustomerHtml->setAccessible(true);
 $custHtml = $buildCustomerHtml->invoke($emailService, $testLead);
 
 $suite->assert(str_contains($custHtml, 'Vikram Seth'), 'Customer HTML email contains customer name');
-$suite->assert(str_contains($custHtml, '+91 9659239187'), 'Customer HTML email contains official company phone');
-$suite->assert(str_contains($custHtml, 'info@digitalcrazyhub.com'), 'Customer HTML email contains official company email');
+$suite->assert(str_contains($custHtml, 'Digital Crazy Hub'), 'Customer HTML email contains company name');
+$suite->assert(str_contains($custHtml, 'Thank you for contacting'), 'Customer HTML email contains thank you headline');
+$suite->assert(str_contains($custHtml, '#0078f8'), 'Customer HTML email contains reference blue brand color');
+$suite->assert(str_contains($custHtml, 'paper-plane'), 'Customer HTML email references embedded paper plane image');
+$suite->assert(!str_contains($custHtml, 'Reference ID') && !str_contains($custHtml, 'DCH-'), 'Customer HTML email strictly excludes Reference ID and lead metadata');
 
 
 // ==============================================================================

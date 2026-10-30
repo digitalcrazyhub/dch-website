@@ -32,3 +32,14 @@ ErrorDocument 404 /404.html
 
 # Disable Directory Browsing
 Options -Indexes
+
+# Block sensitive environment and configuration files from direct download
+<FilesMatch "(^\.env|\.sql|\.log|\.ini|composer\.(json|lock))$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Deny,Allow
+    Deny from all
+  </IfModule>
+</FilesMatch>

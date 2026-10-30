@@ -64,20 +64,20 @@ Primary design tokens are centralised in `css/root.css`:
 digital-crazy-hub/
 │
 ├── index.html                  # Homepage (Stage 3)
-├── about.html                  # About Us Page (Stage 5)
-├── services.html               # Services Overview (Stage 6)
+├── about-us.html                  # About Us Page (Stage 5)
+├── digital-marketing-services.html               # Services Overview (Stage 6)
 ├── projects.html               # Portfolio & Case Studies (Stage 8)
 ├── contact.html                # Contact Page (Stage 9)
 │
 ├── services/                   # Individual Service Pages (Stage 7)
-│   ├── social-media-marketing.html
+│   ├── social-media-marketing-in-chennai.html
 │   ├── google-ads.html
-│   ├── seo-services.html
+│   ├── seo-digital-marketing-services.html
 │   ├── web-app-development.html
 │   ├── personal-branding.html
 │   ├── lead-generation.html
 │   ├── content-marketing.html
-│   └── creative-production.html
+│   └── ad-poster-video-making.html
 │
 ├── components/                 # Shared Components
 │   ├── navbar.html

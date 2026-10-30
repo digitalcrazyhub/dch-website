@@ -1,0 +1,315 @@
+/**
+ * Digital Crazy Hub - Global Animation System
+ * File: css/animations.css
+ * 
+ * Provides centralized, hardware-accelerated, accessible animation primitives:
+ * - Text, Heading & Paragraph reveals (fade-up, slide-left, slide-right, blur)
+ * - Image & Media reveals (zoom-in, blur-to-clear, hover-zoom)
+ * - Staggered reveals for cards, grids, and lists
+ * - Section entrances and UI state transitions (fade-in, fade-scale)
+ * - Button & link micro-interactions
+ * - Progressive enhancement (content visible if JS disabled)
+ * - Full prefers-reduced-motion safety
+ */
+
+/* ==============================================================================
+   1. ANIMATION TOKENS & CSS CUSTOM PROPERTIES
+   ============================================================================== */
+:root {
+  /* Durations */
+  --dch-anim-duration-fast: 200ms;
+  --dch-anim-duration-base: 350ms;
+  --dch-anim-duration-medium: 500ms;
+  --dch-anim-duration-slow: 750ms;
+  --dch-anim-duration-text: 600ms;
+  --dch-anim-duration-section: 700ms;
+
+  /* Cubic-Bezier Curves for Natural Physics */
+  --dch-anim-ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+  --dch-anim-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --dch-anim-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --dch-anim-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dch-anim-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==============================================================================
+   2. PROGRESSIVE ENHANCEMENT & SCROLL-REVEAL INITIAL STATES
+   Only hide elements when JS is confirmed ready (.dch-anim-ready on <html>)
+   ============================================================================== */
+
+/* Base transition setup for revealable items */
+.dch-animate-fade-up,
+.dch-animate-fade-down,
+.dch-animate-fade-in,
+.dch-animate-slide-left,
+.dch-animate-slide-right,
+.dch-animate-zoom-in,
+.dch-animate-zoom-out,
+.dch-animate-blur,
+.reveal,
+[data-animate] {
+  transition-property: opacity, transform, filter;
+  transition-duration: var(--dch-anim-duration-medium);
+  transition-timing-function: var(--dch-anim-ease-default);
+  will-change: opacity, transform;
+}
+
+/* Hidden Initial States (Active only when JS has initialized) */
+.dch-anim-ready .dch-animate-fade-up:not(.dch-animated),
+.dch-anim-ready [data-animate="fade-up"]:not(.dch-animated),
+.dch-anim-ready .reveal:not(.revealed) {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.dch-anim-ready .dch-animate-fade-down:not(.dch-animated),
+.dch-anim-ready [data-animate="fade-down"]:not(.dch-animated) {
+  opacity: 0;
+  transform: translateY(-28px);
+}
+
+.dch-anim-ready .dch-animate-fade-in:not(.dch-animated),
+.dch-anim-ready [data-animate="fade-in"]:not(.dch-animated) {
+  opacity: 0;
+  transform: none;
+}
+
+.dch-anim-ready .dch-animate-slide-left:not(.dch-animated),
+.dch-anim-ready [data-animate="slide-left"]:not(.dch-animated) {
+  opacity: 0;
+  transform: translateX(36px);
+}
+
+.dch-anim-ready .dch-animate-slide-right:not(.dch-animated),
+.dch-anim-ready [data-animate="slide-right"]:not(.dch-animated) {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+.dch-anim-ready .dch-animate-zoom-in:not(.dch-animated),
+.dch-anim-ready [data-animate="zoom-in"]:not(.dch-animated) {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.dch-anim-ready .dch-animate-zoom-out:not(.dch-animated),
+.dch-anim-ready [data-animate="zoom-out"]:not(.dch-animated) {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+.dch-anim-ready .dch-animate-blur:not(.dch-animated),
+.dch-anim-ready [data-animate="blur"]:not(.dch-animated) {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(8px);
+}
+
+/* ==============================================================================
+   3. ANIMATED / REVEALED ACTIVE STATES
+   ============================================================================== */
+.dch-animated,
+.revealed,
+.dch-anim-ready .dch-animated,
+.dch-anim-ready .revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+  filter: blur(0) !important;
+}
+
+/* Remove will-change after transition completes to preserve GPU memory */
+.dch-animated {
+  will-change: auto;
+}
+
+/* ==============================================================================
+   4. STAGGERED REVEALS (FOR CARDS, GRIDS, LISTS)
+   ============================================================================== */
+.dch-stagger-group > *:nth-child(1),
+[data-stagger="true"] > *:nth-child(1) { transition-delay: 60ms; }
+
+.dch-stagger-group > *:nth-child(2),
+[data-stagger="true"] > *:nth-child(2) { transition-delay: 130ms; }
+
+.dch-stagger-group > *:nth-child(3),
+[data-stagger="true"] > *:nth-child(3) { transition-delay: 200ms; }
+
+.dch-stagger-group > *:nth-child(4),
+[data-stagger="true"] > *:nth-child(4) { transition-delay: 270ms; }
+
+.dch-stagger-group > *:nth-child(5),
+[data-stagger="true"] > *:nth-child(5) { transition-delay: 340ms; }
+
+.dch-stagger-group > *:nth-child(6),
+[data-stagger="true"] > *:nth-child(6) { transition-delay: 410ms; }
+
+.dch-stagger-group > *:nth-child(7),
+[data-stagger="true"] > *:nth-child(7) { transition-delay: 480ms; }
+
+.dch-stagger-group > *:nth-child(8),
+[data-stagger="true"] > *:nth-child(8) { transition-delay: 550ms; }
+
+/* Explicit Delay Utility Classes */
+.dch-delay-100 { transition-delay: 100ms !important; }
+.dch-delay-150 { transition-delay: 150ms !important; }
+.dch-delay-200 { transition-delay: 200ms !important; }
+.dch-delay-250 { transition-delay: 250ms !important; }
+.dch-delay-300 { transition-delay: 300ms !important; }
+.dch-delay-400 { transition-delay: 400ms !important; }
+.dch-delay-500 { transition-delay: 500ms !important; }
+.dch-delay-600 { transition-delay: 600ms !important; }
+
+/* Explicit Duration Utility Classes */
+.dch-duration-fast   { transition-duration: var(--dch-anim-duration-fast) !important; }
+.dch-duration-base   { transition-duration: var(--dch-anim-duration-base) !important; }
+.dch-duration-medium { transition-duration: var(--dch-anim-duration-medium) !important; }
+.dch-duration-slow   { transition-duration: var(--dch-anim-duration-slow) !important; }
+
+/* ==============================================================================
+   5. IMAGE REVEAL & HOVER ANIMATIONS
+   ============================================================================== */
+.dch-img-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.dch-img-hover-zoom img,
+.dch-img-container img {
+  transition: transform 0.6s var(--dch-anim-ease-default);
+}
+
+.dch-img-hover-zoom:hover img,
+.dch-img-container:hover img {
+  transform: scale(1.05);
+}
+
+/* ==============================================================================
+   6. CARD & BUTTON MICRO-INTERACTIONS
+   ============================================================================== */
+.dch-card-animate {
+  transition: transform var(--dch-anim-duration-base) var(--dch-anim-ease-default),
+              box-shadow var(--dch-anim-duration-base) var(--dch-anim-ease-default),
+              border-color var(--dch-anim-duration-base) var(--dch-anim-ease-default);
+}
+
+.dch-card-animate:hover {
+  transform: translateY(-6px);
+}
+
+.dch-btn-animate {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--dch-anim-duration-fast) var(--dch-anim-ease-default),
+              box-shadow var(--dch-anim-duration-fast) var(--dch-anim-ease-default),
+              background var(--dch-anim-duration-fast) var(--dch-anim-ease-default);
+}
+
+.dch-btn-animate:hover {
+  transform: translateY(-2px);
+}
+
+.dch-btn-animate:active {
+  transform: translateY(0);
+}
+
+/* ==============================================================================
+   7. UI STATE TRANSITIONS (MODALS, POPUPS, NOTIFICATIONS)
+   ============================================================================== */
+.dch-fade-enter {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.25s var(--dch-anim-ease-default),
+              transform 0.25s var(--dch-anim-ease-default);
+}
+
+.dch-fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dch-fade-exit {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+}
+
+.dch-fade-exit-active {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* ==============================================================================
+   8. PULSE & FLOATING KEYFRAME ANIMATIONS
+   ============================================================================== */
+@keyframes dchFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes dchPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+@keyframes dchShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.dch-animate-float {
+  animation: dchFloat 4s ease-in-out infinite;
+}
+
+.dch-animate-pulse {
+  animation: dchPulse 2.5s ease-in-out infinite;
+}
+
+/* ==============================================================================
+   9. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ============================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .dch-animate-fade-up,
+  .dch-animate-fade-down,
+  .dch-animate-fade-in,
+  .dch-animate-slide-left,
+  .dch-animate-slide-right,
+  .dch-animate-zoom-in,
+  .dch-animate-zoom-out,
+  .dch-animate-blur,
+  .reveal,
+  [data-animate],
+  .dch-card-animate,
+  .dch-btn-animate,
+  .dch-animate-float,
+  .dch-animate-pulse {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+

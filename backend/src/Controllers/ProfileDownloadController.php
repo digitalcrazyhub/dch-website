@@ -376,6 +376,10 @@ HTML;
 
     private function sendSecurityAndCorsHeaders(): void
     {
+        if (headers_sent()) {
+            return;
+        }
+
         header('Content-Type: application/json; charset=UTF-8');
         header('X-Content-Type-Options: nosniff');
         header('X-Frame-Options: DENY');

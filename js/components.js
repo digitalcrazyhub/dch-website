@@ -57,6 +57,11 @@ export async function initSharedComponents() {
   } catch (err) {
     console.error('Error initializing footer:', err);
   }
+
+  // Refresh global animations on newly injected shared components
+  if (typeof window !== 'undefined' && window.DCHAnimations && typeof window.DCHAnimations.init === 'function') {
+    window.DCHAnimations.init();
+  }
 }
 
 /**

@@ -56,7 +56,7 @@ export function initNavbar() {
     });
 
     // Parent category highlighting: Services
-    const isServicesPage = currentFile === 'services.html' || window.location.pathname.includes('/services/');
+    const isServicesPage = currentFile === 'digital-marketing-services.html' || window.location.pathname.includes('/services/');
     if (isServicesPage) {
       const desktopServicesLink = navRoot.querySelector('.dch-has-dropdown[data-dropdown="services"] > .dch-dropdown-trigger-group > .dch-nav-link');
       const mobileServicesBtn = document.querySelector('.dch-drawer-accordion[data-accordion="services"] .dch-accordion-header-btn, .dch-drawer-accordion[data-accordion="services"] .dch-accordion-title');
@@ -65,7 +65,7 @@ export function initNavbar() {
     }
 
     // Parent category highlighting: About Us
-    const isAboutPage = ['about.html', 'team.html', 'achievements.html', 'clients.html'].includes(currentFile);
+    const isAboutPage = ['about-us.html', 'team.html', 'achievements.html', 'clients.html'].includes(currentFile);
     if (isAboutPage) {
       const desktopAboutLink = navRoot.querySelector('.dch-has-dropdown[data-dropdown="about"] > .dch-dropdown-trigger-group > .dch-nav-link');
       const mobileAboutBtn = document.querySelector('.dch-drawer-accordion[data-accordion="about"] .dch-accordion-header-btn, .dch-drawer-accordion[data-accordion="about"] .dch-accordion-title');

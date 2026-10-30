@@ -14,6 +14,9 @@ import './pages/clients.js';
 import './pages/contact.js';
 import './pages/testimonials.js';
 import './components/profile-modal.js';
+import './components/testimonial-carousel.js';
+import './components/scoreboard-counter.js';
+import { initGlobalAnimations, DCHAnimations } from './animations.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll for in-page anchor links
@@ -33,25 +36,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Project Portfolio Filter Tabs (Matching Reference Design)
+  // Project Portfolio Filter Tabs (Homepage Showcase)
   const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const projectCards = document.querySelectorAll('#projects .project-card, .projects-grid .project-card');
 
   if (filterBtns.length > 0 && projectCards.length > 0) {
     filterBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
-        // Toggle active button
-        filterBtns.forEach((b) => b.classList.remove('active'));
+        // Toggle active button and ARIA state
+        filterBtns.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
 
         const filter = btn.dataset.filter;
 
         projectCards.forEach((card) => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = '';
+          const isMatch = filter === 'all' || card.dataset.category === filter;
+          if (isMatch) {
+            card.style.display = 'flex';
+            requestAnimationFrame(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
             card.classList.add('visible');
           } else {
-            card.style.display = 'none';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+              if (card.style.opacity === '0') {
+                card.style.display = 'none';
+              }
+            }, 250);
             card.classList.remove('visible');
           }
         });
@@ -59,32 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Intersection Observer for Scroll Reveals
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.1
-    };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach((el) => {
-      revealObserver.observe(el);
-    });
-  } else {
-    // If reduced motion is preferred or IntersectionObserver not supported, reveal immediately
-    document.querySelectorAll('.reveal').forEach((el) => {
-      el.classList.add('revealed');
-    });
-  }
+  // Global Scroll Reveal & Animation System
+  initGlobalAnimations();
 
   // Background Video Performance & Reduced Motion Handling
   const heroVideo = document.querySelector('.hero-video');
@@ -129,4 +123,31 @@ document.addEventListener('DOMContentLoaded', () => {
       clauseObserver.observe(clause);
     });
   }
+
+  // About Section Read More / Read Less Toggle
+  const aboutToggleBtns = document.querySelectorAll('.about-read-more-btn');
+  aboutToggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('aria-controls');
+      const targetContent = document.getElementById(targetId);
+      if (!targetContent) return;
+
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const newExpanded = !isExpanded;
+
+      btn.setAttribute('aria-expanded', String(newExpanded));
+      targetContent.setAttribute('aria-hidden', String(!newExpanded));
+
+      if (newExpanded) {
+        targetContent.classList.add('is-expanded');
+      } else {
+        targetContent.classList.remove('is-expanded');
+      }
+
+      const textSpan = btn.querySelector('.btn-text');
+      if (textSpan) {
+        textSpan.textContent = newExpanded ? 'Read Less' : 'Read More';
+      }
+    });
+  });
 });

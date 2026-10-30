@@ -75,7 +75,7 @@
   }
 
   /* About Page Client Logos (<= 1200px) */
-  .client-logos-section .client-logos-grid {
+  .client-logos-section .client-works-badge {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 22px 18px;
   }
@@ -101,7 +101,8 @@
   }
 
   /* Grids: 4 -> 2 columns */
-  .services-grid {
+  .services-grid,
+  .client-industries-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -122,11 +123,22 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Client Testimonials Carousel Tablet Landscape (<= 1024px: 2 cards visible) */
+  .dch-testimonials-section {
+    --dch-cards-per-view: 2;
+    --dch-slide-gap: 22px;
+  }
+
+  .dch-testimonials-card-inner {
+    padding: 28px 24px 24px;
+    min-height: 290px;
+  }
+
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .client-logos-grid {
+  .client-works-badge {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -464,6 +476,27 @@
     padding-bottom: 4.5rem;
   }
 
+  /* Client Testimonials Carousel Tablet Portrait & Mobile (<= 768px: 1 card visible) */
+  .dch-testimonials-section {
+    --dch-cards-per-view: 1;
+    --dch-slide-gap: 16px;
+  }
+
+  .dch-testimonials-card-inner {
+    padding: 24px 20px 20px;
+    min-height: auto;
+  }
+
+  .dch-testimonials-controls {
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .dch-testimonials-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
   .testimonials-heading {
     font-size: 2.1rem;
   }
@@ -511,13 +544,18 @@
   }
 
   /* About & Why Choose Us single column */
-  .about-grid,
   .why-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .about-visual,
+  .about-visual {
+    float: none;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto 28px auto;
+  }
+
   .why-visual-wrap {
     order: -1;
     max-width: 540px;
@@ -1122,7 +1160,7 @@
   }
 
   /* About Page Client Logos (<= 768px - Tablet) */
-  .client-logos-section .client-logos-grid {
+  .client-logos-section .client-works-badge {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px 14px;
   }
@@ -1149,8 +1187,8 @@
   .team-grid,
   .blog-grid,
   .why-features,
-  .about-highlights,
-  .testimonial-video-grid {
+  .testimonial-video-grid,
+  .client-industries-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1170,6 +1208,16 @@
 
   .testimonial-lightbox-mobile-controls {
     display: flex !important;
+  }
+
+  /* Client Testimonials Carousel Mobile (<= 640px) */
+  .dch-testimonials-card-top {
+    gap: 10px;
+  }
+
+  .dch-testimonials-text {
+    font-size: 0.9375rem;
+    line-height: 1.65;
   }
 
   /* 404 Error Page (<= 640px) */
@@ -1233,7 +1281,7 @@
     border-radius: var(--radius-md, 12px);
   }
 
-  .client-logos-grid {
+  .client-works-badge {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1428,7 +1476,7 @@
   }
 
   /* About Page Client Logos (<= 640px - Mobile Landscape) */
-  .client-logos-section .client-logos-grid {
+  .client-logos-section .client-works-badge {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px 14px;
   }
@@ -1449,7 +1497,7 @@
 @media screen and (max-width: 500px) {
 
   /* About Page Client Logos (<= 500px - Mobile Portrait) */
-  .client-logos-section .client-logos-grid {
+  .client-logos-section .client-works-badge {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px 12px;
   }
@@ -1996,7 +2044,9 @@
   .dch-drawer-backdrop,
   .dch-accordion-collapse,
   .dch-bar,
-  .site-header {
+  .site-header,
+  .about-expandable,
+  .about-read-more-btn .btn-arrow {
     transition: none !important;
   }
 
@@ -2011,6 +2061,10 @@
   .service-benefit-card,
   .service-process-card,
   .related-service-card,
+  .industry-card,
+  .industry-card-img,
+  .industry-card-icon-overlay,
+  .industry-card-arrow,
   .project-card,
   .project-card-img,
   .project-card-link-icon,
@@ -2066,7 +2120,12 @@
   .testimonial-lightbox,
   .testimonial-lightbox-close,
   .testimonial-video-play-status,
-  .testimonial-unmute-prompt {
+  .testimonial-unmute-prompt,
+  .dch-testimonials-track,
+  .dch-testimonials-card,
+  .dch-testimonials-card-inner,
+  .dch-testimonials-nav-btn,
+  .dch-testimonials-dot {
     transform: none !important;
     transition: none !important;
     animation: none !important;
