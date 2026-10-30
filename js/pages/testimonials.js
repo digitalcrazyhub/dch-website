@@ -146,8 +146,12 @@ export function initTestimonials() {
     }
 
     // Update UI Indicators
+    const isStudentPage = document.title.toLowerCase().includes('student') ||
+      (typeof window !== 'undefined' && window.location.pathname.includes('students-feedback'));
+    const storyType = isStudentPage ? 'Student' : 'Client';
+
     if (badgeText) {
-      badgeText.textContent = `Client Story #${currentIndex + 1} of ${totalVideos}`;
+      badgeText.textContent = `${storyType} Story #${currentIndex + 1} of ${totalVideos}`;
     }
     if (mobileCounter) {
       mobileCounter.textContent = `${currentIndex + 1} / ${totalVideos}`;
@@ -161,7 +165,7 @@ export function initTestimonials() {
     const embedUrl = `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&playsinline=1&rel=0&enablejsapi=1`;
 
     iframe.setAttribute('src', embedUrl);
-    iframe.setAttribute('title', `${video.title} - Digital Crazy Hub Client Testimonial`);
+    iframe.setAttribute('title', `${video.title} - Digital Crazy Hub ${storyType} Testimonial`);
     iframe.setAttribute(
       'allow',
       'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'

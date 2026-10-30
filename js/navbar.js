@@ -65,12 +65,21 @@ export function initNavbar() {
     }
 
     // Parent category highlighting: About Us
-    const isAboutPage = ['about-us.html', 'team.html', 'achievements.html', 'clients.html'].includes(currentFile);
+    const isAboutPage = ['about-us.html', 'team-details.html', 'achievements.html', 'clients.html'].includes(currentFile);
     if (isAboutPage) {
       const desktopAboutLink = navRoot.querySelector('.dch-has-dropdown[data-dropdown="about"] > .dch-dropdown-trigger-group > .dch-nav-link');
       const mobileAboutBtn = document.querySelector('.dch-drawer-accordion[data-accordion="about"] .dch-accordion-header-btn, .dch-drawer-accordion[data-accordion="about"] .dch-accordion-title');
       if (desktopAboutLink) desktopAboutLink.classList.add('active');
       if (mobileAboutBtn) mobileAboutBtn.classList.add('active');
+    }
+
+    // Parent category highlighting: Testimonials
+    const isTestimonialsPage = ['students-feedback.html', 'client-feedback.html'].includes(currentFile);
+    if (isTestimonialsPage) {
+      const desktopTestimonialsLink = navRoot.querySelector('.dch-has-dropdown[data-dropdown="testimonials"] > .dch-dropdown-trigger-group > .dch-nav-link');
+      const mobileTestimonialsBtn = document.querySelector('.dch-drawer-accordion[data-accordion="testimonials"] .dch-accordion-header-btn, .dch-drawer-accordion[data-accordion="testimonials"] .dch-accordion-title');
+      if (desktopTestimonialsLink) desktopTestimonialsLink.classList.add('active');
+      if (mobileTestimonialsBtn) mobileTestimonialsBtn.classList.add('active');
     }
   } catch (err) {
     // Fail gracefully

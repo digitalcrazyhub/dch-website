@@ -27,7 +27,7 @@
             </button>
           </div>
           <ul class="dch-dropdown-menu" id="dch-desktop-about-menu" role="menu" aria-label="About Us Submenu">
-            <li role="none"><a href="team.html" class="dch-dropdown-link" role="menuitem">Our Team</a></li>
+            <li role="none"><a href="team-details.html" class="dch-dropdown-link" role="menuitem">Our Team</a></li>
             <li role="none"><a href="achievements.html" class="dch-dropdown-link" role="menuitem">Our Achievements</a>
             </li>
             <li role="none"><a href="clients.html" class="dch-dropdown-link" role="menuitem">Coffee with Clients</a>
@@ -73,8 +73,26 @@
         <li class="dch-nav-item" role="none">
           <a href="projects.html" class="dch-nav-link" role="menuitem">Projects</a>
         </li>
-        <li class="dch-nav-item" role="none">
-          <a href="testimonials.html" class="dch-nav-link" role="menuitem">Testimonials</a>
+        <li class="dch-nav-item dch-has-dropdown" role="none" data-dropdown="testimonials">
+          <div class="dch-dropdown-trigger-group">
+            <a href="#" class="dch-nav-link" role="menuitem">Testimonials</a>
+            <button type="button" class="dch-dropdown-btn" id="dch-testimonials-dropdown-btn"
+              aria-label="Toggle Testimonials submenu" aria-expanded="false" aria-haspopup="true"
+              aria-controls="dch-desktop-testimonials-menu">
+              <svg class="dch-chevron-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <ul class="dch-dropdown-menu" id="dch-desktop-testimonials-menu" role="menu"
+            aria-label="Testimonials Submenu">
+            <li role="none"><a href="students-feedback.html" class="dch-dropdown-link" role="menuitem">Student
+                Testimonials</a></li>
+            <li role="none"><a href="client-feedback.html" class="dch-dropdown-link" role="menuitem">Client
+                Testimonials</a>
+            </li>
+          </ul>
         </li>
         <li class="dch-nav-item" role="none">
           <a href="blog.html" class="dch-nav-link" role="menuitem">Blog</a>
@@ -148,7 +166,7 @@
               aria-labelledby="dch-mobile-about-btn">
               <ul class="dch-accordion-menu">
                 <li><a href="about-us.html" class="dch-accordion-link">About Overview</a></li>
-                <li><a href="team.html" class="dch-accordion-link">Our Team</a></li>
+                <li><a href="team-details.html" class="dch-accordion-link">Our Team</a></li>
                 <li><a href="achievements.html" class="dch-accordion-link">Our Achievements</a></li>
                 <li><a href="clients.html" class="dch-accordion-link">Coffee with Clients</a></li>
               </ul>
@@ -191,9 +209,28 @@
           <li class="dch-drawer-item">
             <a href="projects.html" class="dch-drawer-link">Projects</a>
           </li>
-          <li class="dch-drawer-item">
-            <a href="testimonials.html" class="dch-drawer-link">Testimonials</a>
+
+          <!-- Mobile In-Flow Accordion: Testimonials -->
+          <li class="dch-drawer-item dch-drawer-accordion" data-accordion="testimonials">
+            <button type="button" class="dch-accordion-header-btn" id="dch-mobile-testimonials-btn"
+              aria-expanded="false" aria-controls="dch-mobile-testimonials-menu"
+              aria-label="Toggle Testimonials submenu">
+              <span class="dch-accordion-title">Testimonials</span>
+              <svg class="dch-accordion-chevron" width="14" height="14" viewBox="0 0 12 12" fill="none"
+                aria-hidden="true">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="dch-accordion-collapse" id="dch-mobile-testimonials-menu" role="region"
+              aria-labelledby="dch-mobile-testimonials-btn">
+              <ul class="dch-accordion-menu">
+                <li><a href="students-feedback.html" class="dch-accordion-link">Student Testimonials</a></li>
+                <li><a href="client-feedback.html" class="dch-accordion-link">Client Testimonials</a></li>
+              </ul>
+            </div>
           </li>
+
           <li class="dch-drawer-item">
             <a href="blog.html" class="dch-drawer-link">Blog</a>
           </li>
