@@ -4,4 +4,6 @@ vendor/
 logs/*.log
 storage/ratelimit/*.json
 !storage/ratelimit/.gitkeep
+storage/documents/*.pdf
+!storage/documents/.gitkeep
 php.ini

@@ -124,10 +124,10 @@ digital-crazy-hub/
 │   ├── services/
 │   ├── utils/
 │   ├── logs/
+│   ├── .env.example            # Safe Environment Variables Template
 │   └── .htaccess
 │
 ├── .gitignore                  # Git Ignore Rules
-├── .env.example                # Safe Environment Variables Template
 ├── README.md                   # Project Overview & Documentation
 └── PROJECT_RULES.md            # Master Project Rules & Governance
 ```
@@ -160,5 +160,7 @@ Development follows a strict 11-stage process defined in [PROJECT_RULES.md](file
    - Start Apache via XAMPP Control Panel.
    - Access URL: `http://localhost/digitalcrazyhub/`
 3. **Configuration:**
-   - Copy `.env.example` to `.env` when backend features are configured.
+   - Copy `backend/.env.example` to `backend/.env` when backend features are configured.
    - Never commit sensitive production credentials.
+4. **Company Profile Document:**
+   - Upload the company profile PDF to the server manually (via SFTP/cPanel) to `backend/storage/documents/digital-crazy-hub-company-profile.pdf` or an external secure directory specified in `PROFILE_PDF_PATH`.

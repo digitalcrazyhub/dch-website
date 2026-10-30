@@ -167,27 +167,16 @@ final class ProfileDownloadController
             return;
         }
 
-        $tokenHash = hash('sha256', $rawToken);
-
-        // Atomically consume the token in database
-        $leadRecord = $this->repository->consumeToken($tokenHash);
-        if ($leadRecord === null) {
-            $this->renderDownloadError(
-                410,
-                'Download Link Expired or Already Used',
-                'This company profile download link has either expired (links are valid for 5 minutes) or has already been used. Please return to the homepage to request a fresh download link.'
-            );
-            return;
-        }
-
         // Resolve PDF Document Path
         $configuredPath = Env::getString('PROFILE_PDF_PATH', '');
         if ($configuredPath !== '') {
-            $pdfPath = $configuredPath;
+            $isAbsolute = (bool) preg_match('#^([a-zA-Z]:[\\\\/]|/|\\\\)#', $configuredPath);
+            $pdfPath = $isAbsolute ? $configuredPath : dirname(__DIR__, 2) . '/' . ltrim($configuredPath, '/\\');
         } else {
             $pdfPath = dirname(__DIR__, 2) . '/storage/documents/digital-crazy-hub-company-profile.pdf';
         }
 
+        // Check that the PDF exists and is readable BEFORE consuming the token
         if (!file_exists($pdfPath) || !is_readable($pdfPath)) {
             Logger::critical('Company profile PDF file missing or unreadable on disk', [
                 'path' => $pdfPath
@@ -196,6 +185,19 @@ final class ProfileDownloadController
                 500,
                 'Document Unavailable',
                 'The company profile document is currently undergoing updates on our server. Please contact us at info@digitalcrazyhub.com or +91 9659239187 to receive a copy directly.'
+            );
+            return;
+        }
+
+        $tokenHash = hash('sha256', $rawToken);
+
+        // Atomically consume the token in database only after file check passes
+        $leadRecord = $this->repository->consumeToken($tokenHash);
+        if ($leadRecord === null) {
+            $this->renderDownloadError(
+                410,
+                'Download Link Expired or Already Used',
+                'This company profile download link has either expired (links are valid for 5 minutes) or has already been used. Please return to the homepage to request a fresh download link.'
             );
             return;
         }

@@ -185,6 +185,8 @@ PROFILE_DOWNLOAD_TOKEN_EXPIRY=300
 PROFILE_PDF_PATH=storage/documents/digital-crazy-hub-company-profile.pdf
 ```
 
+> **Note on Company Profile PDF:** For security and repository hygiene, `storage/documents/*.pdf` files are excluded from Git version control. Upload the company profile PDF to the server manually via SFTP or cPanel (e.g. to `backend/storage/documents/digital-crazy-hub-company-profile.pdf` or an external secure directory outside the web root), then set `PROFILE_PDF_PATH` in `backend/.env` (relative paths resolve against the `backend/` directory; absolute paths stay as-is).
+
 ---
 
 ## 5. Google Sheets Integration (Google Apps Script)
