@@ -8,11 +8,17 @@
 
 /* --------------------------------------------------------------------------
    Page Banner Overrides for Achievements Page
-   Restrained decoration: heading and breadcrumbs only, no marketing paragraphs
    -------------------------------------------------------------------------- */
-.achievements-page .page-banner-desc,
 .achievements-page .page-banner-badges {
   display: none !important;
+}
+
+.achievements-page .page-banner-aside {
+  display: none;
+}
+
+.achievements-page .page-banner-grid {
+  grid-template-columns: 1fr;
 }
 
 .achievements-page .page-banner-content {
@@ -45,9 +51,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.75rem;
-  padding-bottom: 0.875rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-border-light, #F0F2F7);
+  position: relative;
+}
+
+/* Elegant brand-blue category indicator accent */
+.gallery-section-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 52px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary, #0755C9), var(--color-primary-gradient-end, #00A3FF));
+  border-radius: var(--radius-pill, 999px);
 }
 
 .gallery-section-title {
@@ -104,12 +123,12 @@
   border-radius: var(--radius-md, 12px);
   text-align: left;
   outline: none;
-  transition: transform var(--transition-fast, 0.2s ease),
-    box-shadow var(--transition-fast, 0.2s ease);
+  transition: transform var(--transition-fast, 0.25s cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow var(--transition-fast, 0.25s cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .gallery-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .gallery-card:focus-visible {
@@ -118,11 +137,12 @@
   border-radius: var(--radius-md, 12px);
 }
 
-/* Card Inner Frame */
+/* Card Inner Frame — display: block ensures span container behaves as block */
 .gallery-card-inner {
+  display: block;
   position: relative;
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius-md, 12px);
   background-color: var(--color-bg-alt, #F5F6FA);
@@ -132,9 +152,14 @@
     box-shadow var(--transition-fast, 0.2s ease);
 }
 
+/* Portrait aspect ratio specifically tailored for awards trophies */
+#group-awards .gallery-card-inner {
+  aspect-ratio: 3 / 4;
+}
+
 .gallery-card:hover .gallery-card-inner {
-  border-color: rgba(7, 85, 201, 0.28);
-  box-shadow: var(--shadow-md, 0 8px 24px rgba(11, 23, 48, 0.09));
+  border-color: rgba(7, 85, 201, 0.35);
+  box-shadow: var(--shadow-md, 0 10px 28px rgba(11, 23, 48, 0.12));
 }
 
 /* Thumbnail Image */
@@ -144,12 +169,12 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     filter 0.3s ease;
 }
 
 .gallery-card:hover .gallery-thumb {
-  transform: scale(1.055);
+  transform: scale(1.06);
 }
 
 /* Subtle Hover Zoom Overlay */
@@ -168,13 +193,14 @@
   pointer-events: none;
 }
 
-.gallery-card:hover .gallery-hover-overlay {
+.gallery-card:hover .gallery-hover-overlay,
+.gallery-card:focus-visible .gallery-hover-overlay {
   opacity: 1;
 }
 
 .gallery-zoom-icon {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.95);
   color: var(--color-primary, #0755C9);
@@ -186,7 +212,14 @@
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gallery-card:hover .gallery-zoom-icon {
+.gallery-zoom-icon svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.gallery-card:hover .gallery-zoom-icon,
+.gallery-card:focus-visible .gallery-zoom-icon {
   transform: scale(1);
 }
 
@@ -205,6 +238,7 @@
   justify-content: center;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -212,6 +246,7 @@
 .lightbox-dialog.is-open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 /* Translucent Dark Backdrop */
@@ -221,7 +256,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(5, 7, 13, 0.92);
+  background-color: rgba(5, 7, 13, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   cursor: pointer;
@@ -349,6 +384,8 @@
 .lightbox-preview-img {
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: var(--radius-sm, 6px);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);

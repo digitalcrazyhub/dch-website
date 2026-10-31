@@ -106,6 +106,45 @@ export const PROJECT_INVENTORY = [
     liveUrl: 'https://sriammabuilders.com/',
     linkLabel: 'Visit Website'
   },
+  {
+    id: 'gs-sowmiya-builders',
+    title: 'GS Sowmiya Builders',
+    category: 'website',
+    categoryLabel: 'Residential Construction & Development',
+    badgeClass: 'badge-website',
+    index: '08',
+    description: 'Modern residential projects featuring thoughtfully designed living spaces, quality construction, elegant architecture, and comfortable homes tailored to contemporary lifestyles.',
+    image: 'assets/images/projects/gs-sowmiya-builders-project.png',
+    altText: 'GS Sowmiya Builders Website Mockup by Digital Crazy Hub',
+    liveUrl: 'https://www.gssowmiyabuilders.com/',
+    linkLabel: 'Visit Website'
+  },
+  {
+    id: 'g-mark-appliances',
+    title: 'G Mark Appliances',
+    category: 'website',
+    categoryLabel: 'Home Appliances E-Commerces',
+    badgeClass: 'badge-website',
+    index: '09',
+    description: 'A reliable online shopping destination offering quality products, convenient ordering, and a seamless e-commerce experience for customers.',
+    image: 'assets/images/projects/g-mark-alliances-project.png',
+    altText: 'G Mark Appliances Mockup by Digital Crazy Hub',
+    liveUrl: 'https://gmarkstore.com/',
+    linkLabel: 'Visit Website'
+  },
+  {
+    id: 'vimana-chemicals',
+    title: 'Vimana Construction Chemicals',
+    category: 'website',
+    categoryLabel: 'Construction Chemicals',
+    badgeClass: 'badge-website',
+    index: '10',
+    description: 'Advanced construction chemical solutions specializing in waterproofing, concrete protection, repair systems, and durable building solutions for residential and commercial projects.',
+    image: 'assets/images/projects/vimana-construction-chemicals-project.png',
+    altText: 'Vimana Construction Chemicals Mockup by Digital Crazy Hub',
+    liveUrl: 'https://vimana-construction-chemicals.vercel.app/',
+    linkLabel: 'Visit Website'
+  },
 
   // 2. Company Profile Projects (Print & Digital Presentation Dossiers, No external redirect links)
   {
@@ -198,6 +237,19 @@ export const PROJECT_INVENTORY = [
     altText: 'Krishna-Leela Flow of Spaces Premium Residential Apartments Architecture Profile',
     liveUrl: null,
     formatTag: 'Format: Enterprise Capability Profile'
+  },
+  {
+    id: 'profile-maaxson',
+    title: 'MAAXSON Elevators & Escalators',
+    category: 'profile',
+    categoryLabel: 'Corporate Profile • Lift Construction',
+    badgeClass: 'badge-profile',
+    index: '15',
+    description: 'Premium elevator installation, maintenance, modernization, repair, and consultancy services delivering reliable vertical transportation solutions across Tamil Nadu.',
+    image: 'assets/images/projects/brochure-08.png',
+    altText: 'MAAXSON Elevators & Escalators Company Profile Brochure',
+    liveUrl: null,
+    formatTag: 'Format: Enterprise Capability Profile'
   }
 ];
 
@@ -228,7 +280,7 @@ function initProjectFilters() {
       filterBtns.forEach((b) => {
         const isActive = b === btn;
         b.classList.toggle('active', isActive);
-        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
       // Filter category groups

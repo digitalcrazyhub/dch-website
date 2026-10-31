@@ -33,10 +33,10 @@ export function initBlogPage() {
     if (activeBtn) {
       document.querySelectorAll('.blog-filter-btn').forEach((b) => {
         b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('aria-pressed', 'false');
       });
       activeBtn.classList.add('active');
-      activeBtn.setAttribute('aria-selected', 'true');
+      activeBtn.setAttribute('aria-pressed', 'true');
     }
   }
 
@@ -64,7 +64,7 @@ function setupCategoryFilters() {
       filterBtns.forEach((b) => {
         const isActive = b === btn;
         b.classList.toggle('active', isActive);
-        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
       renderBlogView(true);
@@ -176,9 +176,9 @@ function createBlogCardMarkup(post) {
         </div>
       `}
       <div class="blog-card-body">
-        <h3 class="blog-card-title" id="blog-title-${post.id}">
+        <h2 class="blog-card-title" id="blog-title-${post.id}">
           ${hasUrl ? `<a href="${post.url}">${escapeHtml(post.title)}</a>` : escapeHtml(post.title)}
-        </h3>
+        </h2>
         <p class="blog-card-summary">${post.summary}</p>
         <div class="blog-card-footer">
           ${hasUrl ? `

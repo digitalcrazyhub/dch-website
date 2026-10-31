@@ -191,6 +191,7 @@
 }
 
 .clients-card-inner {
+  display: block;
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -554,6 +555,8 @@
 .clients-lightbox-img {
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: var(--radius-sm, 6px);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);

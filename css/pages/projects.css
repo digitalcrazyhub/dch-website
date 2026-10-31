@@ -911,6 +911,8 @@
 .project-lightbox-img {
   max-width: 100%;
   max-height: calc(100vh - 210px);
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: var(--radius-md, 12px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);

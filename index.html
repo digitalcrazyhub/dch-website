@@ -42,7 +42,7 @@
 <body>
 
   <!-- Reusable Navbar Container -->
-  <header id="navbar-container" class="site-header" role="banner"></header>
+  <header id="navbar-container" class="site-header"></header>
 
   <main id="main-content">
 
@@ -126,10 +126,10 @@
               Chennai,
               we pride ourselves on delivering top-quality digital marketing services and offering consistent digital
               support and guidance to businesses. Our team of passionate digital marketers has honed their skills by
-              working with well-established brands across diverse industries. <span
-                class=" about-read-more-btn btn-text"
-                style="text-decoration: underline; font-size: 20px; color: blue; cursor: pointer;"
-                id="home-about-toggle" aria-expanded="false" aria-controls="home-about-expanded">Read More</span>
+              working with well-established brands across diverse industries. <button type="button"
+                class="about-read-more-btn btn-text"
+                style="text-decoration: underline; font-size: 20px; color: blue; cursor: pointer; background: none; border: none; padding: 0;"
+                id="home-about-toggle" aria-expanded="false" aria-controls="home-about-expanded">Read More</button>
             </p>
 
             <div class="about-expandable" id="home-about-expanded" aria-hidden="true">
@@ -615,17 +615,17 @@
           <button type="button" class="portfolio-filter-btn active" data-filter="all" role="tab" aria-selected="true"
             id="home-tab-all">
             <span>All Featured</span>
-            <span class="portfolio-filter-count" aria-label="6 featured projects">6</span>
+            <span class="portfolio-filter-count">6</span>
           </button>
           <button type="button" class="portfolio-filter-btn" data-filter="website" role="tab" aria-selected="false"
             id="home-tab-website">
             <span>Websites</span>
-            <span class="portfolio-filter-count" aria-label="4 website projects">4</span>
+            <span class="portfolio-filter-count">4</span>
           </button>
           <button type="button" class="portfolio-filter-btn" data-filter="profile" role="tab" aria-selected="false"
             id="home-tab-profile">
             <span>Company Profiles</span>
-            <span class="portfolio-filter-count" aria-label="2 company profile projects">2</span>
+            <span class="portfolio-filter-count">2</span>
           </button>
         </div>
 
@@ -819,18 +819,18 @@
         <div class="dch-testimonials-wrapper reveal" role="region" aria-roledescription="carousel"
           aria-label="Customer Testimonials">
           <!-- Carousel Viewport -->
-          <div class="dch-testimonials-viewport" id="dch-testimonials-viewport" tabindex="0"
+          <div class="dch-testimonials-viewport" id="dch-testimonials-viewport" tabindex="0" role="region"
             aria-label="Testimonials slider, use left and right arrow keys to navigate">
             <div class="dch-testimonials-track" id="dch-testimonials-track">
 
               <!-- Review 1: Mohamad Afzer K. -->
-              <article class="dch-testimonials-card" role="group" aria-roledescription="slide"
+              <article class="dch-testimonials-card" aria-roledescription="slide"
                 aria-label="Review 1 of 6" data-index="0">
                 <div class="dch-testimonials-card-inner">
                   <div>
                     <div class="dch-testimonials-card-top">
                       <span class="dch-testimonials-service">Local SEO</span>
-                      <div class="dch-testimonials-rating" aria-label="5 out of 5 stars">
+                      <div class="dch-testimonials-rating" role="img" aria-label="5 out of 5 stars">
                         <svg class="dch-testimonials-star" width="16" height="16" viewBox="0 0 20 20"
                           fill="currentColor" aria-hidden="true">
                           <path
@@ -879,13 +879,13 @@
               </article>
 
               <!-- Review 2: Sam Joel -->
-              <article class="dch-testimonials-card" role="group" aria-roledescription="slide"
+              <article class="dch-testimonials-card" aria-roledescription="slide"
                 aria-label="Review 2 of 6" data-index="1">
                 <div class="dch-testimonials-card-inner">
                   <div>
                     <div class="dch-testimonials-card-top">
                       <span class="dch-testimonials-service">Lead Generation</span>
-                      <div class="dch-testimonials-rating" aria-label="5 out of 5 stars">
+                      <div class="dch-testimonials-rating" role="img" aria-label="5 out of 5 stars">
                         <svg class="dch-testimonials-star" width="16" height="16" viewBox="0 0 20 20"
                           fill="currentColor" aria-hidden="true">
                           <path
@@ -933,13 +933,13 @@
               </article>
 
               <!-- Review 3: Sudhakar V. -->
-              <article class="dch-testimonials-card" role="group" aria-roledescription="slide"
+              <article class="dch-testimonials-card" aria-roledescription="slide"
                 aria-label="Review 3 of 6" data-index="2">
                 <div class="dch-testimonials-card-inner">
                   <div>
                     <div class="dch-testimonials-card-top">
                       <span class="dch-testimonials-service">SEO &amp; Google Ads</span>
-                      <div class="dch-testimonials-rating" aria-label="5 out of 5 stars">
+                      <div class="dch-testimonials-rating" role="img" aria-label="5 out of 5 stars">
                         <svg class="dch-testimonials-star" width="16" height="16" viewBox="0 0 20 20"
                           fill="currentColor" aria-hidden="true">
                           <path
@@ -987,13 +987,13 @@
               </article>
 
               <!-- Review 4: Vetri Selvan -->
-              <article class="dch-testimonials-card" role="group" aria-roledescription="slide"
+              <article class="dch-testimonials-card" aria-roledescription="slide"
                 aria-label="Review 4 of 6" data-index="3">
                 <div class="dch-testimonials-card-inner">
                   <div>
                     <div class="dch-testimonials-card-top">
                       <span class="dch-testimonials-service">Website Development &amp; SEO</span>
-                      <div class="dch-testimonials-rating" aria-label="5 out of 5 stars">
+                      <div class="dch-testimonials-rating" role="img" aria-label="5 out of 5 stars">
                         <svg class="dch-testimonials-star" width="16" height="16" viewBox="0 0 20 20"
                           fill="currentColor" aria-hidden="true">
                           <path
@@ -1041,13 +1041,13 @@
               </article>
 
               <!-- Review 5: GlidPro -->
-              <article class="dch-testimonials-card" role="group" aria-roledescription="slide"
+              <article class="dch-testimonials-card" aria-roledescription="slide"
                 aria-label="Review 5 of 6" data-index="4">
                 <div class="dch-testimonials-card-inner">
                   <div>
                     <div class="dch-testimonials-card-top">
                       <span class="dch-testimonials-service">Digital Marketing</span>
-                      <div class="dch-testimonials-rating" aria-label="5 out of 5 stars">
+                      <div class="dch-testimonials-rating" role="img" aria-label="5 out of 5 stars">
                         <svg class="dch-testimonials-star" width="16" height="16" viewBox="0 0 20 20"
                           fill="currentColor" aria-hidden="true">
                           <path
@@ -1095,13 +1095,13 @@
               </article>
 
               <!-- Review 6: Valarmathi Valarmathi -->
-              <article class="dch-testimonials-card" role="group" aria-roledescription="slide"
+              <article class="dch-testimonials-card" aria-roledescription="slide"
                 aria-label="Review 6 of 6" data-index="5">
                 <div class="dch-testimonials-card-inner">
                   <div>
                     <div class="dch-testimonials-card-top">
                       <span class="dch-testimonials-service">Digital Marketing Training</span>
-                      <div class="dch-testimonials-rating" aria-label="5 out of 5 stars">
+                      <div class="dch-testimonials-rating" role="img" aria-label="5 out of 5 stars">
                         <svg class="dch-testimonials-star" width="16" height="16" viewBox="0 0 20 20"
                           fill="currentColor" aria-hidden="true">
                           <path
@@ -1621,7 +1621,7 @@
   </main>
 
   <!-- Reusable Footer Container -->
-  <footer id="footer-container" class="site-footer" role="contentinfo"></footer>
+  <footer id="footer-container" class="site-footer"></footer>
 
   <!-- ==============================================================================
        Company Profile Download Modal Dialog (Lead Capture & Tokenized Access)
@@ -1671,7 +1671,7 @@
           </label>
           <div class="profile-input-wrapper">
             <input type="text" id="profile-name" name="name" class="profile-form-input"
-              placeholder="Enter your full name" required autocomplete="name" maxlength="100" aria-required="true"
+              placeholder="Enter your full name" required autocomplete="name" maxlength="100"
               aria-invalid="false">
           </div>
           <div class="profile-field-error" id="profile-name-error" role="alert"></div>
@@ -1684,8 +1684,7 @@
           </label>
           <div class="profile-input-wrapper">
             <input type="tel" id="profile-phone" name="phone" class="profile-form-input"
-              placeholder="Enter 10-digit mobile number" required autocomplete="tel" maxlength="10" inputmode="numeric"
-              aria-required="true" aria-invalid="false">
+              placeholder="Enter 10-digit mobile number" required autocomplete="tel" maxlength="10" inputmode="numeric" aria-invalid="false">
           </div>
           <div class="profile-field-error" id="profile-phone-error" role="alert"></div>
         </div>
@@ -1697,7 +1696,7 @@
           </label>
           <div class="profile-input-wrapper">
             <input type="email" id="profile-email" name="email" class="profile-form-input"
-              placeholder="Enter your email address" required autocomplete="email" maxlength="150" aria-required="true"
+              placeholder="Enter your email address" required autocomplete="email" maxlength="150"
               aria-invalid="false">
           </div>
           <div class="profile-field-error" id="profile-email-error" role="alert"></div>

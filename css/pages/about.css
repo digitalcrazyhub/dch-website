@@ -90,6 +90,7 @@
   height: 480px;
   object-fit: cover;
   transition: transform var(--transition-smooth);
+  object-position: center 20%;
 }
 
 .about-intro-media:hover .about-collage-main-img {

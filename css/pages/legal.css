@@ -78,6 +78,14 @@
   color: var(--color-text);
 }
 
+.legal-article-heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 24px;
+  line-height: 1.25;
+}
+
 /* Meta Information Bar (Last Updated / Status) */
 .legal-meta-bar {
   display: flex;
