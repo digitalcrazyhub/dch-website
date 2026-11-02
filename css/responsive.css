@@ -470,6 +470,29 @@
    3. TABLET PORTRAIT (<= 768px)
    ========================================== */
 @media screen and (max-width: 768px) {
+  /* Global Floating Actions Mobile (<= 768px) */
+  .floating-actions {
+    right: 14px;
+    right: max(14px, env(safe-area-inset-right));
+    bottom: 18px;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    gap: var(--fab-gap-mobile);
+  }
+
+  .floating-action-btn {
+    width: var(--fab-size-mobile);
+    height: var(--fab-size-mobile);
+  }
+
+  .floating-action-btn .floating-action-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .floating-action-tooltip {
+    display: none !important;
+  }
+
   .section {
     padding-top: 64px;
     padding-bottom: 64px;
@@ -2210,5 +2233,14 @@
 
   .blog-toast {
     animation: none !important;
+  }
+
+  .floating-action-btn,
+  .floating-action-scrolltop,
+  .floating-action-tooltip,
+  .floating-action-icon {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
   }
 }

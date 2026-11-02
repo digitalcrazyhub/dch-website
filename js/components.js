@@ -4,6 +4,7 @@
  */
 
 import { initNavbar } from './navbar.js';
+import { initFloatingActions } from './components/floating-actions.js';
 
 export async function loadComponent(containerId, componentPath) {
   const container = document.getElementById(containerId);
@@ -56,6 +57,13 @@ export async function initSharedComponents() {
     }
   } catch (err) {
     console.error('Error initializing footer:', err);
+  }
+
+  // Load Global Floating Actions (Phone, WhatsApp, Scroll to Top)
+  try {
+    await initFloatingActions();
+  } catch (err) {
+    console.error('Error initializing floating actions:', err);
   }
 
   // Refresh global animations on newly injected shared components

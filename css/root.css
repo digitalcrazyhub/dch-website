@@ -82,4 +82,19 @@
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
   --transition-smooth: 0.5s ease;
+
+  /* FLOATING ACTIONS COMPONENT TOKENS */
+  --fab-size: 50px;
+  --fab-size-mobile: 46px;
+  --fab-gap: 12px;
+  --fab-gap-mobile: 10px;
+  --fab-right: 24px;
+  --fab-bottom: 24px;
+  --fab-z-index: 999;
+  --fab-phone-bg: #0755C9;
+  --fab-phone-hover: #0645A8;
+  --fab-whatsapp-bg: #25D366;
+  --fab-whatsapp-hover: #20BA5A;
+  --fab-scrolltop-bg: #0B1730;
+  --fab-scrolltop-hover: #0755C9;
 }

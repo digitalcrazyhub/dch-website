@@ -13,6 +13,10 @@ export const COMPANY_CONFIG = {
   businessType: 'Digital Marketing Agency',
   email: 'info@digitalcrazyhub.com',
   phone: '+91 9659239187',
+  phoneRaw: '+919659239187',
+  whatsappNumber: '919659239187',
+  whatsappMessage: 'Hello Digital Crazy Hub, I would like to know more about your services.',
+  whatsappUrl: 'https://wa.me/919659239187?text=Hello%20Digital%20Crazy%20Hub%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services.',
   website: 'https://digitalcrazyhub.com',
   address: {
     line1: '3rd Floor, S3, Khivraj Building',

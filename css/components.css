@@ -1181,3 +1181,184 @@
   min-height: 0;
   overflow: hidden;
 }
+
+/* ==============================================================================
+   GLOBAL FLOATING ACTIONS COMPONENT (CALL, WHATSAPP, SCROLL TO TOP)
+   ============================================================================== */
+
+.floating-actions {
+  position: fixed;
+  right: var(--fab-right);
+  bottom: var(--fab-bottom);
+  z-index: var(--fab-z-index);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fab-gap);
+  pointer-events: none;
+}
+
+.floating-action-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--fab-size);
+  height: var(--fab-size);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: #FFFFFF;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(11, 23, 48, 0.18);
+  pointer-events: auto;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 220ms ease,
+              opacity 240ms ease,
+              visibility 240ms ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-action-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  color: #FFFFFF;
+}
+
+.floating-action-btn:focus-visible {
+  outline: 3px solid #6547F5;
+  outline-offset: 3px;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.floating-action-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* 1. Phone Button */
+.floating-action-phone {
+  background: var(--fab-phone-bg);
+  box-shadow: 0 4px 16px rgba(7, 85, 201, 0.32);
+}
+
+.floating-action-phone:hover {
+  background: var(--fab-phone-hover);
+  box-shadow: 0 8px 24px rgba(7, 85, 201, 0.45);
+}
+
+/* 2. WhatsApp Button */
+.floating-action-whatsapp {
+  background: var(--fab-whatsapp-bg);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.floating-action-whatsapp:hover {
+  background: var(--fab-whatsapp-hover);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.48);
+}
+
+/* 3. Scroll to Top Button */
+.floating-action-scrolltop,
+.floating-action-scrolltop.is-visible {
+  background: var(--fab-scrolltop-bg);
+  box-shadow: 0 4px 16px rgba(11, 23, 48, 0.28);
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) scale(1);
+  max-height: var(--fab-size);
+  margin-top: 0;
+  overflow: visible;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 220ms ease,
+              opacity 240ms ease;
+}
+
+.floating-action-scrolltop:hover,
+.floating-action-scrolltop.is-visible:hover {
+  background: var(--fab-scrolltop-hover);
+  box-shadow: 0 8px 24px rgba(7, 85, 201, 0.42);
+  transform: translateY(-3px) scale(1.04);
+}
+
+.floating-action-scrolltop.is-scrolled {
+  background: var(--fab-scrolltop-hover);
+  box-shadow: 0 6px 20px rgba(7, 85, 201, 0.45);
+}
+
+/* Icon inside buttons */
+.floating-action-icon {
+  display: block;
+  flex-shrink: 0;
+  transition: transform 220ms ease;
+}
+
+.floating-action-btn:hover .floating-action-icon {
+  transform: scale(1.08);
+}
+
+/* Tooltip (Desktop) */
+.floating-action-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(11, 23, 48, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 7px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: opacity 180ms ease, transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-action-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(11, 23, 48, 0.94);
+}
+
+.floating-action-btn:hover .floating-action-tooltip,
+.floating-action-btn:focus-visible .floating-action-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Entrance Animations */
+@keyframes fabEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-actions .floating-action-phone {
+  animation: fabEntrance 360ms cubic-bezier(0.16, 1, 0.3, 1) 120ms backwards;
+}
+
+.floating-actions .floating-action-whatsapp {
+  animation: fabEntrance 360ms cubic-bezier(0.16, 1, 0.3, 1) 220ms backwards;
+}
+
+.floating-actions .floating-action-scrolltop {
+  animation: fabEntrance 360ms cubic-bezier(0.16, 1, 0.3, 1) 320ms backwards;
+}
