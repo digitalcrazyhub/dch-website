@@ -87,7 +87,7 @@
 
 .about-collage-main-img {
   width: 100%;
-  height: 480px;
+  height: 610px;
   object-fit: cover;
   transition: transform var(--transition-smooth);
   object-position: center 20%;

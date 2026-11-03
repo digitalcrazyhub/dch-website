@@ -3,8 +3,8 @@
  * Vanilla JavaScript ES6+
  *
  * Actions:
- * 1. Phone Call (tel:+919659239187)
- * 2. WhatsApp Chat (https://wa.me/919659239187)
+ * 1. Phone Call (tel:+919361501280)
+ * 2. WhatsApp Chat (https://wa.me/919361501280)
  * 3. Scroll to Top (Smooth / Accessible / Reduced Motion compliant)
  */
 
@@ -12,16 +12,16 @@ import { loadComponent } from '../components.js';
 
 const FALLBACK_HTML = `
 <aside class="floating-actions" id="floating-actions" aria-label="Quick Actions">
-  <a href="tel:+919659239187"
+  <a href="tel:+919361501280"
      class="floating-action-btn floating-action-phone"
-     aria-label="Call Digital Crazy Hub at +91 9659239187">
+     aria-label="Call Digital Crazy Hub at +91 93615 01280">
     <svg class="floating-action-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
     </svg>
     <span class="floating-action-tooltip" role="tooltip">Call Us</span>
   </a>
 
-  <a href="https://wa.me/919659239187?text=Hello%20Digital%20Crazy%20Hub%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+  <a href="https://wa.me/919361501280?text=Hello%20Digital%20Crazy%20Hub%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
      target="_blank"
      rel="noopener noreferrer"
      class="floating-action-btn floating-action-whatsapp"
@@ -126,13 +126,21 @@ function attachFloatingActionEvents() {
     e.preventDefault();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    window.scrollTo({
-      top: 0,
-      behavior: prefersReducedMotion ? 'auto' : 'smooth'
-    });
+    try {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+    } catch (_) {
+      window.scrollTo(0, 0);
+    }
 
-    // Remove focus ring after activation
-    scrollTopBtn.blur();
+    // Safely remove focus ring without cancelling ongoing smooth scroll
+    setTimeout(() => {
+      if (document.activeElement === scrollTopBtn) {
+        scrollTopBtn.blur();
+      }
+    }, 350);
   });
 }
 

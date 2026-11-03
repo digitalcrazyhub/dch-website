@@ -57,7 +57,7 @@ echo "--- Testing ProfileDownloadValidator (5 Required Fields) ---\n";
 
 $valid = [
     'name' => 'Kavitha Ramachandran',
-    'phone' => '9659239187',
+    'phone' => '9361501280',
     'email' => 'kavitha@example.com',
     'location' => 'Chennai, Tamil Nadu',
     'consent' => true
@@ -65,7 +65,7 @@ $valid = [
 
 $res = ProfileDownloadValidator::validate($valid);
 $suite->assert($res['isValid'] === true, 'Valid 5-field profile download input passes');
-$suite->assert($res['data']['phone'] === '9659239187', 'Phone is plain 10 digits without prefixes');
+$suite->assert($res['data']['phone'] === '9361501280', 'Phone is plain 10 digits without prefixes');
 $suite->assert($res['data']['email'] === 'kavitha@example.com', 'Email is sanitized and preserved');
 $suite->assert($res['data']['consent_status'] === 1, 'Consent is recorded as 1');
 
@@ -77,16 +77,16 @@ $suite->assert(!$res['isValid'] && isset($res['errors']['name']), 'Empty name is
 
 // Test Strict 10-Digit Phone Numbers (Indian mobile policy)
 $phones = [
-    ['9659239187', true],   // starts with 9
+    ['9361501280', true],   // starts with 9
     ['8765432109', true],   // starts with 8
     ['7654321098', true],   // starts with 7
     ['6543210987', true],   // starts with 6
-    ['+919659239187', false], // country code prefix prohibited
+    ['+91 9361501280', false], // country code prefix prohibited
     ['+14155552671', false],  // foreign country code prohibited
     ['96592 39187', false],   // spaces prohibited
     ['96592-39187', false],   // hyphens prohibited
     ['965923918', false],     // 9 digits (too short)
-    ['96592391870', false],   // 11 digits (too long)
+    ['93615012800', false],   // 11 digits (too long)
     ['1234567890', false],    // invalid leading digit (does not start with 6-9)
     ['abcdefghij', false],    // alphabetic characters prohibited
 ];
@@ -186,7 +186,7 @@ $testRawToken = bin2hex(random_bytes(32));
 $testTokenHash = hash('sha256', $testRawToken);
 $leadData = [
     'name' => 'Meera Krishnan',
-    'phone' => '9659239187',
+    'phone' => '9361501280',
     'email' => 'meera@example.com',
     'location' => 'Chennai',
     'consent_status' => 1,
@@ -198,7 +198,7 @@ $leadData = [
 $saved = $repo->createLeadAndToken($leadData, $testTokenHash, 300);
 $suite->assert($saved['id'] > 0 && !empty($saved['uuid']), 'ProfileDownloadRepository saves lead and returns valid ID and UUID');
 $suite->assert($saved['email'] === 'meera@example.com', 'Lead email is stored in repository');
-$suite->assert($saved['phone'] === '9659239187', 'Lead phone is stored without prefix');
+$suite->assert($saved['phone'] === '9361501280', 'Lead phone is stored without prefix');
 
 // Test Token Consumption (First use -> must succeed)
 $consumed = $repo->consumeToken($testTokenHash);
@@ -224,7 +224,7 @@ $stmt = $testPdo->prepare("INSERT INTO company_profile_downloads (
 $stmt->execute([
     ':uuid' => ProfileDownloadRepository::generateUuid(),
     ':name' => 'Expired User',
-    ':phone' => '9659239187',
+    ':phone' => '9361501280',
     ':email' => 'expired@example.com',
     ':location' => 'Chennai',
     ':hash' => $expiredHash,

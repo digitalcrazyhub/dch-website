@@ -125,9 +125,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // About Section Read More / Read Less Toggle
-  const aboutToggleBtns = document.querySelectorAll('.about-read-more-btn');
+  initAboutToggle();
+});
+
+/**
+ * Initialize About section Read More / Read Less expandable content toggles
+ */
+export function initAboutToggle() {
+  const aboutToggleBtns = document.querySelectorAll('.about-read-more-btn, #home-about-toggle');
   aboutToggleBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    if (btn.dataset.boundToggle === 'true') return;
+    btn.dataset.boundToggle = 'true';
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const targetId = btn.getAttribute('aria-controls');
       const targetContent = document.getElementById(targetId);
       if (!targetContent) return;
@@ -144,10 +155,27 @@ document.addEventListener('DOMContentLoaded', () => {
         targetContent.classList.remove('is-expanded');
       }
 
+      // Update button text: Support child .btn-text span (about-us.html) and direct button text (index.html)
       const textSpan = btn.querySelector('.btn-text');
       if (textSpan) {
         textSpan.textContent = newExpanded ? 'Read Less' : 'Read More';
+      } else {
+        const arrow = btn.querySelector('.btn-arrow, svg');
+        if (arrow) {
+          btn.childNodes.forEach((node) => {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              node.textContent = newExpanded ? 'Read Less ' : 'Read More ';
+            }
+          });
+        } else {
+          btn.textContent = newExpanded ? 'Read Less' : 'Read More';
+        }
       }
     });
   });
-});
+}
+
+// Immediate execution if DOM is already parsed
+if (typeof document !== 'undefined' && (document.readyState === 'interactive' || document.readyState === 'complete')) {
+  initAboutToggle();
+}

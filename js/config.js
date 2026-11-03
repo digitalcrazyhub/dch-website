@@ -8,24 +8,41 @@
 
 export const COMPANY_CONFIG = {
   name: 'Digital Crazy Hub',
-  legalName: 'Digital Crazy Hub', // Marked for formal company confirmation
+  legalName: 'Digital Crazy Hub',
   tagline: 'Your Growth Partner in the Digital World',
   businessType: 'Digital Marketing Agency',
-  email: 'info@digitalcrazyhub.com',
-  phone: '+91 9659239187',
-  phoneRaw: '+919659239187',
-  whatsappNumber: '919659239187',
+  // Official Contact Numbers
+  primaryPhone: '+91 93615 01280',
+  primaryPhoneRaw: '+919361501280',
+  secondaryPhone: '+91 96592 39187',
+  secondaryPhoneRaw: '+91 9361501280',
+  phone: '+91 93615 01280', // Backwards compatibility
+  phoneRaw: '+919361501280',
+  // Official Email Addresses
+  primaryEmail: 'digitalcrazyhub@gmail.com',
+  secondaryEmail: 'digitalcrazyhub@gmail.com',
+  email: 'digitalcrazyhub@gmail.com', // Backwards compatibility
+  // WhatsApp Integration
+  whatsappNumber: '919361501280',
   whatsappMessage: 'Hello Digital Crazy Hub, I would like to know more about your services.',
-  whatsappUrl: 'https://wa.me/919659239187?text=Hello%20Digital%20Crazy%20Hub%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services.',
-  website: 'https://digitalcrazyhub.com',
+  whatsappUrl: 'https://wa.me/919361501280?text=Hello%20Digital%20Crazy%20Hub%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services.',
+  // Official Website
+  website: 'https://digitalcrazyhub.com/',
+  // Complete Registered / Business Address
   address: {
-    line1: '3rd Floor, S3, Khivraj Building',
+    floor: '4th Floor, C1',
+    building: 'Khivraj Building',
+    street: 'No. 624, Anna Salai',
+    landmark: 'Near Anna Flyover, Thousand Lights West, Thousand Lights',
+    line1: '4th Floor, C1, Khivraj Building',
     line2: 'No. 624, Anna Salai, Near Anna Flyover',
-    landmark: 'Thousand Lights West, Thousand Lights',
+    area: 'Thousand Lights West, Thousand Lights',
     city: 'Chennai',
     state: 'Tamil Nadu',
     postalCode: '600006',
-    country: 'India'
+    country: 'India',
+    full: '4th Floor, C1, Khivraj Building, No. 624, Anna Salai, Near Anna Flyover, Thousand Lights West, Thousand Lights, Chennai, Tamil Nadu 600006, India.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=4th+Floor%2C+C1%2C+Khivraj+Building%2C+No.+624%2C+Anna+Salai%2C+Near+Anna+Flyover%2C+Thousand+Lights+West%2C+Thousand+Lights%2C+Chennai%2C+Tamil+Nadu+600006%2C+India'
   },
   // Social Media Profile Configurations
   // IMPORTANT: Replace placeholders with verified profile URLs upon official client confirmation

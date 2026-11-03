@@ -184,6 +184,11 @@
   color: var(--color-text-light);
 }
 
+.footer-map-link {
+  margin-bottom: 8px;
+}
+
+.footer-map-link a,
 .footer-website-link a {
   display: inline-flex;
   align-items: center;
@@ -191,8 +196,10 @@
   color: var(--color-primary-light);
   font-size: 0.925rem;
   font-weight: 600;
+  transition: color var(--transition-fast, 0.2s ease);
 }
 
+.footer-map-link a:hover,
 .footer-website-link a:hover {
   color: #FFFFFF;
 }
@@ -1168,12 +1175,14 @@
   opacity: 0;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .about-expandable.is-expanded {
   grid-template-rows: 1fr;
   visibility: visible;
   opacity: 1;
+  overflow: visible;
   transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
 }
 
@@ -1205,10 +1214,13 @@
   justify-content: center;
   width: var(--fab-size);
   height: var(--fab-size);
+  padding: 0;
+  margin: 0;
   border-radius: 50%;
   border: none;
   cursor: pointer;
   color: #FFFFFF;
+  line-height: 1;
   text-decoration: none;
   box-shadow: 0 4px 16px rgba(11, 23, 48, 0.18);
   pointer-events: auto;

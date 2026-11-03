@@ -27,8 +27,7 @@ export const ACHIEVEMENTS_GALLERY = [
       { src: 'assets/images/achievements/awards/award-02.png', alt: 'Digital Crazy Hub Award Trophy 02' },
       { src: 'assets/images/achievements/awards/award-03.png', alt: 'Digital Crazy Hub Award Trophy 03' },
       { src: 'assets/images/achievements/awards/award-04.png', alt: 'Digital Crazy Hub Award Trophy 04' },
-      { src: 'assets/images/achievements/awards/award-05.png', alt: 'Digital Crazy Hub Award Trophy 05' },
-      { src: 'assets/images/achievements/awards/award-06.png', alt: 'Digital Crazy Hub Award Trophy 06' }
+      { src: 'assets/images/achievements/awards/award-05.png', alt: 'Digital Crazy Hub Award Trophy 05' }
     ]
   },
   {
@@ -40,13 +39,13 @@ export const ACHIEVEMENTS_GALLERY = [
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-03.jpeg', alt: 'CNI Awards and Felicitation Ceremony 03' },
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-04.jpeg', alt: 'CNI Awards and Felicitation Ceremony 04' },
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-05.JPG', alt: 'CNI Awards and Felicitation Ceremony 05' },
-      { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-06.JPG', alt: 'CNI Awards and Felicitation Ceremony 06' },
+      { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-12.jpeg', alt: 'CNI Awards and Felicitation Ceremony 06' },
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-07.jpeg', alt: 'CNI Awards and Felicitation Ceremony 07' },
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-08.jpg', alt: 'CNI Awards and Felicitation Ceremony 08' },
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-09.png', alt: 'CNI Awards and Felicitation Ceremony 09' },
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-10.jpeg', alt: 'CNI Awards and Felicitation Ceremony 10' },
       { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-11.jpeg', alt: 'CNI Awards and Felicitation Ceremony 11' },
-      { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-12.jpeg', alt: 'CNI Awards and Felicitation Ceremony 12' }
+      { src: 'assets/images/achievements/awards/CNI-awards/CNI-award-06.JPG', alt: 'CNI Awards and Felicitation Ceremony 12' }
     ]
   },
   {
@@ -63,11 +62,7 @@ export const ACHIEVEMENTS_GALLERY = [
       { src: 'assets/images/achievements/Training/SDC-college/SDC-08.jpg', alt: 'Swami Dayananda College Workshop 08' },
       { src: 'assets/images/achievements/Training/SDC-college/SDC-09.jpg', alt: 'Swami Dayananda College Workshop 09' },
       { src: 'assets/images/achievements/Training/SDC-college/SDC-10.jpg', alt: 'Swami Dayananda College Workshop 10' },
-      { src: 'assets/images/achievements/Training/SDC-college/SDC-11.jpg', alt: 'Swami Dayananda College Workshop 11' },
-      { src: 'assets/images/achievements/Training/SDC-college/SDC-12.jpg', alt: 'Swami Dayananda College Workshop 12' },
-      { src: 'assets/images/achievements/Training/SDC-college/SDC-13.jpg', alt: 'Swami Dayananda College Workshop 13' },
-      { src: 'assets/images/achievements/Training/SDC-college/SDC-14.jpg', alt: 'Swami Dayananda College Workshop 14' },
-      { src: 'assets/images/achievements/Training/SDC-college/SDC-15.jpg', alt: 'Swami Dayananda College Workshop 15' }
+      { src: 'assets/images/achievements/Training/SDC-college/SDC-11.jpg', alt: 'Swami Dayananda College Workshop 11' }
     ]
   },
   {
@@ -100,7 +95,7 @@ export const ACHIEVEMENTS_GALLERY = [
       { src: 'assets/images/achievements/Training/SNS-college/sns-04.jpg', alt: 'Dr. SNS Rajalakshmi College Event 04' },
       { src: 'assets/images/achievements/Training/SNS-college/sns-05.jpg', alt: 'Dr. SNS Rajalakshmi College Event 05' },
       { src: 'assets/images/achievements/Training/SNS-college/sns-06.jpg', alt: 'Dr. SNS Rajalakshmi College Event 06' },
-      { src: 'assets/images/achievements/Training/SNS-college/sns-07.png', alt: 'Dr. SNS Rajalakshmi College Campus 07' }
+      { src: 'assets/images/achievements/Training/SNS-college/sns-07.jpeg', alt: 'Dr. SNS Rajalakshmi College Campus 07' }
     ]
   },
   {

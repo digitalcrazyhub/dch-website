@@ -236,7 +236,7 @@ function initContactForm(form) {
         );
       } else {
         // Other server errors or unexpected responses
-        const serverMsg = result?.message || 'We could not process your enquiry at this moment. Please try again later or reach us directly at info@digitalcrazyhub.com.';
+        const serverMsg = result?.message || 'We could not process your enquiry at this moment. Please try again later or reach us directly at digitalcrazyhub@gmail.com.';
         showAlert(alertContainer, 'error', serverMsg);
       }
     } catch (err) {
@@ -244,7 +244,7 @@ function initContactForm(form) {
       showAlert(
         alertContainer,
         'error',
-        'Network error: Could not reach the server. Please check your internet connection or reach us directly at info@digitalcrazyhub.com or +91 9659239187.'
+        'Network error: Could not reach the server. Please check your internet connection or reach us directly at digitalcrazyhub@gmail.com or +91 9361501280.'
       );
       // Preserving entered field values as required by project governance
     } finally {

@@ -37,24 +37,24 @@ final class EmailService
         $this->password = Env::getString('SMTP_PASSWORD', '');
 
         // Normalize sender address if domain-only was configured
-        $from = Env::getString('MAIL_FROM_ADDRESS', 'info@digitalcrazyhub.com');
+        $from = Env::getString('MAIL_FROM_ADDRESS', 'digitalcrazyhub@gmail.com');
         if (!filter_var($from, FILTER_VALIDATE_EMAIL)) {
             if (str_contains($from, '.') && !str_contains($from, '@')) {
                 $from = 'info@' . $from;
             } else {
-                $from = 'info@digitalcrazyhub.com';
+                $from = 'digitalcrazyhub@gmail.com';
             }
         }
         $this->fromAddress = $from;
         $this->fromName = Env::getString('MAIL_FROM_NAME', 'Digital Crazy Hub');
 
         // Normalize admin recipient address if domain-only was configured
-        $admin = Env::getString('MAIL_ADMIN_ADDRESS', 'info@digitalcrazyhub.com');
+        $admin = Env::getString('MAIL_ADMIN_ADDRESS', 'digitalcrazyhub@gmail.com');
         if (!filter_var($admin, FILTER_VALIDATE_EMAIL)) {
             if (str_contains($admin, '.') && !str_contains($admin, '@')) {
                 $admin = 'info@' . $admin;
             } else {
-                $admin = 'info@digitalcrazyhub.com';
+                $admin = 'digitalcrazyhub@gmail.com';
             }
         }
         $this->adminRecipient = $admin;
@@ -309,7 +309,7 @@ final class EmailService
         $testLead = [
             'name' => 'Diagnostic Test Recipient',
             'email' => $recipientEmail,
-            'phone' => '+919659239187',
+            'phone' => '+91 9361501280',
             'location' => 'Chennai',
             'service' => 'Backend Email Audit',
             'message' => 'This is an authorized diagnostic test email verifying the Digital Crazy Hub email delivery pipeline.',
@@ -368,7 +368,7 @@ final class EmailService
         $testLead = [
             'name' => 'Admin Diagnostic Tester',
             'email' => $target,
-            'phone' => '+919659239187',
+            'phone' => '+91 9361501280',
             'location' => 'Chennai',
             'service' => 'Diagnostic Verification',
             'message' => 'Controlled SMTP verification test for internal staff notifications.',

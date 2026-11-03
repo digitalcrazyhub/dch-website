@@ -158,11 +158,11 @@ MAIL_ENABLED=true
 SMTP_HOST=smtp.your-mail-provider.com
 SMTP_PORT=587
 SMTP_ENCRYPTION=tls
-SMTP_USERNAME=info@digitalcrazyhub.com
+SMTP_USERNAME=digitalcrazyhub@gmail.com
 SMTP_PASSWORD=YOUR_SMTP_PASSWORD
-MAIL_FROM_ADDRESS=info@digitalcrazyhub.com
+MAIL_FROM_ADDRESS=digitalcrazyhub@gmail.com
 MAIL_FROM_NAME="Digital Crazy Hub"
-MAIL_ADMIN_ADDRESS=info@digitalcrazyhub.com
+MAIL_ADMIN_ADDRESS=digitalcrazyhub@gmail.com
 
 # Google reCAPTCHA v3
 RECAPTCHA_ENABLED=true

@@ -70,7 +70,7 @@ $validInput = [
 
 $res = ContactValidator::validate($validInput);
 $suite->assert($res['isValid'] === true, 'Valid full submission passes validation');
-$suite->assert($res['data']['phone'] === '+919659239187', 'Phone number normalized to E.164 without spaces');
+$suite->assert($res['data']['phone'] === '+91 9361501280', 'Phone number normalized to E.164 without spaces');
 $suite->assert($res['data']['consent_status'] === 1, 'Consent marked as active');
 
 // Test Missing Name
@@ -90,8 +90,8 @@ $phonesToTest = [
     ['+1 (415) 555-2671', true, '+14155552671'],
     ['+44 20 7946 0991', true, '+442079460991'],
     ['+971 50 123 4567', true, '+971501234567'],
-    ['9659239187', true, '9659239187'],
-    ['+919659239187', true, '+919659239187'],
+    ['9361501280', true, '9361501280'],
+    ['+91 9361501280', true, '+91 9361501280'],
     ['abcd123456', false, ''],
     ['+123', false, ''], // too short
     ['12345678901234567890', false, ''], // too long (>18 digits)
@@ -224,7 +224,7 @@ $emailService = new EmailService();
 $testLead = [
     'uuid' => '550e8400-e29b-41d4-a716-446655440000',
     'name' => 'Vikram Seth',
-    'phone' => '+919659239187',
+    'phone' => '+91 9361501280',
     'email' => 'vikram@example.com',
     'location' => 'Chennai',
     'service' => 'SEO Services',

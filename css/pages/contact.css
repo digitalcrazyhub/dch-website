@@ -61,10 +61,13 @@
 }
 
 @keyframes pulseDot {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.35);
     opacity: 0.7;
@@ -161,6 +164,13 @@
   flex: 1;
 }
 
+.contact-info-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
 .contact-info-link {
   display: inline-flex;
   align-items: center;
@@ -170,6 +180,8 @@
   font-weight: 700;
   color: var(--color-primary, #0755C9);
   text-decoration: none;
+  word-break: break-word;
+  overflow-wrap: break-word;
   transition: color var(--transition-fast, 0.2s ease),
     gap var(--transition-fast, 0.2s ease);
 }
@@ -723,6 +735,200 @@
   line-height: 1.7;
   color: var(--color-text-secondary, #5E687C);
   margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 7: CONNECT WITH DIGITAL CRAZY HUB (SOCIAL CHANNELS)
+   Matching Official Design with Responsive 4-Column Layout
+   ========================================================================== */
+.contact-social-connect-section {
+  padding: 5rem 0 6rem;
+  background-color: #FFFFFF;
+  border-top: 1px solid var(--color-border-light, #F0F2F7);
+}
+
+.contact-social-connect-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem auto;
+}
+
+.contact-social-connect-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--color-navy, #0B1730);
+  margin-bottom: 0.85rem;
+}
+
+.contact-social-connect-desc {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary, #5E687C);
+  margin: 0;
+}
+
+.contact-social-connect-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.social-connect-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.35rem;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border-light, #E6EAF2);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: transform var(--transition-base, 0.25s ease),
+    box-shadow var(--transition-base, 0.25s ease),
+    border-color var(--transition-fast, 0.2s ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-connect-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(7, 85, 201, 0.35);
+  box-shadow: 0 12px 28px rgba(11, 23, 48, 0.08);
+}
+
+.social-connect-card:focus-visible {
+  outline: 2px solid var(--color-primary, #0755C9);
+  outline-offset: 2px;
+}
+
+.social-connect-left {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.social-connect-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.social-connect-card:hover .social-connect-icon-box {
+  transform: scale(1.08);
+}
+
+.social-icon-instagram {
+  border-color: #F3E5F5;
+  background: #FFFFFF;
+}
+
+.social-icon-facebook {
+  background: #1877F2;
+  border-color: #1877F2;
+  box-shadow: 0 3px 10px rgba(24, 119, 242, 0.28);
+}
+
+.social-icon-whatsapp {
+  background: #25D366;
+  border-color: #25D366;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.28);
+}
+
+.social-icon-youtube {
+  background: #FF0000;
+  border-color: #FF0000;
+  box-shadow: 0 3px 10px rgba(255, 0, 0, 0.28);
+}
+
+.social-connect-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.social-connect-platform {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy, #0B1730);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.social-connect-card:hover .social-connect-platform {
+  color: var(--color-primary, #0755C9);
+}
+
+.social-connect-handle {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: #0755C9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.social-connect-arrow {
+  flex-shrink: 0;
+  color: #9AA5B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast, 0.2s ease), color var(--transition-fast, 0.2s ease);
+}
+
+.social-connect-card:hover .social-connect-arrow {
+  transform: translateX(4px);
+  color: var(--color-primary, #0755C9);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .contact-social-connect-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-social-connect-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .contact-social-connect-header {
+    margin-bottom: 2rem;
+  }
+
+  .contact-social-connect-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+
+  .social-connect-card {
+    padding: 1rem 1.15rem;
+  }
 }
 
 /* ==========================================================================

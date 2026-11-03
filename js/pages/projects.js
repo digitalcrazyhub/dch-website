@@ -250,6 +250,125 @@ export const PROJECT_INVENTORY = [
     altText: 'MAAXSON Elevators & Escalators Company Profile Brochure',
     liveUrl: null,
     formatTag: 'Format: Enterprise Capability Profile'
+  },
+
+  // 3. Lead Generation Projects (Performance Ad Creatives & Campaign Assets)
+  {
+    id: 'lead-gen-01',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/abc-garden-doctors-city.png',
+    altText: 'Lead Generation Campaign Creative - ABC Garden Doctors City',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-02',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/ananda-readymade.png',
+    altText: 'Lead Generation Campaign Creative - Ananda Readymade',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-03',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/CNI.png',
+    altText: 'Lead Generation Campaign Creative - CNI',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-04',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/erope-study-center.png',
+    altText: 'Lead Generation Campaign Creative - Europe Study Centre',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-05',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/g-mark-appliances.png',
+    altText: 'Lead Generation Campaign Creative - G Mark Appliances',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-06',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/g-star-property.png',
+    altText: 'Lead Generation Campaign Creative - G Star Property',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-07',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/harmony-space.png',
+    altText: 'Lead Generation Campaign Creative - Harmony Space',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-08',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/loan-guru.png',
+    altText: 'Lead Generation Campaign Creative - Loan Guru',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-09',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/peter-england.png',
+    altText: 'Lead Generation Campaign Creative - Peter England',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-10',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/property-loan.png',
+    altText: 'Lead Generation Campaign Creative - Property Loan',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-11',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/uk-design.png',
+    altText: 'Lead Generation Campaign Creative - UK Design',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-12',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/vimana-chemicals.png',
+    altText: 'Lead Generation Campaign Creative - Vimana Chemicals',
+    liveUrl: null
+  },
+  {
+    id: 'lead-gen-13',
+    title: 'Lead Generation',
+    category: 'lead-generation',
+    categoryLabel: 'Lead Generation Campaign',
+    image: 'assets/images/projects/lead-generation/zaairah-makeover.png',
+    altText: 'Lead Generation Campaign Creative - Zaairah Makeover',
+    liveUrl: null
   }
 ];
 
@@ -390,6 +509,7 @@ export class CompanyProfileLightbox {
     this.nextBtn = document.getElementById('project-lightbox-next');
     this.img = document.getElementById('project-lightbox-img');
     this.figureEl = document.getElementById('project-lightbox-figure');
+    this.badgeEl = document.getElementById('project-lightbox-badge');
     this.titleEl = document.getElementById('project-lightbox-title');
     this.currentEl = document.getElementById('project-lightbox-current');
     this.totalEl = document.getElementById('project-lightbox-total');
@@ -397,7 +517,10 @@ export class CompanyProfileLightbox {
     this.formatEl = document.getElementById('project-lightbox-format');
     this.descEl = document.getElementById('project-lightbox-desc');
 
-    this.items = this.collectProfileItems();
+    this.profileItems = this.collectProfileItems();
+    this.leadGenItems = this.collectLeadGenItems();
+    this.items = this.profileItems;
+    this.activeCategory = 'profile';
     this.currentIndex = 0;
     this.isOpen = false;
     this.lastFocusedTrigger = null;
@@ -441,8 +564,37 @@ export class CompanyProfileLightbox {
     return items;
   }
 
+  /**
+   * Collect Lead Generation project items either from PROJECT_INVENTORY or DOM cards
+   */
+  collectLeadGenItems() {
+    const inventoryLeadGen = PROJECT_INVENTORY.filter((p) => p.category === 'lead-generation');
+    if (inventoryLeadGen.length > 0) {
+      return inventoryLeadGen;
+    }
+
+    // Fallback: collect from DOM
+    const leadGenCards = document.querySelectorAll('.project-card[data-category="lead-generation"]');
+    const items = [];
+    leadGenCards.forEach((card, idx) => {
+      const img = card.querySelector('.project-card-img');
+      const title = card.querySelector('.project-card-title');
+      items.push({
+        id: `leadgen-item-${idx}`,
+        title: title ? title.textContent.trim() : 'Lead Generation',
+        category: 'lead-generation',
+        categoryLabel: 'Lead Generation Campaign',
+        description: '',
+        image: img ? img.getAttribute('src') : '',
+        altText: img ? img.getAttribute('alt') : 'Lead Generation Campaign Creative',
+        formatTag: ''
+      });
+    });
+    return items;
+  }
+
   init() {
-    if (!this.modal || this.items.length === 0) return;
+    if (!this.modal || (this.profileItems.length === 0 && this.leadGenItems.length === 0)) return;
 
     if (this.totalEl) {
       this.totalEl.textContent = this.items.length;
@@ -453,11 +605,11 @@ export class CompanyProfileLightbox {
   }
 
   /**
-   * Attach triggers to Company Profile items only.
+   * Attach triggers to Company Profile and Lead Generation items.
    * STRICT ENFORCEMENT: Website project cards are untouched.
    */
   bindTriggers() {
-    // 1. Media container clicks/keyboard (only on .project-card-media-profile)
+    // 1. Company Profile media container clicks/keyboard (only on .project-card-media-profile)
     const mediaTriggers = document.querySelectorAll('.project-card[data-category="profile"] .project-card-media-profile');
     mediaTriggers.forEach((trigger) => {
       const getIndex = () => {
@@ -468,26 +620,60 @@ export class CompanyProfileLightbox {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
         const idx = getIndex();
-        this.open(idx, trigger);
+        this.open('profile', idx, trigger);
       });
 
       trigger.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           const idx = getIndex();
-          this.open(idx, trigger);
+          this.open('profile', idx, trigger);
         }
       });
     });
 
-    // 2. "Preview" footer button clicks
+    // 2. Company Profile "Preview" footer button clicks
     const btnTriggers = document.querySelectorAll('.project-card[data-category="profile"] .project-card-preview-btn');
     btnTriggers.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const rawIdx = btn.getAttribute('data-profile-index');
         const idx = rawIdx !== null ? parseInt(rawIdx, 10) : 0;
-        this.open(idx, btn);
+        this.open('profile', idx, btn);
+      });
+    });
+
+    // 3. Lead Generation media container clicks/keyboard (only on .project-card-media-leadgen)
+    const leadGenMediaTriggers = document.querySelectorAll('.project-card[data-category="lead-generation"] .project-card-media-leadgen');
+    leadGenMediaTriggers.forEach((trigger) => {
+      const getIndex = () => {
+        const rawIdx = trigger.getAttribute('data-leadgen-index');
+        return rawIdx !== null ? parseInt(rawIdx, 10) : 0;
+      };
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const idx = getIndex();
+        this.open('lead-generation', idx, trigger);
+      });
+
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const idx = getIndex();
+          this.open('lead-generation', idx, trigger);
+        }
+      });
+    });
+
+    // 4. Lead Generation "Preview" footer button clicks
+    const leadGenBtnTriggers = document.querySelectorAll('.project-card[data-category="lead-generation"] .project-card-preview-btn');
+    leadGenBtnTriggers.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const rawIdx = btn.getAttribute('data-leadgen-index');
+        const idx = rawIdx !== null ? parseInt(rawIdx, 10) : 0;
+        this.open('lead-generation', idx, btn);
       });
     });
   }
@@ -585,10 +771,27 @@ export class CompanyProfileLightbox {
     }
   }
 
-  open(index, triggerEl = null) {
+  open(categoryOrIndex, indexOrTrigger = 0, triggerEl = null) {
+    let category = 'profile';
+    let index = 0;
+    let trigger = triggerEl;
+
+    if (typeof categoryOrIndex === 'string') {
+      category = categoryOrIndex;
+      index = typeof indexOrTrigger === 'number' ? indexOrTrigger : 0;
+      trigger = triggerEl || indexOrTrigger;
+    } else if (typeof categoryOrIndex === 'number') {
+      index = categoryOrIndex;
+      trigger = indexOrTrigger;
+      category = 'profile';
+    }
+
+    this.activeCategory = category;
+    this.items = category === 'lead-generation' ? this.leadGenItems : this.profileItems;
     if (!this.items.length) return;
+
     this.currentIndex = Math.max(0, Math.min(index, this.items.length - 1));
-    this.lastFocusedTrigger = triggerEl || document.activeElement;
+    this.lastFocusedTrigger = (trigger && typeof trigger.focus === 'function') ? trigger : document.activeElement;
     this.isOpen = true;
 
     this.render();
@@ -645,17 +848,23 @@ export class CompanyProfileLightbox {
     if (this.totalEl) {
       this.totalEl.textContent = this.items.length;
     }
+    if (this.badgeEl) {
+      this.badgeEl.textContent = item.category === 'lead-generation' ? 'Lead Generation' : 'Company Profile';
+    }
     if (this.titleEl) {
       this.titleEl.textContent = item.title;
     }
     if (this.catEl) {
-      this.catEl.textContent = item.categoryLabel || 'Company Profile';
+      this.catEl.textContent = item.categoryLabel || '';
+      this.catEl.style.display = item.categoryLabel ? '' : 'none';
     }
     if (this.formatEl) {
-      this.formatEl.textContent = item.formatTag || 'Format: Enterprise Capability Profile';
+      this.formatEl.textContent = item.formatTag || '';
+      this.formatEl.style.display = item.formatTag ? '' : 'none';
     }
     if (this.descEl) {
       this.descEl.textContent = item.description || '';
+      this.descEl.style.display = item.description ? '' : 'none';
     }
 
     if (this.img) {

@@ -9,13 +9,14 @@ Official website repository for **Digital Crazy Hub**, a premier digital marketi
 - **Company Name:** Digital Crazy Hub
 - **Business Type:** Digital Marketing Agency
 - **Office Address:**  
-  3rd Floor, S3, Khivraj Building,  
+  4th Floor, C1, Khivraj Building,  
   No. 624, Anna Salai, Near Anna Flyover,  
   Thousand Lights West, Thousand Lights,  
   Chennai, Tamil Nadu 600006, India.
-- **Phone:** +91 9659239187
-- **Email:** [info@digitalcrazyhub.com](mailto:info@digitalcrazyhub.com)
-- **Website:** [https://digitalcrazyhub.com](https://digitalcrazyhub.com)
+- **Primary Phone:** +91 93615 01280
+- **Secondary Phone:** +91 96592 39187
+- **Email:** [digitalcrazyhub@gmail.com](mailto:digitalcrazyhub@gmail.com) / [digitalcrazyhub@gmail.com](mailto:digitalcrazyhub@gmail.com)
+- **Website:** [https://digitalcrazyhub.com/](https://digitalcrazyhub.com/)
 - **Primary Market:** Chennai, Tamil Nadu, India (with additional approved regional markets)
 
 ### Core Services

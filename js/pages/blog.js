@@ -294,7 +294,7 @@ function attachReadMoreHandlers(container) {
   readMoreButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const articleTitle = btn.dataset.title || 'this article';
-      showBlogToast(`Detailed article for "${articleTitle}" is scheduled for publication soon. Contact info@digitalcrazyhub.com for direct insights.`);
+      showBlogToast(`Detailed article for "${articleTitle}" is scheduled for publication soon. Contact digitalcrazyhub@gmail.com for direct insights.`);
     });
   });
 }

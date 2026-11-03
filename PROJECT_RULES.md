@@ -18,11 +18,13 @@ Never replace these rules with your own preferences without explicit approval.
 #### Official Company Details
 - **Project working name:** Digital Crazy Hub
 - **Company name:** Digital Crazy Hub
-- **Email:** info@digitalcrazyhub.com
-- **Contact number:** +91 9659239187
-- **Website:** https://digitalcrazyhub.com
+- **Primary Email:** digitalcrazyhub@gmail.com
+- **Secondary Email:** digitalcrazyhub@gmail.com
+- **Primary Contact Number:** +91 93615 01280
+- **Secondary Contact Number:** +91 96592 39187
+- **Website:** https://digitalcrazyhub.com/
 - **Office address:**  
-  3rd Floor, S3, Khivraj Building,  
+  4th Floor, C1, Khivraj Building,  
   No. 624, Anna Salai,  
   Near Anna Flyover,  
   Thousand Lights West, Thousand Lights,  
@@ -495,7 +497,7 @@ If the existing project uses a different established structure, inspect it and p
 ### 17. CONVERSION AND BUSINESS REQUIREMENTS
 - Goal: Generate qualified business enquiries, promote services, build brand trust.
 - Clear, relevant CTAs (e.g., "Get a Free Consultation", "Discuss Your Project", "Explore Our Services").
-- Use official company contact details (+91 9659239187, info@digitalcrazyhub.com).
+- Use official company contact details (+91 9361501280, digitalcrazyhub@gmail.com).
 - Do not promise unsubstantiated guarantees.
 
 ---

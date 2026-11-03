@@ -126,7 +126,7 @@ final class ProfileDownloadController
                 'uuid' => $savedRecord['uuid'],
                 'name' => $savedRecord['name'],
                 'phone' => $savedRecord['phone'],
-                'email' => $savedRecord['email'] ?? 'info@digitalcrazyhub.com',
+                'email' => $savedRecord['email'] ?? 'digitalcrazyhub@gmail.com',
                 'location' => $savedRecord['location'],
                 'service' => 'Company Profile Download',
                 'message' => 'Lead requested and was authorized to download the Digital Crazy Hub Company Profile PDF.',
@@ -184,7 +184,7 @@ final class ProfileDownloadController
             $this->renderDownloadError(
                 500,
                 'Document Unavailable',
-                'The company profile document is currently undergoing updates on our server. Please contact us at info@digitalcrazyhub.com or +91 9659239187 to receive a copy directly.'
+                'The company profile document is currently undergoing updates on our server. Please contact us at digitalcrazyhub@gmail.com or +91 9361501280 to receive a copy directly.'
             );
             return;
         }

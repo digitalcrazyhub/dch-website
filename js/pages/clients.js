@@ -27,154 +27,164 @@ export const CLIENTS_IMAGES = [
   // 8 .jpeg assets
   {
     id: 1,
-    src: 'assets/images/coffee-with-clients/client (1).jpeg',
+    src: 'assets/images/coffee-with-clients/client-01.png',
     alt: 'Digital Crazy Hub client consultation and face-to-face business discussion'
   },
   {
     id: 2,
-    src: 'assets/images/coffee-with-clients/client (2).jpeg',
+    src: 'assets/images/coffee-with-clients/client-02.png',
     alt: 'Client strategy discussion and project collaboration over coffee'
   },
   {
     id: 3,
-    src: 'assets/images/coffee-with-clients/client (3).jpeg',
+    src: 'assets/images/coffee-with-clients/client-03.png',
     alt: 'One-on-one business relationship meeting with Digital Crazy Hub'
   },
   {
     id: 4,
-    src: 'assets/images/coffee-with-clients/client (4).jpeg',
+    src: 'assets/images/coffee-with-clients/client-04.png',
     alt: 'Face-to-face client networking and partnership conversation'
   },
   {
     id: 5,
-    src: 'assets/images/coffee-with-clients/client (5).jpeg',
+    src: 'assets/images/coffee-with-clients/client-05.png',
     alt: 'Professional business review and client interaction session'
   },
   {
     id: 6,
-    src: 'assets/images/coffee-with-clients/client (6).jpeg',
+    src: 'assets/images/coffee-with-clients/client-06.png',
     alt: 'Collaborative client discussion exploring digital growth solutions'
   },
   {
     id: 7,
-    src: 'assets/images/coffee-with-clients/client (7).jpeg',
+    src: 'assets/images/coffee-with-clients/client-07.png',
     alt: 'Real-world business interaction and relationship building'
   },
   {
     id: 8,
-    src: 'assets/images/coffee-with-clients/client (8).jpeg',
+    src: 'assets/images/coffee-with-clients/client-08.png',
     alt: 'Strategic client meeting and consultation with Digital Crazy Hub'
   },
 
   // 22 .jpg assets
   {
     id: 9,
-    src: 'assets/images/coffee-with-clients/client (1).jpg',
+    src: 'assets/images/coffee-with-clients/client-09.png',
     alt: 'Client partnership discussion and business meeting over coffee'
   },
   {
     id: 10,
-    src: 'assets/images/coffee-with-clients/client (2).jpg',
+    src: 'assets/images/coffee-with-clients/client-10.png',
     alt: 'Professional client meeting and marketing roadmap exchange'
   },
   {
     id: 11,
-    src: 'assets/images/coffee-with-clients/client (3).jpg',
+    src: 'assets/images/coffee-with-clients/client-11.png',
     alt: 'Client strategy session focused on digital marketing goals'
   },
   {
     id: 12,
-    src: 'assets/images/coffee-with-clients/client (4).jpg',
+    src: 'assets/images/coffee-with-clients/client-12.png',
     alt: 'Business partnership meeting and face-to-face interaction'
   },
   {
     id: 13,
-    src: 'assets/images/coffee-with-clients/client (5).jpg',
+    src: 'assets/images/coffee-with-clients/client-13.png',
     alt: 'Digital Crazy Hub founder meeting with client partner'
   },
   {
     id: 14,
-    src: 'assets/images/coffee-with-clients/client (6).jpg',
+    src: 'assets/images/coffee-with-clients/client-14.png',
     alt: 'Professional networking and client business review'
   },
   {
     id: 15,
-    src: 'assets/images/coffee-with-clients/client (7).jpg',
+    src: 'assets/images/coffee-with-clients/client-15.png',
     alt: 'Client collaboration and digital roadmap planning session'
   },
   {
     id: 16,
-    src: 'assets/images/coffee-with-clients/client (8).jpg',
+    src: 'assets/images/coffee-with-clients/client-16.png',
     alt: 'Face-to-face conversation and business relationship building'
   },
   {
     id: 17,
-    src: 'assets/images/coffee-with-clients/client (9).jpg',
+    src: 'assets/images/coffee-with-clients/client-17.png',
     alt: 'Consultation session reviewing digital performance and growth'
   },
   {
     id: 18,
-    src: 'assets/images/coffee-with-clients/client (10).jpg',
+    src: 'assets/images/coffee-with-clients/client-18.png',
     alt: 'Client relationship discussion in professional office setting'
   },
   {
     id: 19,
-    src: 'assets/images/coffee-with-clients/client (11).jpg',
+    src: 'assets/images/coffee-with-clients/client-19.png',
     alt: 'Strategic consultation meeting with business partners'
   },
   {
     id: 20,
-    src: 'assets/images/coffee-with-clients/client (12).jpg',
+    src: 'assets/images/coffee-with-clients/client-20.png',
     alt: 'One-on-one client interaction and strategy review'
   },
   {
     id: 21,
-    src: 'assets/images/coffee-with-clients/client (13).jpg',
+    src: 'assets/images/coffee-with-clients/client-21.png',
     alt: 'Client meeting discussing tailored digital solutions'
   },
   {
     id: 22,
-    src: 'assets/images/coffee-with-clients/client (14).jpg',
+    src: 'assets/images/coffee-with-clients/client-22.png',
     alt: 'Face-to-face partnership review and collaboration discussion'
   },
   {
     id: 23,
-    src: 'assets/images/coffee-with-clients/client (15).jpg',
+    src: 'assets/images/coffee-with-clients/client-23.png',
     alt: 'Business discussion and client networking over coffee'
   },
   {
     id: 24,
-    src: 'assets/images/coffee-with-clients/client (16).jpg',
+    src: 'assets/images/coffee-with-clients/client-24.png',
     alt: 'Collaborative strategy meeting with enterprise client'
   },
   {
     id: 25,
-    src: 'assets/images/coffee-with-clients/client (17).jpg',
+    src: 'assets/images/coffee-with-clients/client-25.png',
     alt: 'Client consultation exploring omnichannel marketing initiatives'
   },
   {
     id: 26,
-    src: 'assets/images/coffee-with-clients/client (18).jpg',
+    src: 'assets/images/coffee-with-clients/client-26.png',
     alt: 'Professional meeting strengthening long-term client relationship'
   },
   {
     id: 27,
-    src: 'assets/images/coffee-with-clients/client (19).jpg',
+    src: 'assets/images/coffee-with-clients/client-27.png',
     alt: 'Face-to-face client consultation and strategic alignment'
   },
   {
     id: 28,
-    src: 'assets/images/coffee-with-clients/client (20).jpg',
+    src: 'assets/images/coffee-with-clients/client-28.png',
     alt: 'Business networking and client partnership discussion'
   },
   {
     id: 29,
-    src: 'assets/images/coffee-with-clients/client (21).jpg',
+    src: 'assets/images/coffee-with-clients/client-29.png',
     alt: 'Coffee consultation meeting with business leader'
   },
   {
     id: 30,
-    src: 'assets/images/coffee-with-clients/client (22).jpg',
+    src: 'assets/images/coffee-with-clients/client-30.png',
+    alt: 'Face-to-face client interaction and project celebration'
+  },
+  {
+    id: 31,
+    src: 'assets/images/coffee-with-clients/client-31.png',
+    alt: 'Face-to-face client interaction and project celebration'
+  },
+  {
+    id: 32,
+    src: 'assets/images/coffee-with-clients/client-32.png',
     alt: 'Face-to-face client interaction and project celebration'
   }
 ];
