@@ -309,6 +309,13 @@
   margin-left: 2px;
 }
 
+.optional-mark {
+  font-weight: 400;
+  font-size: 0.8125rem;
+  color: var(--color-muted, #64748B);
+  margin-left: 4px;
+}
+
 .form-input-wrapper {
   position: relative;
   width: 100%;

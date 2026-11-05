@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const breadcrumbCategory = document.getElementById('breadcrumb-category-link');
   if (breadcrumbCategory) {
     breadcrumbCategory.textContent = article.categoryLabel;
-    breadcrumbCategory.href = `blog.html?category=${article.category}`;
+    breadcrumbCategory.href = `/blog/?category=${article.category}`;
   }
 
   // 4. Hydrate Article Header
   const badgeEl = document.getElementById('article-category-badge');
   if (badgeEl) {
     badgeEl.textContent = article.categoryLabel;
-    badgeEl.href = `blog.html?category=${article.category}`;
+    badgeEl.href = `/blog/?category=${article.category}`;
   }
 
   const titleEl = document.getElementById('article-main-title');
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tagsListEl = document.getElementById('article-tags-list');
   if (tagsListEl && article.tags && article.tags.length > 0) {
     tagsListEl.innerHTML = article.tags.map((tag) => `
-      <a href="blog.html?category=${article.category}" class="tag-pill" title="Filter by ${tag}">
+      <a href="/blog/?category=${article.category}" class="tag-pill" title="Filter by ${tag}">
         <span class="tag-hash">#</span>${tag}
       </a>
     `).join('');
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isCurrentCat = cat.id === article.category;
       return `
         <li class="category-item ${isCurrentCat ? 'active' : ''}">
-          <a href="blog.html?category=${cat.id}" class="category-link">
+          <a href="/blog/?category=${cat.id}" class="category-link">
             <span class="category-name">${cat.label}</span>
             <span class="category-count">(${cat.count})</span>
           </a>

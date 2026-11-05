@@ -1,0 +1,12 @@
+# Robots.txt for Digital Crazy Hub
+# Production Configuration: https://digitalcrazyhub.com/
+
+User-agent: *
+Allow: /
+
+# Disallow private and partial directories
+Disallow: /backend/
+Disallow: /components/
+
+# Sitemap reference
+Sitemap: https://digitalcrazyhub.com/sitemap.xml

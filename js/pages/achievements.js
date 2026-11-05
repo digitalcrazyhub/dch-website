@@ -27,7 +27,8 @@ export const ACHIEVEMENTS_GALLERY = [
       { src: 'assets/images/achievements/awards/award-02.png', alt: 'Digital Crazy Hub Award Trophy 02' },
       { src: 'assets/images/achievements/awards/award-03.png', alt: 'Digital Crazy Hub Award Trophy 03' },
       { src: 'assets/images/achievements/awards/award-04.png', alt: 'Digital Crazy Hub Award Trophy 04' },
-      { src: 'assets/images/achievements/awards/award-05.png', alt: 'Digital Crazy Hub Award Trophy 05' }
+      { src: 'assets/images/achievements/awards/award-05.png', alt: 'Digital Crazy Hub Award Trophy 05' },
+      { src: 'assets/images/achievements/awards/award-06.png', alt: 'Digital Crazy Hub Award Trophy 06' }
     ]
   },
   {

@@ -64,7 +64,7 @@ final class Database
         }
 
         $port = Env::getInt('DB_PORT', 3306);
-        $dbname = Env::getString('DB_NAME', 'dch_db');
+        $dbname = Env::getString('DB_NAME', 'u338618600_webcontacpage');
         $username = Env::getString('DB_USER', 'root');
         $password = Env::getString('DB_PASS', '');
         $charset = Env::getString('DB_CHARSET', 'utf8mb4');

@@ -1,6 +1,103 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/digital-marketing-services.html",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us.html",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-detail.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-detail/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/:page(about-us|projects|team-details|achievements|clients|client-feedback|students-feedback|blog|privacy-policy|terms-and-conditions).html",
+      "destination": "/:page/",
+      "permanent": true
+    },
+    {
+      "source": "/services/:slug.html",
+      "destination": "/services/:slug/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-page/:slug.html",
+      "destination": "/blog-page/:slug/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/navbar.html",
+      "destination": "/components/navbar.html"
+    },
+    {
+      "source": "/footer.html",
+      "destination": "/components/footer.html"
+    },
+    {
+      "source": "/floating-actions.html",
+      "destination": "/components/floating-actions.html"
+    },
+    {
+      "source": "/page-banner.html",
+      "destination": "/components/page-banner.html"
+    },
+    {
+      "source": "/cta.html",
+      "destination": "/components/cta.html"
+    },
+    {
+      "source": "/services/",
+      "destination": "/digital-marketing-services.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/digital-marketing-services.html"
+    },
+    {
+      "source": "/services/:slug/",
+      "destination": "/services/:slug.html"
+    },
+    {
+      "source": "/blog-page/:slug/",
+      "destination": "/blog-page/:slug.html"
+    },
+    {
+      "source": "/:page(about-us|projects|team-details|achievements|clients|client-feedback|students-feedback|blog|contact|privacy-policy|terms-and-conditions)/",
+      "destination": "/:page.html"
+    }
+  ]
 }
-

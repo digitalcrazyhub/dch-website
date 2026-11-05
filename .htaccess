@@ -10,14 +10,114 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
 
-  # Allow direct access to existing physical files and directories
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
+  # ----------------------------------------------------------------------------
+  # A. Canonical HTTPS & Non-WWW Redirection (Hostinger Production)
+  # ----------------------------------------------------------------------------
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\.digitalcrazyhub\.com$ [NC]
+  RewriteRule ^(.*)$ https://digitalcrazyhub.com/$1 [R=301,L,QSA]
+
+  # ----------------------------------------------------------------------------
+  # B. Critical Bypasses: Assets, Components, and Backend PHP Endpoints
+  # These MUST pass through directly and NEVER be redirected to clean URLs.
+  # ----------------------------------------------------------------------------
+  # 1. Backend PHP API and routing bypass
+  RewriteRule ^backend/(.*)$ backend/$1 [L,QSA]
+
+  # 2. Existing static assets (CSS, JS, images, fonts, media, documents, sitemap, robots)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteCond %{REQUEST_URI} \.(css|js|mjs|json|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|eot|otf|mp4|webm|pdf|xml|txt|map)$ [NC]
   RewriteRule ^ - [L]
 
-  # Preserve Backend API routing and PHP script execution
-  RewriteRule ^backend/(.*)$ backend/$1 [L]
+  # 3. Component directory bypass: serve reusable HTML fragments directly (HTTP 200, NO redirect)
+  RewriteRule ^components/ - [L]
+
+  # 4. Direct component aliases: silently map root requests to components/ (HTTP 200, NO redirect)
+  RewriteRule ^navbar\.html$ components/navbar.html [L]
+  RewriteRule ^footer\.html$ components/footer.html [L]
+  RewriteRule ^floating-actions\.html$ components/floating-actions.html [L]
+  RewriteRule ^page-banner\.html$ components/page-banner.html [L]
+  RewriteRule ^cta\.html$ components/cta.html [L]
+
+  # ----------------------------------------------------------------------------
+  # C. 301 Permanent Redirects: Direct Public .html Pages to Clean Trailing-Slash URLs
+  # Strictly applied ONLY to confirmed public-facing pages that actually exist.
+  # Component files, assets, and nonexistent files are strictly excluded.
+  # Uses %{THE_REQUEST} to inspect actual client requests and prevent rewrite loops.
+  # ----------------------------------------------------------------------------
+  # 1. Homepage: /index.html -> /
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/ [NC]
+  RewriteRule ^index\.html$ https://digitalcrazyhub.com/ [R=301,L,QSA]
+
+  # 2. Services Hub: /digital-marketing-services.html and legacy /services.html -> /services/
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(digital-marketing-services|services)\.html\ HTTP/ [NC]
+  RewriteRule ^(digital-marketing-services|services)\.html$ https://digitalcrazyhub.com/services/ [R=301,L,QSA]
+
+  # 3. Contact Us Page: /contact.html, /contact-us.html, and /contact-us -> /contact/
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(contact|contact-us)\.html\ HTTP/ [NC]
+  RewriteRule ^(contact|contact-us)\.html$ https://digitalcrazyhub.com/contact/ [R=301,L,QSA]
+  RewriteRule ^contact-us/?$ https://digitalcrazyhub.com/contact/ [R=301,L,QSA]
+
+  # 4. Legacy Blog Detail Template: /blog-detail.html or /blog-detail/ -> /blog/
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /blog-detail(\.html|/)?\ HTTP/ [NC]
+  RewriteRule ^blog-detail(\.html|/)?$ https://digitalcrazyhub.com/blog/ [R=301,L,QSA]
+
+  # 5. Verified Root Public Pages Only:
+  # (about-us, projects, team-details, achievements, clients, client-feedback, students-feedback, blog, privacy-policy, terms-and-conditions)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(about-us|projects|team-details|achievements|clients|client-feedback|students-feedback|blog|privacy-policy|terms-and-conditions)\.html\ HTTP/ [NC]
+  RewriteRule ^(about-us|projects|team-details|achievements|clients|client-feedback|students-feedback|blog|privacy-policy|terms-and-conditions)\.html$ https://digitalcrazyhub.com/$1/ [R=301,L,QSA]
+
+  # 6. Service Pages in services/ directory only:
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /services/([a-z0-9-]+)\.html\ HTTP/ [NC]
+  RewriteCond %{DOCUMENT_ROOT}/services/$1.html -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^services/([a-z0-9-]+)\.html$ https://digitalcrazyhub.com/services/$1/ [R=301,L,QSA]
+
+  # 7. Blog Pages in blog-page/ directory only:
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /blog-page/([a-z0-9-]+)\.html\ HTTP/ [NC]
+  RewriteCond %{DOCUMENT_ROOT}/blog-page/$1.html -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^blog-page/([a-z0-9-]+)\.html$ https://digitalcrazyhub.com/blog-page/$1/ [R=301,L,QSA]
+
+  # ----------------------------------------------------------------------------
+  # D. Trailing Slash Enforcement for Extensionless Public URLs
+  # e.g. /about-us -> /about-us/
+  # ----------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteCond %{REQUEST_URI} !^/backend
+  RewriteCond %{REQUEST_URI} !^/components
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+  RewriteRule ^(.*)$ https://digitalcrazyhub.com/$1/ [R=301,L,QSA]
+
+  # ----------------------------------------------------------------------------
+  # E. Internal Rewrites: Clean Trailing-Slash URLs to Source HTML Files
+  # ----------------------------------------------------------------------------
+  # Direct physical files and assets pass through directly
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Services Hub: /services/ -> digital-marketing-services.html
+  RewriteRule ^services/?$ digital-marketing-services.html [L,QSA]
+
+  # Individual Service Pages: /services/xxx/ -> services/xxx.html (only if file exists)
+  RewriteCond %{DOCUMENT_ROOT}/services/$1.html -f [OR]
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^services/([^/]+)/?$ services/$1.html [L,QSA]
+
+  # Individual Blog Pages: /blog-page/xxx/ -> blog-page/xxx.html (only if file exists)
+  RewriteCond %{DOCUMENT_ROOT}/blog-page/$1.html -f [OR]
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^blog-page/([^/]+)/?$ blog-page/$1.html [L,QSA]
+
+  # Root Clean URLs: /xxx/ -> xxx.html (only if xxx.html exists in root)
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f [OR]
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^([^/]+)/?$ $1.html [L,QSA]
+
 </IfModule>
 
 # Security Headers & Content Protection

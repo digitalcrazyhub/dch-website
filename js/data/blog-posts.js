@@ -25,7 +25,7 @@ export const BLOG_POSTS = [
     altText: 'Digital marketing strategies for manufacturing industry growth and client acquisition',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-for-manufacturing.html',
+    url: '/blog-page/digital-marketing-strategies-for-manufacturing/',
     readingTime: '7 min read',
     tags: ['Manufacturing', 'B2B Marketing', 'Industrial SEO', 'Lead Generation', 'Digital Strategy']
   },
@@ -37,7 +37,7 @@ export const BLOG_POSTS = [
     altText: 'Digital marketing tactics for dental practices and patient appointment growth',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-for-dentist.html',
+    url: '/blog-page/digital-marketing-for-dentist/',
     readingTime: '6 min read',
     tags: ['Dental Care', 'Local SEO', 'Healthcare Marketing', 'Patient Acquisition', 'Google Ads']
   },
@@ -49,7 +49,7 @@ export const BLOG_POSTS = [
     altText: 'Strategic digital marketing methods for retail pharmacies and healthcare providers',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-for-pharmacy-industry.html',
+    url: '/blog-page/digital-marketing-strategies-for-pharmacy-industry/',
     readingTime: '6 min read',
     tags: ['Pharmacy', 'Healthcare', 'eCommerce', 'Local SEO', 'Compliance']
   },
@@ -61,7 +61,7 @@ export const BLOG_POSTS = [
     altText: 'Guide to leading digital marketing educational institutes and career courses in India',
     category: 'uncategorized',
     categoryLabel: 'Uncategorized',
-    url: 'blog-page/digital-marketing-training-institute-in-india.html',
+    url: '/blog-page/digital-marketing-training-institute-in-india/',
     readingTime: '5 min read',
     tags: ['Education', 'Digital Marketing Training', 'Career Guidance', 'Skill Development']
   },
@@ -73,7 +73,7 @@ export const BLOG_POSTS = [
     altText: 'Artificial intelligence impact on modern marketing professionals and digital agencies',
     category: 'uncategorized',
     categoryLabel: 'Uncategorized',
-    url: 'blog-page/can-ai-replace-digital-marketers.html',
+    url: '/blog-page/can-ai-replace-digital-marketers/',
     readingTime: '6 min read',
     tags: ['Artificial Intelligence', 'Future of Work', 'Marketing Trends', 'Automation']
   },
@@ -85,7 +85,7 @@ export const BLOG_POSTS = [
     altText: 'Essential digital marketing approaches for agricultural enterprises and agribusinesses',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-for-agriculture.html',
+    url: '/blog-page/digital-marketing-strategies-for-agriculture/',
     readingTime: '6 min read',
     tags: ['AgriBusiness', 'B2B Marketing', 'Farming Technology', 'Supply Chain']
   },
@@ -97,7 +97,7 @@ export const BLOG_POSTS = [
     altText: 'Modern restaurant digital marketing and customer acquisition tactics',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-for-restaurants.html',
+    url: '/blog-page/digital-marketing-strategies-for-restaurants/',
     readingTime: '5 min read',
     tags: ['Restaurant Marketing', 'Local SEO', 'Social Media', 'Food Branding']
   },
@@ -109,7 +109,7 @@ export const BLOG_POSTS = [
     altText: 'High-growth digital marketing roadmap for startups and new business ventures in India',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategy-for-startups.html',
+    url: '/blog-page/digital-marketing-strategy-for-startups/',
     readingTime: '7 min read',
     tags: ['Startups', 'Growth Hacking', 'India Business', 'Performance Marketing']
   },
@@ -121,7 +121,7 @@ export const BLOG_POSTS = [
     altText: 'Compliant digital marketing and patient outreach solutions for healthcare organizations',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/best-digital-marketing-strategies-for-healthcare-industry.html',
+    url: '/blog-page/best-digital-marketing-strategies-for-healthcare-industry/',
     readingTime: '6 min read',
     tags: ['Healthcare', 'Hospitals', 'Medical Marketing', 'Patient Trust']
   },
@@ -133,7 +133,7 @@ export const BLOG_POSTS = [
     altText: 'Destination marketing and digital engagement plans for travel agencies and tour operators',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-for-travel-agency.html',
+    url: '/blog-page/digital-marketing-strategies-for-travel-agency/',
     readingTime: '6 min read',
     tags: ['Travel & Tourism', 'Booking Campaigns', 'Instagram Marketing', 'Travel Agency']
   },
@@ -145,7 +145,7 @@ export const BLOG_POSTS = [
     altText: 'Premium jewelry brand digital marketing and luxury retail customer engagement',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-jewellery.html',
+    url: '/blog-page/digital-marketing-strategies-jewellery/',
     readingTime: '6 min read',
     tags: ['Jewellery', 'Luxury Retail', 'Visual Marketing', 'eCommerce']
   },
@@ -157,7 +157,7 @@ export const BLOG_POSTS = [
     altText: 'Direct booking and hospitality digital marketing strategies for Indian hotels',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-hotels-india.html',
+    url: '/blog-page/digital-marketing-strategies-hotels-india/',
     readingTime: '6 min read',
     tags: ['Hotels & Resorts', 'Hospitality', 'Direct Bookings', 'Google Hotel Ads']
   },
@@ -169,7 +169,7 @@ export const BLOG_POSTS = [
     altText: 'Client retention and local marketing techniques for modern beauty salons and spas',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategies-for-beauty-salons.html',
+    url: '/blog-page/digital-marketing-strategies-for-beauty-salons/',
     readingTime: '5 min read',
     tags: ['Beauty & Salon', 'Appointment Booking', 'Influencer Marketing', 'Local Reach']
   },
@@ -181,7 +181,7 @@ export const BLOG_POSTS = [
     altText: 'Educational institution digital marketing and student admission campaign strategies',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategy-for-schools.html',
+    url: '/blog-page/digital-marketing-strategy-for-schools/',
     readingTime: '6 min read',
     tags: ['Schools & Colleges', 'Admissions', 'Education Marketing', 'Community Trust']
   },
@@ -193,7 +193,7 @@ export const BLOG_POSTS = [
     altText: 'Real estate digital marketing, property showcase, and buyer lead generation strategies',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/best-digital-marketing-strategies-for-real-estate-growth.html',
+    url: '/blog-page/best-digital-marketing-strategies-for-real-estate-growth/',
     readingTime: '7 min read',
     tags: ['Real Estate', 'Property Marketing', 'Lead Generation', 'High-Ticket Sales']
   },
@@ -205,7 +205,7 @@ export const BLOG_POSTS = [
     altText: 'Membership acquisition and local fitness club digital marketing best practices',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/best-10-digital-marketing-strategies-for-gyms-and-fitness-clubs.html',
+    url: '/blog-page/best-10-digital-marketing-strategies-for-gyms-and-fitness-clubs/',
     readingTime: '6 min read',
     tags: ['Fitness & Gym', 'Memberships', 'Local SEO', 'Community Challenges']
   },
@@ -217,7 +217,7 @@ export const BLOG_POSTS = [
     altText: 'Hyper-local business marketing, customer discovery, and neighbourhood brand reach',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/digital-marketing-strategy-for-local-business.html',
+    url: '/blog-page/digital-marketing-strategy-for-local-business/',
     readingTime: '5 min read',
     tags: ['Local Business', 'Google Business Profile', 'Local Citations', 'Foot Traffic']
   },
@@ -229,7 +229,7 @@ export const BLOG_POSTS = [
     altText: 'E-commerce conversion rate optimization, sales funnels, and online retail tactics',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/ecommerce-marketing-strategies.html',
+    url: '/blog-page/ecommerce-marketing-strategies/',
     readingTime: '7 min read',
     tags: ['eCommerce', 'Conversion Optimization', 'Email Funnels', 'Product Ads']
   },
@@ -241,7 +241,7 @@ export const BLOG_POSTS = [
     altText: 'Executive personal branding and organic LinkedIn content architecture for leaders',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/linkedin-content-strategy-personal-branding.html',
+    url: '/blog-page/linkedin-content-strategy-personal-branding/',
     readingTime: '6 min read',
     tags: ['LinkedIn', 'Personal Branding', 'Thought Leadership', 'Executive Presence']
   },
@@ -253,7 +253,7 @@ export const BLOG_POSTS = [
     altText: 'Portfolio marketing and high-ticket client acquisition for interior design studios',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/interior-design-marketing-strategies.html',
+    url: '/blog-page/interior-design-marketing-strategies/',
     readingTime: '6 min read',
     tags: ['Interior Design', 'Visual Aesthetics', 'Portfolio Marketing', 'Luxury Clients']
   },
@@ -265,7 +265,7 @@ export const BLOG_POSTS = [
     altText: 'High-authority off-page search engine optimization and backlink building services',
     category: 'seo',
     categoryLabel: 'SEO',
-    url: 'blog-page/boost-your-online-presence-with-off-page-seo-services.html',
+    url: '/blog-page/boost-your-online-presence-with-off-page-seo-services/',
     readingTime: '6 min read',
     tags: ['Off-Page SEO', 'Backlink Building', 'Domain Authority', 'Search Rankings']
   },
@@ -277,7 +277,7 @@ export const BLOG_POSTS = [
     altText: 'Step-by-step personal brand development across professional social channels',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/10-steps-to-building-your-personal-branding-on-social-media.html',
+    url: '/blog-page/10-steps-to-building-your-personal-branding-on-social-media/',
     readingTime: '6 min read',
     tags: ['Personal Branding', 'Social Media', 'Content Creation', 'Influence']
   },
@@ -289,7 +289,7 @@ export const BLOG_POSTS = [
     altText: 'Foundational principles of authentic authority building and personal branding',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/how-to-build-a-personal-branding.html',
+    url: '/blog-page/how-to-build-a-personal-branding/',
     readingTime: '5 min read',
     tags: ['Personal Branding', 'Authority', 'Career Growth', 'Digital Identity']
   },
@@ -301,7 +301,7 @@ export const BLOG_POSTS = [
     altText: 'Digital growth models, app downloads, and delivery marketing for online grocery stores',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/marketing-strategies-for-online-grocery-store.html',
+    url: '/blog-page/marketing-strategies-for-online-grocery-store/',
     readingTime: '6 min read',
     tags: ['Online Grocery', 'Quick Commerce', 'App Marketing', 'Customer Retention']
   },
@@ -313,7 +313,7 @@ export const BLOG_POSTS = [
     altText: 'Budget-friendly digital marketing optimization and high ROI tactics for small businesses',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/small-business-digital-marketing-strategy.html',
+    url: '/blog-page/small-business-digital-marketing-strategy/',
     readingTime: '6 min read',
     tags: ['Small Business', 'Budget Marketing', 'High ROI', 'Cost-Effective Strategy']
   },
@@ -325,7 +325,7 @@ export const BLOG_POSTS = [
     altText: 'Modern web development strategy, digital presence, and high-performance websites',
     category: 'web-development',
     categoryLabel: 'Web Development',
-    url: 'blog-page/website-marketing-strategy.html',
+    url: '/blog-page/website-marketing-strategy/',
     readingTime: '6 min read',
     tags: ['Website Strategy', 'Web Development', 'Conversion Design', 'Digital Experience']
   },
@@ -337,7 +337,7 @@ export const BLOG_POSTS = [
     altText: 'Local search engine optimization, Google Maps ranking, and local citation building',
     category: 'seo',
     categoryLabel: 'SEO',
-    url: 'blog-page/local-seo-strategies.html',
+    url: '/blog-page/local-seo-strategies/',
     readingTime: '6 min read',
     tags: ['Local SEO', 'Google Maps', 'Local Pack', 'Chennai Business']
   },
@@ -349,7 +349,7 @@ export const BLOG_POSTS = [
     altText: 'Campaign structuring, targeted ad funnels, and lead generation for property developers',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/real-estate-digital-marketing-campaign-setup.html',
+    url: '/blog-page/real-estate-digital-marketing-campaign-setup/',
     readingTime: '7 min read',
     tags: ['Real Estate Campaign', 'Meta Ads', 'Lead Nurturing', 'Site Visits']
   },
@@ -361,7 +361,7 @@ export const BLOG_POSTS = [
     altText: 'Next-generation digital marketing trends, omnichannel strategy, and customer touchpoints',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/top-digital-marketing-strategy-trends.html',
+    url: '/blog-page/top-digital-marketing-strategy-trends/',
     readingTime: '7 min read',
     tags: ['Marketing Trends', '2025 Strategy', 'Omnichannel', 'AI & Automation']
   },
@@ -373,7 +373,7 @@ export const BLOG_POSTS = [
     altText: 'High-engagement social media campaigns, audience community building, and brand reach',
     category: 'digital-marketing-strategies',
     categoryLabel: 'Digital Marketing Strategies',
-    url: 'blog-page/social-media-strategies-to-increase-brand-engagement.html',
+    url: '/blog-page/social-media-strategies-to-increase-brand-engagement/',
     readingTime: '6 min read',
     tags: ['Social Media', 'Engagement', 'Brand Community', 'Content Strategy']
   }

@@ -107,12 +107,10 @@ final class ContactValidator
             $sanitized['service'] = $rawService;
         }
 
-        // 6. Message validation
+        // 6. Message validation (Optional)
         $rawMessage = isset($input['message']) && is_scalar($input['message']) ? trim((string)$input['message']) : '';
         if ($rawMessage === '') {
-            $errors['message'] = 'Message is required. Please tell us about your project requirements.';
-        } elseif (mb_strlen($rawMessage, 'UTF-8') < self::MIN_MESSAGE_LENGTH) {
-            $errors['message'] = sprintf('Message must be at least %d characters.', self::MIN_MESSAGE_LENGTH);
+            $sanitized['message'] = '';
         } elseif (mb_strlen($rawMessage, 'UTF-8') > self::MAX_MESSAGE_LENGTH) {
             $errors['message'] = sprintf('Message cannot exceed %d characters.', self::MAX_MESSAGE_LENGTH);
         } else {

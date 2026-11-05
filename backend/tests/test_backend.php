@@ -133,11 +133,17 @@ $unapprovedService['service'] = 'Hacking & Penetration';
 $res = ContactValidator::validate($unapprovedService);
 $suite->assert(!$res['isValid'] && isset($res['errors']['service']), 'Unapproved arbitrary service is rejected');
 
-// Test Message Length Boundaries
-$shortMessage = $validInput;
-$shortMessage['message'] = 'Too short';
-$res = ContactValidator::validate($shortMessage);
-$suite->assert(!$res['isValid'] && isset($res['errors']['message']), 'Message under 10 characters is rejected');
+// Test Optional Message: Empty message is valid
+$emptyMessage = $validInput;
+$emptyMessage['message'] = '';
+$res = ContactValidator::validate($emptyMessage);
+$suite->assert($res['isValid'] && $res['data']['message'] === '', 'Empty message is accepted when message is optional');
+
+// Test Message Max Length Boundary
+$tooLongMessage = $validInput;
+$tooLongMessage['message'] = str_repeat('A', 3001);
+$res = ContactValidator::validate($tooLongMessage);
+$suite->assert(!$res['isValid'] && isset($res['errors']['message']), 'Message exceeding max length is rejected');
 
 // Test Missing Consent
 $noConsent = $validInput;
@@ -301,7 +307,7 @@ $suite->assert(isset($validation['errors']['email']), 'Field error returned for 
 $suite->assert(isset($validation['errors']['phone']), 'Field error returned for phone');
 $suite->assert(isset($validation['errors']['location']), 'Field error returned for location');
 $suite->assert(isset($validation['errors']['service']), 'Field error returned for service');
-$suite->assert(isset($validation['errors']['message']), 'Field error returned for message');
+$suite->assert(!isset($validation['errors']['message']), 'No field error for message because message is optional');
 $suite->assert(isset($validation['errors']['consent']), 'Field error returned for consent');
 
 // Final summary

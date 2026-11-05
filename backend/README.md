@@ -112,7 +112,7 @@ Run the provided SQL file using MySQL CLI or phpMyAdmin:
 mysql -u root -p < backend/database/schema.sql
 ```
 
-This creates the database `dch_db` with three tables:
+This creates the database `u338618600_webcontacpage` with three tables:
 1. `leads`: Stores inquiries from the main Contact Us form.
 2. `lead_sync_outbox`: Transactional outbox retry queue for external SMTP & Google Sheets integrations.
 3. `company_profile_downloads`: Stores captured leads and SHA-256 hashed download authorization tokens.
@@ -122,7 +122,7 @@ Create a dedicated user with restricted permissions:
 
 ```sql
 CREATE USER 'dch_user'@'localhost' IDENTIFIED BY 'YOUR_STRONG_PASSWORD';
-GRANT SELECT, INSERT, UPDATE, DELETE ON `dch_db`.* TO 'dch_user'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON `u338618600_webcontacpage`.* TO 'dch_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
@@ -148,7 +148,7 @@ ALLOWED_ORIGIN=https://digitalcrazyhub.com
 # MySQL Database
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_NAME=dch_db
+DB_NAME=u338618600_webcontacpage
 DB_USER=dch_user
 DB_PASS=YOUR_STRONG_PASSWORD
 DB_CHARSET=utf8mb4

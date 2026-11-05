@@ -6,11 +6,11 @@
 -- ==============================================================================
 
 -- 1. Create Database if not exists
-CREATE DATABASE IF NOT EXISTS `dch_db`
+CREATE DATABASE IF NOT EXISTS `u338618600_webcontacpage`
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_unicode_ci;
 
-USE `dch_db`;
+USE `u338618600_webcontacpage`;
 
 -- ==============================================================================
 -- 2. Table: leads

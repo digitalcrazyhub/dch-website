@@ -68,13 +68,6 @@
   letter-spacing: -0.03em;
 }
 
-.text-gradient-hero {
-  background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline;
-}
-
 .hero-desc-fullscreen {
   font-size: 1.25rem;
   color: #E2E8F0;

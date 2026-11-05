@@ -11,9 +11,22 @@ export async function loadComponent(containerId, componentPath) {
   if (!container) return false;
 
   try {
-    const response = await fetch(componentPath, { cache: 'no-cache' });
+    let response = await fetch(componentPath, { cache: 'no-cache' });
     if (!response.ok) {
-      throw new Error(`Failed to load component "${componentPath}": ${response.status} ${response.statusText}`);
+      // Resilient fallback: Try alternate component path if relative prefix differs
+      const altPath = componentPath.startsWith('components/')
+        ? componentPath.replace(/^components\//, '')
+        : 'components/' + componentPath.replace(/^\//, '');
+      try {
+        const retry = await fetch(altPath, { cache: 'no-cache' });
+        if (retry.ok) {
+          response = retry;
+        } else {
+          throw new Error(`Failed to load component "${componentPath}": ${response.status} ${response.statusText}`);
+        }
+      } catch (_) {
+        throw new Error(`Failed to load component "${componentPath}": ${response.status} ${response.statusText}`);
+      }
     }
     let html = await response.text();
 

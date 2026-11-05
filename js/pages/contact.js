@@ -4,13 +4,13 @@
  * Vanilla JavaScript ES6+
  *
  * Responsibilities:
- * 1. Comprehensive, accessible client-side form validation across all 7 mandatory fields:
+ * 1. Comprehensive, accessible client-side form validation across all fields:
  *    - Name: trimmed, sensible length, allows unicode/international names, rejects invalid characters.
  *    - Phone: rejects letters, supports 10-digit national numbers and international E.164 formats with country codes.
  *    - Email: trimmed, RFC-compliant format validation.
  *    - Location: trimmed, rejects empty/whitespace.
  *    - Service: strict validation against 8 approved service categories.
- *    - Message: trimmed 10 - 2,000 characters with live character counter.
+ *    - Message: optional, up to 2,000 characters with live character counter.
  *    - Consent: mandatory checkbox, unchecked by default.
  * 2. Focus management, scrolling to first error, ARIA attributes (aria-invalid, aria-describedby).
  * 3. Backend submission integration (submission-ready, preserves inputs on failure, never fakes success).
@@ -384,19 +384,16 @@ function validateService() {
 }
 
 /**
- * Field 6: Message Validation
+ * Field 6: Message Validation (Optional)
  */
 function validateMessage() {
   const el = document.getElementById('contact-message');
   if (!el) return null;
   const val = el.value.trim();
 
+  // Message is optional: empty value is completely valid
   if (!val) {
-    return 'Please enter your message.';
-  }
-
-  if (val.length < 10) {
-    return 'Please provide a little more detail about your requirements.';
+    return null;
   }
 
   if (el.value.length > 2000) {
